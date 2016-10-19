@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D6A8D61DB79C060000D319 /* AppDelegate.swift */; };
-		76D6A8D91DB79C060000D319 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D6A8D81DB79C060000D319 /* ViewController.swift */; };
 		76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DA1DB79C060000D319 /* Main.storyboard */; };
 		76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DD1DB79C060000D319 /* Assets.xcassets */; };
 		76D6A8E11DB79C060000D319 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DF1DB79C060000D319 /* LaunchScreen.storyboard */; };
 		76D6A8E91DB7AB4B0000D319 /* Bridges MVC.docx in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8E81DB7AB4B0000D319 /* Bridges MVC.docx */; };
+		76D6A8EC1DB7ADB50000D319 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D6A8EB1DB7ADB50000D319 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		76D6A8D31DB79C060000D319 /* Bridges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bridges.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D6A8D61DB79C060000D319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		76D6A8D81DB79C060000D319 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		76D6A8DB1DB79C060000D319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76D6A8DD1DB79C060000D319 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76D6A8E01DB79C060000D319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76D6A8E21DB79C060000D319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D6A8E81DB7AB4B0000D319 /* Bridges MVC.docx */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bridges MVC.docx"; path = "../../../../../@ppProject/Bridges MVC.docx"; sourceTree = "<group>"; };
+		76D6A8EB1DB7ADB50000D319 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D6A8EC1DB7ADB50000D319 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +43,7 @@
 			children = (
 				76D6A8D51DB79C060000D319 /* Bridges */,
 				76D6A8D41DB79C060000D319 /* Products */,
+				76D6A8EA1DB7ADB50000D319 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +60,20 @@
 			children = (
 				76D6A8E81DB7AB4B0000D319 /* Bridges MVC.docx */,
 				76D6A8D61DB79C060000D319 /* AppDelegate.swift */,
-				76D6A8D81DB79C060000D319 /* ViewController.swift */,
 				76D6A8DA1DB79C060000D319 /* Main.storyboard */,
 				76D6A8DD1DB79C060000D319 /* Assets.xcassets */,
 				76D6A8DF1DB79C060000D319 /* LaunchScreen.storyboard */,
 				76D6A8E21DB79C060000D319 /* Info.plist */,
 			);
 			path = Bridges;
+			sourceTree = "<group>";
+		};
+		76D6A8EA1DB7ADB50000D319 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76D6A8EB1DB7ADB50000D319 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +108,7 @@
 				TargetAttributes = {
 					76D6A8D21DB79C060000D319 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 5NVNV86XZB;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -140,7 +150,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76D6A8D91DB79C060000D319 /* ViewController.swift in Sources */,
 				76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +271,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5NVNV86XZB;
 				INFOPLIST_FILE = Bridges/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TAA.Bridges;
@@ -274,6 +284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5NVNV86XZB;
 				INFOPLIST_FILE = Bridges/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TAA.Bridges;
