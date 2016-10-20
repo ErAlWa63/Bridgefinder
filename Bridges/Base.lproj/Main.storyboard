@@ -10,7 +10,7 @@
         <!--WelcomeView-->
         <scene sceneID="ev2-RH-0hd">
             <objects>
-                <viewController title="WelcomeView" id="So1-a1-Xn4" sceneMemberID="viewController">
+                <viewController title="WelcomeView" id="So1-a1-Xn4" customClass="WelcomeViewController" customModule="Bridges" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4OS-LZ-0gM"/>
                         <viewControllerLayoutGuide type="bottom" id="YlV-8B-WkK"/>
@@ -74,7 +74,7 @@
         <!--ListView-->
         <scene sceneID="BzT-yl-SNn">
             <objects>
-                <viewController title="ListView" id="A6W-sL-Egg" sceneMemberID="viewController">
+                <viewController title="ListView" id="A6W-sL-Egg" customClass="ListViewController" customModule="Bridges" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="60b-uY-qO4"/>
                         <viewControllerLayoutGuide type="bottom" id="PtF-BH-w3Q"/>
@@ -87,21 +87,21 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="LmU-35-jMW" detailTextLabel="yFW-aK-ifo" imageView="Pjs-n0-FJ3" style="IBUITableViewCellStyleSubtitle" id="4mC-G8-fjw">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4mC-G8-fjw" id="CHy-NR-NJp">
-                                            <frame key="frameInset" width="310" height="43.5"/>
+                                            <frame key="frameInset" width="310" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BridgeNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LmU-35-jMW">
-                                                    <frame key="frameInset" minX="78" minY="5" width="137" height="20.5"/>
+                                                    <frame key="frameInset" minX="78" minY="4" width="137" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BridgeDistanceLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yFW-aK-ifo">
-                                                    <frame key="frameInset" minX="78" minY="25.5" width="117.5" height="14.5"/>
+                                                    <frame key="frameInset" minX="78" minY="25" width="118" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -155,7 +155,7 @@
         <!--DetailView-->
         <scene sceneID="wRC-dY-YZi">
             <objects>
-                <viewController title="DetailView" id="TJC-9N-iNM" sceneMemberID="viewController">
+                <viewController title="DetailView" id="TJC-9N-iNM" customClass="DetailViewController" customModule="Bridges" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xWA-SE-M3h"/>
                         <viewControllerLayoutGuide type="bottom" id="9TX-9M-cFX"/>
@@ -188,7 +188,7 @@
         <!--MapView-->
         <scene sceneID="cqZ-Wk-l4T">
             <objects>
-                <viewController title="MapView" id="5Ud-D0-Tnp" sceneMemberID="viewController">
+                <viewController title="MapView" id="5Ud-D0-Tnp" customClass="MapViewController" customModule="Bridges" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g1B-UJ-laj"/>
                         <viewControllerLayoutGuide type="bottom" id="VPy-ar-jWq"/>
@@ -233,7 +233,7 @@
         <!--AddView-->
         <scene sceneID="G58-E1-L6h">
             <objects>
-                <viewController title="AddView" id="nF8-re-zjM" sceneMemberID="viewController">
+                <viewController title="AddView" id="nF8-re-zjM" customClass="AddViewController" customModule="Bridges" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YyZ-Bv-bB1"/>
                         <viewControllerLayoutGuide type="bottom" id="ojP-Aw-VoA"/>
@@ -319,8 +319,8 @@
         <image name="MapIcon" width="48" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MBB-vc-PH6"/>
+        <segue reference="qns-VB-nsi"/>
+        <segue reference="6gx-8h-DUO"/>
         <segue reference="T97-rZ-hCT"/>
-        <segue reference="6Nf-Hb-gHd"/>
     </inferredMetricsTieBreakers>
 </document>
