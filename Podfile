@@ -7,5 +7,6 @@ target 'Bridges' do
 
   # Pods for Bridges
 pod 'Firebase/Core'
+pod 'Firebase/Database'
 
 end
