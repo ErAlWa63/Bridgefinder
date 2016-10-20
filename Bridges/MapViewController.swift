@@ -14,6 +14,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     var locationManager: CLLocationManager!
+    let regionRadius: CLLocationDistance = 1000
     
 
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
             locationManager.stopUpdatingLocation()
+            
         }
         
     }
@@ -37,6 +39,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
         self.mapView.setRegion(region, animated: true)
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        
+        let coordinatRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinatRegion, animated: true)
     }
     
 

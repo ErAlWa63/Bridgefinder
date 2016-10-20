@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D6544898A89C63570AADA65 /* Pods_Bridges.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */; };
 		761069D71DB8D7BB009CBCB4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */; };
 		761069D91DB8D861009CBCB4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069D81DB8D861009CBCB4 /* MapViewController.swift */; };
 		761069DB1DB8D8C5009CBCB4 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069DA1DB8D8C5009CBCB4 /* ListViewController.swift */; };
 		761069DD1DB8D909009CBCB4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069DC1DB8D909009CBCB4 /* DetailViewController.swift */; };
 		761069DF1DB8D94D009CBCB4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069DE1DB8D94D009CBCB4 /* AddViewController.swift */; };
 		761069E31DB8F6FB009CBCB4 /* erasmusWelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */; };
+		761069E51DB90D33009CBCB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */; };
 		76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D6A8D61DB79C060000D319 /* AppDelegate.swift */; };
 		76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DA1DB79C060000D319 /* Main.storyboard */; };
 		76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DD1DB79C060000D319 /* Assets.xcassets */; };
@@ -21,12 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C788D4FCDB2BA5EDAC3BEF7 /* Pods-Bridges.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bridges.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bridges/Pods-Bridges.release.xcconfig"; sourceTree = "<group>"; };
+		57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bridges.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		761069D81DB8D861009CBCB4 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		761069DA1DB8D8C5009CBCB4 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		761069DC1DB8D909009CBCB4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		761069DE1DB8D94D009CBCB4 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = erasmusWelcome.png; path = ../erasmusWelcome.png; sourceTree = "<group>"; };
+		761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76D6A8D31DB79C060000D319 /* Bridges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bridges.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D6A8D61DB79C060000D319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D6A8DB1DB79C060000D319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -34,6 +39,7 @@
 		76D6A8E01DB79C060000D319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76D6A8E21DB79C060000D319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D6A8EB1DB7ADB50000D319 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8D80AF7B7F2686B2E88020E8 /* Pods-Bridges.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bridges.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bridges/Pods-Bridges.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,18 +48,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				76D6A8EC1DB7ADB50000D319 /* MapKit.framework in Frameworks */,
+				4D6544898A89C63570AADA65 /* Pods_Bridges.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AD991A7E80109F04262D419 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D80AF7B7F2686B2E88020E8 /* Pods-Bridges.debug.xcconfig */,
+				4C788D4FCDB2BA5EDAC3BEF7 /* Pods-Bridges.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		76D6A8CA1DB79C060000D319 = {
 			isa = PBXGroup;
 			children = (
 				76D6A8D51DB79C060000D319 /* Bridges */,
 				76D6A8D41DB79C060000D319 /* Products */,
 				76D6A8EA1DB7ADB50000D319 /* Frameworks */,
+				4AD991A7E80109F04262D419 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +95,7 @@
 				761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */,
 				76D6A8DD1DB79C060000D319 /* Assets.xcassets */,
 				76D6A8DF1DB79C060000D319 /* LaunchScreen.storyboard */,
+				761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */,
 				76D6A8E21DB79C060000D319 /* Info.plist */,
 			);
 			path = Bridges;
@@ -87,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				76D6A8EB1DB7ADB50000D319 /* MapKit.framework */,
+				57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,9 +117,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76D6A8E51DB79C060000D319 /* Build configuration list for PBXNativeTarget "Bridges" */;
 			buildPhases = (
+				EAAE7FD60B32E2BDCC37B5DA /* [CP] Check Pods Manifest.lock */,
 				76D6A8CF1DB79C060000D319 /* Sources */,
 				76D6A8D01DB79C060000D319 /* Frameworks */,
 				76D6A8D11DB79C060000D319 /* Resources */,
+				189822396E2BAE354D16BB54 /* [CP] Embed Pods Frameworks */,
+				2773A48B2A2E9618D78422D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -153,12 +175,61 @@
 			files = (
 				76D6A8E11DB79C060000D319 /* LaunchScreen.storyboard in Resources */,
 				761069E31DB8F6FB009CBCB4 /* erasmusWelcome.png in Resources */,
+				761069E51DB90D33009CBCB4 /* GoogleService-Info.plist in Resources */,
 				76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */,
 				76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		189822396E2BAE354D16BB54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bridges/Pods-Bridges-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2773A48B2A2E9618D78422D0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bridges/Pods-Bridges-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAAE7FD60B32E2BDCC37B5DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		76D6A8CF1DB79C060000D319 /* Sources */ = {
@@ -289,6 +360,7 @@
 		};
 		76D6A8E61DB79C060000D319 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D80AF7B7F2686B2E88020E8 /* Pods-Bridges.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HZWL927386;
@@ -302,6 +374,7 @@
 		};
 		76D6A8E71DB79C060000D319 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C788D4FCDB2BA5EDAC3BEF7 /* Pods-Bridges.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HZWL927386;
