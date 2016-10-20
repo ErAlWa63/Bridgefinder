@@ -216,7 +216,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="STz-U9-HDx"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STz-U9-HDx"/>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRD-ul-2ZW">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="sfJ-hD-6cK"/>
@@ -339,7 +339,7 @@
     <resources>
         <image name="ConvertIcon" width="48" height="32"/>
         <image name="MapIcon" width="48" height="32"/>
-        <image name="erasmusWelcome.png" width="600" height="600"/>
+        <image name="erasmusWelcome.png" width="595" height="595"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MBB-vc-PH6"/>
