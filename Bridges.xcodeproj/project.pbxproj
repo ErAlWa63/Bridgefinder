@@ -11,7 +11,6 @@
 		76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DA1DB79C060000D319 /* Main.storyboard */; };
 		76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DD1DB79C060000D319 /* Assets.xcassets */; };
 		76D6A8E11DB79C060000D319 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DF1DB79C060000D319 /* LaunchScreen.storyboard */; };
-		76D6A8E91DB7AB4B0000D319 /* Bridges MVC.docx in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8E81DB7AB4B0000D319 /* Bridges MVC.docx */; };
 		76D6A8EC1DB7ADB50000D319 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D6A8EB1DB7ADB50000D319 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +21,6 @@
 		76D6A8DD1DB79C060000D319 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76D6A8E01DB79C060000D319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76D6A8E21DB79C060000D319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76D6A8E81DB7AB4B0000D319 /* Bridges MVC.docx */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bridges MVC.docx"; path = "../../../../../@ppProject/Bridges MVC.docx"; sourceTree = "<group>"; };
 		76D6A8EB1DB7ADB50000D319 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -58,7 +56,6 @@
 		76D6A8D51DB79C060000D319 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
-				76D6A8E81DB7AB4B0000D319 /* Bridges MVC.docx */,
 				76D6A8D61DB79C060000D319 /* AppDelegate.swift */,
 				76D6A8DA1DB79C060000D319 /* Main.storyboard */,
 				76D6A8DD1DB79C060000D319 /* Assets.xcassets */,
@@ -138,7 +135,6 @@
 			files = (
 				76D6A8E11DB79C060000D319 /* LaunchScreen.storyboard in Resources */,
 				76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */,
-				76D6A8E91DB7AB4B0000D319 /* Bridges MVC.docx in Resources */,
 				76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +308,7 @@
 				76D6A8E71DB79C060000D319 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
