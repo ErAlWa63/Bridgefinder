@@ -38,33 +38,46 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uFA-tO-qls"/>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WelcomeViewLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSu-wb-vAZ">
-                                <frame key="frameInset" minX="113" minY="65" width="149" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WelcomeViewLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSu-wb-vAZ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="wKv-xA-pJB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WelcomeTextLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJm-Ij-Od6">
-                                <frame key="frameInset" minX="115" minY="139" width="144" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WelcomeTextLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJm-Ij-Od6">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="mCm-Wr-pxr"/>
+                                    <constraint firstAttribute="width" constant="200" id="xMp-3V-Zxd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ExplanationTextLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evD-xY-DNb">
-                                <frame key="frameInset" minX="106" minY="238" width="162" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ExplanationTextLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evD-xY-DNb">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s3A-bo-gHQ">
-                                <frame key="frameInset" minX="67" minY="353" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="erasmusWelcome.png" translatesAutoresizingMaskIntoConstraints="NO" id="s3A-bo-gHQ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="No9-r5-d1A"/>
+                                    <constraint firstAttribute="height" constant="250" id="qHe-hB-owe"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1960784314" green="0.56862745100000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="EJm-Ij-Od6" firstAttribute="top" secondItem="HSu-wb-vAZ" secondAttribute="bottom" constant="40" id="3M3-Qh-xec"/>
+                            <constraint firstItem="evD-xY-DNb" firstAttribute="top" secondItem="EJm-Ij-Od6" secondAttribute="bottom" constant="40" id="4av-oW-xNX"/>
+                            <constraint firstItem="HSu-wb-vAZ" firstAttribute="top" secondItem="4OS-LZ-0gM" secondAttribute="bottom" constant="50" id="CSE-6h-16I"/>
+                            <constraint firstItem="EJm-Ij-Od6" firstAttribute="centerX" secondItem="Gbp-TA-N2U" secondAttribute="centerX" id="YBm-pw-2Ug"/>
+                            <constraint firstItem="evD-xY-DNb" firstAttribute="centerX" secondItem="Gbp-TA-N2U" secondAttribute="centerX" id="Ygd-Zk-s0D"/>
+                            <constraint firstItem="HSu-wb-vAZ" firstAttribute="centerX" secondItem="Gbp-TA-N2U" secondAttribute="centerX" id="dAP-Dz-Dyt"/>
+                            <constraint firstItem="s3A-bo-gHQ" firstAttribute="top" secondItem="evD-xY-DNb" secondAttribute="bottom" constant="40" id="kZS-eu-sMH"/>
+                            <constraint firstItem="s3A-bo-gHQ" firstAttribute="centerX" secondItem="Gbp-TA-N2U" secondAttribute="centerX" id="ngE-uC-yQz"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="explanationTextLabel" destination="evD-xY-DNb" id="u5p-Qc-u6N"/>
@@ -75,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80l-p8-zvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1972" y="-654"/>
+            <point key="canvasLocation" x="-1972" y="-654.42278860569718"/>
         </scene>
         <!--ListView-->
         <scene sceneID="BzT-yl-SNn">
@@ -323,6 +336,7 @@
     <resources>
         <image name="ConvertIcon" width="48" height="32"/>
         <image name="MapIcon" width="48" height="32"/>
+        <image name="erasmusWelcome.png" width="600" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vEN-Nu-Oes"/>
