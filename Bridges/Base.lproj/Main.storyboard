@@ -66,6 +66,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="explanationTextLabel" destination="evD-xY-DNb" id="u5p-Qc-u6N"/>
+                        <outlet property="welcomeImage" destination="s3A-bo-gHQ" id="gCc-tM-QNT"/>
+                        <outlet property="welcomeTextLabel" destination="EJm-Ij-Od6" id="xZv-pn-lfn"/>
+                        <outlet property="welcomeViewLabel" destination="HSu-wb-vAZ" id="H1G-5V-Bo5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80l-p8-zvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -319,8 +325,8 @@
         <image name="MapIcon" width="48" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qns-VB-nsi"/>
+        <segue reference="vEN-Nu-Oes"/>
+        <segue reference="Srs-as-ukG"/>
         <segue reference="6gx-8h-DUO"/>
-        <segue reference="T97-rZ-hCT"/>
     </inferredMetricsTieBreakers>
 </document>
