@@ -15,6 +15,9 @@
 		761069DF1DB8D94D009CBCB4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069DE1DB8D94D009CBCB4 /* AddViewController.swift */; };
 		761069E31DB8F6FB009CBCB4 /* erasmusWelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */; };
 		761069E51DB90D33009CBCB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */; };
+		76BD39861DBE46AA0046AAEE /* BridgeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39851DBE46AA0046AAEE /* BridgeObject.swift */; };
+		76BD39881DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */; };
+		76BD398A1DBE4A9A0046AAEE /* ListViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */; };
 		76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D6A8D61DB79C060000D319 /* AppDelegate.swift */; };
 		76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DA1DB79C060000D319 /* Main.storyboard */; };
 		76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DD1DB79C060000D319 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		761069DE1DB8D94D009CBCB4 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = erasmusWelcome.png; path = ../erasmusWelcome.png; sourceTree = "<group>"; };
 		761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		76BD39851DBE46AA0046AAEE /* BridgeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeObject.swift; sourceTree = "<group>"; };
+		76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeObjectCellTableViewCell.swift; sourceTree = "<group>"; };
+		76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerOld.swift; sourceTree = "<group>"; };
 		76D6A8D31DB79C060000D319 /* Bridges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bridges.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D6A8D61DB79C060000D319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D6A8DB1DB79C060000D319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +70,39 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		76BD397E1DBE3B970046AAEE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				76BD39851DBE46AA0046AAEE /* BridgeObject.swift */,
+				76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */,
+				761069DE1DB8D94D009CBCB4 /* AddViewController.swift */,
+				761069DC1DB8D909009CBCB4 /* DetailViewController.swift */,
+				761069DA1DB8D8C5009CBCB4 /* ListViewController.swift */,
+				76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */,
+				761069D81DB8D861009CBCB4 /* MapViewController.swift */,
+				761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		76BD397F1DBE3BC00046AAEE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				76D6A8DA1DB79C060000D319 /* Main.storyboard */,
+				76D6A8DF1DB79C060000D319 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		76BD39801DBE3BDF0046AAEE /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */,
+				76D6A8E21DB79C060000D319 /* Info.plist */,
+			);
+			name = plist;
+			sourceTree = "<group>";
+		};
 		76D6A8CA1DB79C060000D319 = {
 			isa = PBXGroup;
 			children = (
@@ -85,18 +124,12 @@
 		76D6A8D51DB79C060000D319 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
+				76BD39801DBE3BDF0046AAEE /* plist */,
+				76BD397F1DBE3BC00046AAEE /* Storyboards */,
+				76BD397E1DBE3B970046AAEE /* Controllers */,
 				76D6A8D61DB79C060000D319 /* AppDelegate.swift */,
-				761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */,
-				76D6A8DA1DB79C060000D319 /* Main.storyboard */,
-				761069DE1DB8D94D009CBCB4 /* AddViewController.swift */,
-				761069DC1DB8D909009CBCB4 /* DetailViewController.swift */,
-				761069DA1DB8D8C5009CBCB4 /* ListViewController.swift */,
-				761069D81DB8D861009CBCB4 /* MapViewController.swift */,
-				761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */,
 				76D6A8DD1DB79C060000D319 /* Assets.xcassets */,
-				76D6A8DF1DB79C060000D319 /* LaunchScreen.storyboard */,
-				761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */,
-				76D6A8E21DB79C060000D319 /* Info.plist */,
+				761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -238,8 +271,11 @@
 			files = (
 				76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */,
 				761069D91DB8D861009CBCB4 /* MapViewController.swift in Sources */,
+				76BD398A1DBE4A9A0046AAEE /* ListViewControllerOld.swift in Sources */,
 				761069DF1DB8D94D009CBCB4 /* AddViewController.swift in Sources */,
+				76BD39861DBE46AA0046AAEE /* BridgeObject.swift in Sources */,
 				761069DD1DB8D909009CBCB4 /* DetailViewController.swift in Sources */,
+				76BD39881DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift in Sources */,
 				761069D71DB8D7BB009CBCB4 /* WelcomeViewController.swift in Sources */,
 				761069DB1DB8D8C5009CBCB4 /* ListViewController.swift in Sources */,
 			);
