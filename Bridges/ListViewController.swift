@@ -73,7 +73,7 @@ class ListViewController: UITableViewController {
         //        print("Bridges: -----------------------------------------------")
         //        print("Bridges: referenceFIRDatabase = \(referenceFIRDatabase)")
         
-        referenceFIRDatabase.observeSingleEvent(of: .value, with: { currentFIRDataSnapshot in
+        referenceFIRDatabase.observe(.value, with: { currentFIRDataSnapshot in
             //            print("Bridges: currentFIRDataSnapshot = \(currentFIRDataSnapshot)")
             //            print("Bridges: currentFIRDataSnapshot.childrenCount = \(currentFIRDataSnapshot.childrenCount)")
             for currentChildAnyObject in currentFIRDataSnapshot.children {
