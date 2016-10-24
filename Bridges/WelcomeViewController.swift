@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class WelcomeViewController: UIViewController {
     
@@ -19,6 +20,7 @@ class WelcomeViewController: UIViewController {
         welcomeTextLabel.text = "Bridges is an app to find interesting bridges in you direct neighbourhood"
         explanationTextLabel.text = "Explanation: try this"
         welcomeImage.image = UIImage(named: "erasmusWelcome.png")
+        
         
         
         

@@ -105,7 +105,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8QV-D0-Jjg">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="LmU-35-jMW" detailTextLabel="yFW-aK-ifo" imageView="Pjs-n0-FJ3" style="IBUITableViewCellStyleSubtitle" id="4mC-G8-fjw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="subtitleCell" textLabel="LmU-35-jMW" detailTextLabel="yFW-aK-ifo" imageView="Pjs-n0-FJ3" style="IBUITableViewCellStyleSubtitle" id="4mC-G8-fjw">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4mC-G8-fjw" id="CHy-NR-NJp">
@@ -113,20 +113,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BridgeNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LmU-35-jMW">
-                                                    <frame key="frameInset" minX="78" minY="4" width="137" height="21"/>
+                                                    <frame key="frameInset" minX="15" minY="4" width="137" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BridgeDistanceLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yFW-aK-ifo">
-                                                    <frame key="frameInset" minX="78" minY="25" width="118" height="15"/>
+                                                    <frame key="frameInset" minX="15" minY="25" width="118" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ConvertIcon" id="Pjs-n0-FJ3">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pjs-n0-FJ3">
                                                     <frame key="frameInset" minX="15" minY="5" width="48" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -164,6 +164,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bridgeTableView" destination="8QV-D0-Jjg" id="cOt-Hd-VYz"/>
                         <segue destination="LLY-Yx-IJT" kind="show" id="6gx-8h-DUO"/>
                     </connections>
                 </viewController>
@@ -199,10 +200,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="xgS-Y6-VX6"/>
+                    <connections>
+                        <outlet property="bridgeDescription" destination="98p-kb-22M" id="Yaa-GY-3XQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXP-KN-vc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="-486"/>
+            <point key="canvasLocation" x="1023" y="-288"/>
         </scene>
         <!--MapView-->
         <scene sceneID="cqZ-Wk-l4T">
@@ -315,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brH-hl-ObF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="-1399"/>
+            <point key="canvasLocation" x="398" y="-1037"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="49F-Ud-jK2">
@@ -333,17 +337,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDN-co-cgK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="-486"/>
+            <point key="canvasLocation" x="140" y="-288"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ConvertIcon" width="48" height="32"/>
         <image name="MapIcon" width="48" height="32"/>
         <image name="erasmusWelcome.png" width="595" height="595"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MBB-vc-PH6"/>
-        <segue reference="Srs-as-ukG"/>
+        <segue reference="T97-rZ-hCT"/>
         <segue reference="6Nf-Hb-gHd"/>
     </inferredMetricsTieBreakers>
 </document>
