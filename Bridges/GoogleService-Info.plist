@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>939883610597-7afjk8irhoip773s6pkg30t177725s56.apps.googleusercontent.com</string>
+	<string>1053573848788-398rl3198eg5e89eh4lg0q83ja9oobkc.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.939883610597-7afjk8irhoip773s6pkg30t177725s56</string>
+	<string>com.googleusercontent.apps.1053573848788-398rl3198eg5e89eh4lg0q83ja9oobkc</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCiLEtAyDvJiTEtU1GmcIWRiOydSLDkyFE</string>
+	<string>AIzaSyCHvYy2NTC5tk8ZpdHJHCwH0sIytYoWfDY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>939883610597</string>
+	<string>1053573848788</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>nl.theappacademy.Bridges</string>
 	<key>PROJECT_ID</key>
-	<string>bridges-bf475</string>
+	<string>bridges-f29d3</string>
 	<key>STORAGE_BUCKET</key>
-	<string>bridges-bf475.appspot.com</string>
+	<string>bridges-f29d3.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:939883610597:ios:c90f835bf18c8077</string>
+	<string>1:1053573848788:ios:c90f835bf18c8077</string>
 	<key>DATABASE_URL</key>
-	<string>https://bridges-bf475.firebaseio.com</string>
+	<string>https://bridges-f29d3.firebaseio.com</string>
 </dict>
 </plist>

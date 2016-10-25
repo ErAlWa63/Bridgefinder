@@ -14,7 +14,7 @@
 		761069DD1DB8D909009CBCB4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069DC1DB8D909009CBCB4 /* DetailViewController.swift */; };
 		761069DF1DB8D94D009CBCB4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069DE1DB8D94D009CBCB4 /* AddViewController.swift */; };
 		761069E31DB8F6FB009CBCB4 /* erasmusWelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */; };
-		761069E51DB90D33009CBCB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */; };
+		766C7E6E1DBF9AA7002F45D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 766C7E6D1DBF9AA7002F45D4 /* GoogleService-Info.plist */; };
 		76BD39861DBE46AA0046AAEE /* BridgeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39851DBE46AA0046AAEE /* BridgeObject.swift */; };
 		76BD39881DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */; };
 		76BD398A1DBE4A9A0046AAEE /* ListViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */; };
@@ -34,7 +34,7 @@
 		761069DC1DB8D909009CBCB4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		761069DE1DB8D94D009CBCB4 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = erasmusWelcome.png; path = ../erasmusWelcome.png; sourceTree = "<group>"; };
-		761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		766C7E6D1DBF9AA7002F45D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76BD39851DBE46AA0046AAEE /* BridgeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeObject.swift; sourceTree = "<group>"; };
 		76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeObjectCellTableViewCell.swift; sourceTree = "<group>"; };
 		76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerOld.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		76BD39801DBE3BDF0046AAEE /* plist */ = {
 			isa = PBXGroup;
 			children = (
-				761069E41DB90D33009CBCB4 /* GoogleService-Info.plist */,
+				766C7E6D1DBF9AA7002F45D4 /* GoogleService-Info.plist */,
 				76D6A8E21DB79C060000D319 /* Info.plist */,
 			);
 			name = plist;
@@ -208,7 +208,7 @@
 			files = (
 				76D6A8E11DB79C060000D319 /* LaunchScreen.storyboard in Resources */,
 				761069E31DB8F6FB009CBCB4 /* erasmusWelcome.png in Resources */,
-				761069E51DB90D33009CBCB4 /* GoogleService-Info.plist in Resources */,
+				766C7E6E1DBF9AA7002F45D4 /* GoogleService-Info.plist in Resources */,
 				76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */,
 				76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */,
 			);
