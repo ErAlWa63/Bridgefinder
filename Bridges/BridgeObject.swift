@@ -36,11 +36,11 @@ struct BridgeObject {
     
     func toAnyObject() -> Any {
         return [
-            "name": name,
-            "description": description,
-            "image": image,
-            "latitude": latitude,
-            "longitude": longitude
+            "Name": name,
+            "Description": description,
+            "Image": image,
+            "Latitude": latitude,
+            "Longitude": longitude
         ]
     }
     

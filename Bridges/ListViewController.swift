@@ -17,6 +17,7 @@ class ListViewController: UITableViewController {
     
     // MARK: Properties
     var items: [BridgeObject] = []
+    var valueTopass = [String:String]()
     //    var user: User!
     var userCountBarButtonItem: UIBarButtonItem!
     
@@ -63,7 +64,14 @@ class ListViewController: UITableViewController {
         //        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
         //5
         //        BridgeObject.ref?.updateChildValues(["completed" : toggledCompletion])
+        performSegue(withIdentifier: "ShowItem", sender: self)
     }
+    
+
+    
+    // Segue Function
+    
+
     
     // MARK: UIViewController Lifecycle
     
@@ -106,6 +114,7 @@ class ListViewController: UITableViewController {
         //        user = User(uid: "FakeId", email: "hungry@person.food")
     }
     
+    
     func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
         if !isCompleted {
             cell.accessoryType = .none
@@ -117,6 +126,8 @@ class ListViewController: UITableViewController {
             cell.detailTextLabel?.textColor = UIColor.gray
         }
     }
+    
+
     
     // MARK: Add Item
     

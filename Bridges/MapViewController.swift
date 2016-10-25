@@ -17,6 +17,44 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!
     let regionRadius: CLLocationDistance = 1000
     
+    override func loadView() {
+        //        super.loadView()
+        
+        // Create a map view
+        mapView = MKMapView()
+        
+        // Set it as *the* view of this view controller
+        view = mapView
+        
+        mapView.mapType = MKMapType.standard
+        let locationOne = CLLocationCoordinate2D(latitude: 52.3725,longitude: 4.9182)
+        
+        let span = MKCoordinateSpanMake(1.5, 1.5)
+        let regionOne = MKCoordinateRegion(center: locationOne, span: span)
+        mapView.setRegion(regionOne, animated: true)
+        
+        let annotationOne = MKPointAnnotation()
+        annotationOne.coordinate = locationOne
+        annotationOne.title = "Erasmusbrug"
+//        annotationOne.subtitle = "Thijs"
+        mapView.addAnnotation(annotationOne)
+        
+        let locationTwo = CLLocationCoordinate2D(latitude: 51.3482,longitude: 5.5471)
+        let annotationTwo = MKPointAnnotation()
+        annotationTwo.coordinate = locationTwo
+        annotationTwo.title = "Tower Bridge"
+//        annotationTwo.subtitle = "Thijs"
+        mapView.addAnnotation(annotationTwo)
+        
+        let locationThree = CLLocationCoordinate2D(latitude: 51.9315,longitude: 4.4660)
+        let annotationThree = MKPointAnnotation()
+        annotationThree.coordinate = locationThree
+        annotationThree.title = "Willemsbrug"
+//        annotationThree.subtitle = "Thijs"
+        mapView.addAnnotation(annotationThree)
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
