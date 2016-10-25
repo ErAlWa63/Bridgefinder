@@ -12,6 +12,12 @@ import Firebase
 class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+    }
+    
+    
     @IBOutlet var cancelButton: UIBarButtonItem!
     
     @IBOutlet var imageView: UIImageView!
@@ -123,6 +129,19 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         imageView.image = image
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textViewShouldReturn(textView: UITextView) -> Bool {
+        
+        textView.resignFirstResponder()
+        return true
+        
     }
     
     
