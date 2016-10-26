@@ -52,9 +52,9 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //1
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
         //2
-        var BridgeObject = items[indexPath.row]
+//        var BridgeObject = items[indexPath.row]
         //3
         //        let toggledCompletion = !BridgeObject.completed
         //4
@@ -153,8 +153,8 @@ class ListViewController: UITableViewController {
         let saveAction = UIAlertAction(title: "Save",
                                        style: .default) { _ in
                                         //1
-                                        guard let textField = alert.textFields?.first,
-                                            let text = textField.text else { return }
+//                                        guard let textField = alert.textFields?.first,
+//                                            let text = textField.text else { return }
                                         
                                         //2
                                         //                                        let BridgeObjectCalculated = BridgeObject(name: text, addedByUser: self.user.email, completed: false)

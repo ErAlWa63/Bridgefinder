@@ -132,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="1117.5999999999999" y="-1052.0239880059971"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--TabBarController-->
         <scene sceneID="S8G-EH-w5y">
             <objects>
-                <tabBarController storyboardIdentifier="UITabBar" id="VhK-Lq-bNj" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UITabBar" title="TabBarController" id="VhK-Lq-bNj" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="mfn-r7-wKh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -190,7 +190,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="STz-U9-HDx" id="NpQ-3b-LtX"/>
-                        <segue destination="TJC-9N-iNM" kind="show" id="SPP-4x-NFW"/>
+                        <segue destination="TJC-9N-iNM" kind="show" identifier="ShowItem" id="SPP-4x-NFW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q2u-Ej-wxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -470,6 +470,6 @@
         <image name="launchscreenBridgesV7-300" width="1138" height="904"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h3R-Ra-BRV"/>
+        <segue reference="SPP-4x-NFW"/>
     </inferredMetricsTieBreakers>
 </document>

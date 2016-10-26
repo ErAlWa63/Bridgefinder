@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0304DB231DC0C34100E50222 /* launchscreenBridgesV5.fw.png in Resources */ = {isa = PBXBuildFile; fileRef = 0304DB221DC0C34100E50222 /* launchscreenBridgesV5.fw.png */; };
+		0304DB261DC0D0BC00E50222 /* FirebaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304DB251DC0D0BC00E50222 /* FirebaseObject.swift */; };
 		4D6544898A89C63570AADA65 /* Pods_Bridges.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */; };
 		761069D71DB8D7BB009CBCB4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */; };
 		761069D91DB8D861009CBCB4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069D81DB8D861009CBCB4 /* MapViewController.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		0304DB221DC0C34100E50222 /* launchscreenBridgesV5.fw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreenBridgesV5.fw.png; sourceTree = "<group>"; };
+		0304DB251DC0D0BC00E50222 /* FirebaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseObject.swift; sourceTree = "<group>"; };
 		4C788D4FCDB2BA5EDAC3BEF7 /* Pods-Bridges.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bridges.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bridges/Pods-Bridges.release.xcconfig"; sourceTree = "<group>"; };
 		57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bridges.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0304DB241DC0D00500E50222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				76BD39851DBE46AA0046AAEE /* BridgeObject.swift */,
+				0304DB251DC0D0BC00E50222 /* FirebaseObject.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		4AD991A7E80109F04262D419 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +93,6 @@
 		76BD397E1DBE3B970046AAEE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				76BD39851DBE46AA0046AAEE /* BridgeObject.swift */,
 				764FBDBA1DC0A33400F27DFB /* BridgeClassSegue.swift */,
 				76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */,
 				761069DE1DB8D94D009CBCB4 /* AddViewController.swift */,
@@ -135,6 +145,7 @@
 		76D6A8D51DB79C060000D319 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
+				0304DB241DC0D00500E50222 /* Models */,
 				76BD39801DBE3BDF0046AAEE /* plist */,
 				76BD397F1DBE3BC00046AAEE /* Storyboards */,
 				76BD397E1DBE3B970046AAEE /* Controllers */,
@@ -294,6 +305,7 @@
 				76BD39881DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift in Sources */,
 				761069D71DB8D7BB009CBCB4 /* WelcomeViewController.swift in Sources */,
 				761069DB1DB8D8C5009CBCB4 /* ListViewController.swift in Sources */,
+				0304DB261DC0D0BC00E50222 /* FirebaseObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
