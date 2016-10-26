@@ -27,6 +27,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
 
     @IBOutlet var locationLatitude: UITextField!
     
+    
     @IBOutlet var locationLongitude: UITextField!
     
     @IBOutlet var descriptionText: UITextView!
@@ -56,9 +57,9 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         let text = nameTextField.text
         let description = descriptionText.text
-        let latitude = 0.0
-        let longitude = 0.0
-        let BridgeObjectCalculated = BridgeObject(name: text!, description: description!, image: "Fixed image", latitude: latitude, longitude: longitude)
+        let latitude = Double(locationLatitude.text!)
+        let longitude = Double(locationLongitude.text!)
+        let BridgeObjectCalculated = BridgeObject(name: text!, description: description!, image: "Fixed image", latitude: latitude!, longitude: longitude!)
         let ref = FIRDatabase.database().reference(withPath: "Bridges/")
         print("Bridges: ref = \(ref)")
         let BridgeObjectRef = ref.child(text!)

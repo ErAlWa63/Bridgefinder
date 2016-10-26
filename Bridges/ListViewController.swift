@@ -64,12 +64,29 @@ class ListViewController: UITableViewController {
         //        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
         //5
         //        BridgeObject.ref?.updateChildValues(["completed" : toggledCompletion])
-        performSegue(withIdentifier: "ShowItem", sender: self)
+//        performSegue(withIdentifier: "ShowItem", sender: self)
     }
     
 
     
     // Segue Function
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//        print("Preparing")
+//        if (segue.identifier == "showSearchResult")
+//        {
+//            if let destinationViewController = segue.destinationViewController as? DetailViewController {
+//                destinationViewController.nam = self.moviePlot
+//                destinationViewController.imdbRating = self.movieRating
+//                destinationViewController.name = self.movieName
+//                destinationViewController.imagePath = self.moviePicturePath
+//                
+//            }
+//        }
+//        
+//    }
     
 
     

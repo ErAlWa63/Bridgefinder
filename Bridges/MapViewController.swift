@@ -8,52 +8,21 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 import Firebase
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var locationManager: CLLocationManager!
-    let regionRadius: CLLocationDistance = 1000
-    
-    override func loadView() {
-        //        super.loadView()
-        
-        // Create a map view
-        mapView = MKMapView()
-        
-        // Set it as *the* view of this view controller
-        view = mapView
-        
-        mapView.mapType = MKMapType.standard
-        let locationOne = CLLocationCoordinate2D(latitude: 52.3725,longitude: 4.9182)
-        
-        let span = MKCoordinateSpanMake(1.5, 1.5)
-        let regionOne = MKCoordinateRegion(center: locationOne, span: span)
-        mapView.setRegion(regionOne, animated: true)
-        
-        let annotationOne = MKPointAnnotation()
-        annotationOne.coordinate = locationOne
-        annotationOne.title = "Erasmusbrug"
-//        annotationOne.subtitle = "Thijs"
-        mapView.addAnnotation(annotationOne)
-        
-        let locationTwo = CLLocationCoordinate2D(latitude: 51.3482,longitude: 5.5471)
-        let annotationTwo = MKPointAnnotation()
-        annotationTwo.coordinate = locationTwo
-        annotationTwo.title = "Tower Bridge"
-//        annotationTwo.subtitle = "Thijs"
-        mapView.addAnnotation(annotationTwo)
-        
-        let locationThree = CLLocationCoordinate2D(latitude: 51.9315,longitude: 4.4660)
-        let annotationThree = MKPointAnnotation()
-        annotationThree.coordinate = locationThree
-        annotationThree.title = "Willemsbrug"
-//        annotationThree.subtitle = "Thijs"
-        mapView.addAnnotation(annotationThree)
-        
+    @IBAction func zoomToCurrentLocation(sender: AnyObject) {
+        mapView.zoomToUserLocation()
     }
+    
+    var locationManager: CLLocationManager!
+    let regionRadius: CLLocationDistance = 1
+    
+
     
 
     override func viewDidLoad() {
@@ -69,6 +38,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         
+        
+        mapView.mapType = MKMapType.standard
+        let locationOne = CLLocationCoordinate2D(latitude: 52.3725,longitude: 4.9182)
+        
+        let span = MKCoordinateSpanMake(1.5, 1.5)
+        let regionOne = MKCoordinateRegion(center: locationOne, span: span)
+        mapView.setRegion(regionOne, animated: true)
+        
+        let annotationOne = MKPointAnnotation()
+        annotationOne.coordinate = locationOne
+        annotationOne.title = "Erasmusbrug"
+        //        annotationOne.subtitle = "Thijs"
+        mapView.addAnnotation(annotationOne)
+        
+        let locationTwo = CLLocationCoordinate2D(latitude: 51.3482,longitude: 5.5471)
+        let annotationTwo = MKPointAnnotation()
+        annotationTwo.coordinate = locationTwo
+        annotationTwo.title = "Tower Bridge"
+        //        annotationTwo.subtitle = "Thijs"
+        mapView.addAnnotation(annotationTwo)
+        
+        let locationThree = CLLocationCoordinate2D(latitude: 51.9315,longitude: 4.4660)
+        let annotationThree = MKPointAnnotation()
+        annotationThree.coordinate = locationThree
+        annotationThree.title = "Willemsbrug"
+        //        annotationThree.subtitle = "Thijs"
+        mapView.addAnnotation(annotationThree)
+
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -78,6 +76,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
         
         self.mapView.setRegion(region, animated: true)
+    }
+    
+    func zoomInOnLocation() {
+        let userLocation = MKUserLocation()
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        
+        let currentLocation: CLLocation? = userLocation.location
+        let latitude = currentLocation?.coordinate.latitude
+        let longitude = currentLocation?.coordinate.longitude
+        let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        mapView.setRegion(region, animated: true)
     }
     
     func centerMapOnLocation(location: CLLocation) {
