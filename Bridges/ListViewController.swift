@@ -34,10 +34,7 @@ class ListViewController: UITableViewController {
         cell.nameCell?.text = BridgeObject.name
         cell.descriptionCell?.text = BridgeObject.description
         cell.locationCell?.text = "\(BridgeObject.latitude) - \(BridgeObject.longitude)"
-        //        cell.detailTextLabel?.text = BridgeObject.addedByUser
-        
-        //        toggleCellCheckbox(cell, isCompleted: BridgeObject.completed)
-        
+        cell.imageCell.image = UIImage(named: "launchscreenBridgesV5.fw.png")
         return cell
     }
     
@@ -117,7 +114,7 @@ class ListViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         })
-        tableView.rowHeight = 200
+        tableView.rowHeight = 100
         
         tableView.allowsMultipleSelectionDuringEditing = false
         
