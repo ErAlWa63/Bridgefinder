@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0304DB231DC0C34100E50222 /* launchscreenBridgesV5.fw.png in Resources */ = {isa = PBXBuildFile; fileRef = 0304DB221DC0C34100E50222 /* launchscreenBridgesV5.fw.png */; };
+		0301925D1DC131EF00B6EF25 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301925C1DC131EF00B6EF25 /* DataSource.swift */; };
 		0304DB261DC0D0BC00E50222 /* FirebaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304DB251DC0D0BC00E50222 /* FirebaseObject.swift */; };
 		4D6544898A89C63570AADA65 /* Pods_Bridges.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */; };
 		761069D71DB8D7BB009CBCB4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */; };
@@ -31,7 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0304DB221DC0C34100E50222 /* launchscreenBridgesV5.fw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreenBridgesV5.fw.png; sourceTree = "<group>"; };
+		0301925C1DC131EF00B6EF25 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		0304DB251DC0D0BC00E50222 /* FirebaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseObject.swift; sourceTree = "<group>"; };
 		4C788D4FCDB2BA5EDAC3BEF7 /* Pods-Bridges.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bridges.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bridges/Pods-Bridges.release.xcconfig"; sourceTree = "<group>"; };
 		57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bridges.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +77,7 @@
 			children = (
 				76BD39851DBE46AA0046AAEE /* BridgeObject.swift */,
 				0304DB251DC0D0BC00E50222 /* FirebaseObject.swift */,
+				0301925C1DC131EF00B6EF25 /* DataSource.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -152,7 +153,6 @@
 				76D6A8D61DB79C060000D319 /* AppDelegate.swift */,
 				76D6A8DD1DB79C060000D319 /* Assets.xcassets */,
 				761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */,
-				0304DB221DC0C34100E50222 /* launchscreenBridgesV5.fw.png */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -232,7 +232,6 @@
 			files = (
 				76D6A8E11DB79C060000D319 /* LaunchScreen.storyboard in Resources */,
 				761069E31DB8F6FB009CBCB4 /* erasmusWelcome.png in Resources */,
-				0304DB231DC0C34100E50222 /* launchscreenBridgesV5.fw.png in Resources */,
 				766C7E6E1DBF9AA7002F45D4 /* GoogleService-Info.plist in Resources */,
 				76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */,
 				76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */,
@@ -297,6 +296,7 @@
 				76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */,
 				761069D91DB8D861009CBCB4 /* MapViewController.swift in Sources */,
 				76BD398A1DBE4A9A0046AAEE /* ListViewControllerOld.swift in Sources */,
+				0301925D1DC131EF00B6EF25 /* DataSource.swift in Sources */,
 				766C7E951DBFF433002F45D4 /* MapUtilities.swift in Sources */,
 				761069DF1DB8D94D009CBCB4 /* AddViewController.swift in Sources */,
 				76BD39861DBE46AA0046AAEE /* BridgeObject.swift in Sources */,
@@ -349,6 +349,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -398,6 +399,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

@@ -8,94 +8,59 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class ListViewController: UITableViewController {
-
-    
-    // MARK: Constants
-    //    let listToUsers = "ListToUsers"
-    
-    // MARK: Properties
     var items: [BridgeObject] = []
-    var valueTopass = [String:String]()
-    //    var user: User!
-    var userCountBarButtonItem: UIBarButtonItem!
-    
-    // MARK: UITableView Delegate methods
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as! BridgeObjectCellTableViewCell
-        let BridgeObject = items[indexPath.row]
-        
-        cell.nameCell?.text = BridgeObject.name
-        cell.descriptionCell?.text = BridgeObject.description
-        cell.locationCell?.text = "\(BridgeObject.latitude) - \(BridgeObject.longitude)"
-        cell.imageCell.image = UIImage(named: "launchscreenBridgesV5.fw.png")
-        return cell
-    }
+ 
+    @IBAction func unwindToMenuWithSegueListView(segue: UIStoryboardSegue) {}
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as! BridgeObjectCellTableViewCell
+        DispatchQueue.global(qos: .userInitiated).async {
+            let bridge = self.items[indexPath.row]
+            FIRStorage.storage().reference().child("photos").child(bridge.image).data(withMaxSize: 10*1024*1024, completion: { (data, error) -> Void in
+                DispatchQueue.main.async {
+                    if let downloadedData = data {
+                        cell.nameCell?.text = bridge.name
+                        cell.descriptionCell?.text = bridge.description
+                        cell.locationCell?.text = "\(bridge.latitude) - \(bridge.longitude)"
+                        cell.imageCell.image = UIImage(data: downloadedData)!
+                    }
+                }
+            })
+            
+        }
+        return cell
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        print("Bridges: Cell delete")
         if editingStyle == .delete {
-            let BridgeObject = items[indexPath.row]
-            BridgeObject.ref?.removeValue()
+            let bridge = items[indexPath.row]
+            FIRStorage.storage().reference().child("photos").child(bridge.image).delete(completion: nil)
+            bridge.ref?.removeValue()
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //1
-//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        //        guard let cell = tableView.cellForRow(at: indexPath) else { return }
         //2
-//        var BridgeObject = items[indexPath.row]
-        //3
-        //        let toggledCompletion = !BridgeObject.completed
-        //4
-        //        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-        //5
-        //        BridgeObject.ref?.updateChildValues(["completed" : toggledCompletion])
-//        performSegue(withIdentifier: "ShowItem", sender: self)
+        //        var bridge = items[indexPath.row]
+        //        performSegue(withIdentifier: "ShowItem", sender: self)
     }
     
-
-    
-    // Segue Function
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//        print("Preparing")
-//        if (segue.identifier == "showSearchResult")
-//        {
-//            if let destinationViewController = segue.destinationViewController as? DetailViewController {
-//                destinationViewController.nam = self.moviePlot
-//                destinationViewController.imdbRating = self.movieRating
-//                destinationViewController.name = self.movieName
-//                destinationViewController.imagePath = self.moviePicturePath
-//                
-//            }
-//        }
-//        
-//    }
-    
-
-    
-    // MARK: UIViewController Lifecycle
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let referenceFIRDatabase = FIRDatabase.database().reference()
-        //        print("Bridges: -----------------------------------------------")
-        //        print("Bridges: referenceFIRDatabase = \(referenceFIRDatabase)")
-        
-        referenceFIRDatabase.observe(.value, with: { currentFIRDataSnapshot in
+        FIRDatabase.database().reference().observe(.value, with: { currentFIRDataSnapshot in
             //            print("Bridges: currentFIRDataSnapshot = \(currentFIRDataSnapshot)")
             //            print("Bridges: currentFIRDataSnapshot.childrenCount = \(currentFIRDataSnapshot.childrenCount)")
             for currentChildAnyObject in currentFIRDataSnapshot.children {
@@ -115,72 +80,28 @@ class ListViewController: UITableViewController {
             }
         })
         tableView.rowHeight = 100
-        
         tableView.allowsMultipleSelectionDuringEditing = false
-        
-        //        userCountBarButtonItem = UIBarButtonItem(title: "1",
-        //                                                 style: .plain,
-        //                                                 target: self,
-        //                                                 action: #selector(userCountButtonDidTouch))
-        //        userCountBarButtonItem.tintColor = UIColor.white
-        //        navigationItem.leftBarButtonItem = userCountBarButtonItem
-        
-        //        user = User(uid: "FakeId", email: "hungry@person.food")
     }
     
     
-    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-        if !isCompleted {
-            cell.accessoryType = .none
-            cell.textLabel?.textColor = UIColor.black
-            cell.detailTextLabel?.textColor = UIColor.black
-        } else {
-            cell.accessoryType = .checkmark
-            cell.textLabel?.textColor = UIColor.gray
-            cell.detailTextLabel?.textColor = UIColor.gray
-        }
-    }
     
-
+    // Segue Function
     
-    // MARK: Add Item
-    
-    @IBAction func addButtonDidTouch(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "Bridges",
-                                      message: "Add a bridge",
-                                      preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Save",
-                                       style: .default) { _ in
-                                        //1
-//                                        guard let textField = alert.textFields?.first,
-//                                            let text = textField.text else { return }
-                                        
-                                        //2
-                                        //                                        let BridgeObjectCalculated = BridgeObject(name: text, addedByUser: self.user.email, completed: false)
-                                        //
-                                        //                                        //3
-                                        //                                        let BridgeObjectRef = self.ref.child(text.lowercased())
-                                        //
-                                        //                                        //4
-                                        //                                        BridgeObjectRef.setValue(BridgeObjectCalculated.toAnyObject())
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .default)
-        
-        alert.addTextField()
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    //    func userCountButtonDidTouch() {
-    //        performSegue(withIdentifier: listToUsers, sender: nil)
+    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    //        // Get the new view controller using segue.destinationViewController.
+    //        // Pass the selected object to the new view controller.
+    //        print("Preparing")
+    //        if (segue.identifier == "showSearchResult")
+    //        {
+    //            if let destinationViewController = segue.destinationViewController as? DetailViewController {
+    //                destinationViewController.nam = self.moviePlot
+    //                destinationViewController.imdbRating = self.movieRating
+    //                destinationViewController.name = self.movieName
+    //                destinationViewController.imagePath = self.moviePicturePath
+    //
+    //            }
+    //        }
+    //
     //    }
-    
-    
 }
 

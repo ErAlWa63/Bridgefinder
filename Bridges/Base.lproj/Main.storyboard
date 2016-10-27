@@ -126,9 +126,11 @@
                         <outlet property="descriptionLabel" destination="WFh-wt-0BI" id="ycv-JT-aVb"/>
                         <outlet property="locationLabel" destination="ag2-zr-BLO" id="xHh-gx-VDh"/>
                         <outlet property="nameLabel" destination="7TJ-yR-sGe" id="Vcj-rc-x8Q"/>
+                        <segue destination="guu-8Q-Zel" kind="unwind" identifier="unwindtoMenuWithSequeListView" unwindAction="unwindToMenuWithSegue:" id="Fox-KT-P4T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXP-KN-vc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="guu-8Q-Zel" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1117.5999999999999" y="-1052.0239880059971"/>
         </scene>
@@ -343,10 +345,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ctv-YF-CYp" id="mUG-7c-jKo">
-                                    <frame key="frameInset" width="342" height="149"/>
+                                    <frame key="frameInset" width="342" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ySa-rV-dKK">
+                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ySa-rV-dKK">
+                                            <frame key="frameInset" minX="39" minY="8" width="326" height="134"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Em-5z-N3L"/>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GfJ-y4-Lb1">

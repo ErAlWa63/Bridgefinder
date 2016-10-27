@@ -21,7 +21,6 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var bridgeImage: UIImageView!
     
-//    var items: [BridgeObject] = []
 //    var productsValue = [[String:String]]()
     var passedValue = [[String:String]]()
     

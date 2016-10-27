@@ -12,5 +12,4 @@ import Firebase
 
 struct FirebaseObject {
     
-    
 }
