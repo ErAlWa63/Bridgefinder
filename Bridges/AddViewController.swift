@@ -14,6 +14,10 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
 
     @IBAction func cancelBridge(_ sender: UIBarButtonItem) {
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+    }
     @IBAction func saveBridge(_ sender: UIBarButtonItem) {
         let imageName = "\(NSUUID().uuidString).png"
         let photoRef = FIRStorage.storage().reference().child("photos").child(imageName)

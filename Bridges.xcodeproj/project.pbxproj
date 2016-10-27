@@ -82,6 +82,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		033B68171DC24DFE00F07547 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */,
+			);
+			name = Old;
+			sourceTree = "<group>";
+		};
 		4AD991A7E80109F04262D419 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +107,6 @@
 				761069DE1DB8D94D009CBCB4 /* AddViewController.swift */,
 				761069DC1DB8D909009CBCB4 /* DetailViewController.swift */,
 				761069DA1DB8D8C5009CBCB4 /* ListViewController.swift */,
-				76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */,
 				761069D81DB8D861009CBCB4 /* MapViewController.swift */,
 				761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */,
 				766C7E941DBFF433002F45D4 /* MapUtilities.swift */,
@@ -153,6 +160,7 @@
 				76D6A8D61DB79C060000D319 /* AppDelegate.swift */,
 				76D6A8DD1DB79C060000D319 /* Assets.xcassets */,
 				761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */,
+				033B68171DC24DFE00F07547 /* Old */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
