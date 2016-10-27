@@ -13,7 +13,19 @@ import FirebaseStorage
 class ListViewController: UITableViewController {
     var items: [BridgeObject] = []
  
-    @IBAction func unwindToMenuWithSegueListView(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToMenuWithSegueListViewWithSegue(segue: UIStoryboardSegue) {
+        print("Bridges: unwindToMenuWithSegueListViewWithSegue")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowItem" {
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let item = items[row]
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.currentBridge = item
+            }
+        }
+    }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

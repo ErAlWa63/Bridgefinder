@@ -11,8 +11,10 @@ import Firebase
 
 class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    
-    @IBAction func addButtonDidTouch(_ sender: AnyObject) {
+
+    @IBAction func cancelBridge(_ sender: UIBarButtonItem) {
+    }
+    @IBAction func saveBridge(_ sender: UIBarButtonItem) {
         let imageName = "\(NSUUID().uuidString).png"
         let photoRef = FIRStorage.storage().reference().child("photos").child(imageName)
         print("Bridges: photoRef = \(photoRef)")
@@ -32,35 +34,25 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
                     let BridgeObjectRef = ref.child(text!)
                     print("Bridges: BridgeObjectRef = \(BridgeObjectRef)")
                     BridgeObjectRef.setValue(BridgeObjectCalculated.toAnyObject())
-                    self.performSegue(withIdentifier: "unwindToMenuWithSegueListView", sender: self)
+                    self.performSegue(withIdentifier: "unwindToMenuWithSegueListViewWithSegue", sender: self)
                     
                 }
             }
         }
         
     }
-    
+//    func keyboardWasShown(notification: NSNotification) {
+//        let info = notification.userInfo!
+//
+//        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+//      self.bottomLayoutGuide.bottomAnchor.con
+//        UIView.animateWithDuration(0.1, animations: { () -> Void in
+//            self.bottomConstraint.constant = keyboardFrame.size.height + 20
+//        })
+//    }
+
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
-    }
-    
-    @IBAction func takePicture(_ sender: UIButton) {
-        
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = true
-        
-        // If device has a camera, take picture; otherwise pick one from library
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
-        } else {
-            
-            imagePicker.sourceType = .photoLibrary
-        }
-        imagePicker.delegate = self
-        
-        // Place image picker on screen
-        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBOutlet var cancelButton     : UIBarButtonItem!
@@ -72,12 +64,28 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+
         descriptionText.text = "Description of the new bridge"
         descriptionText.textColor = UIColor.lightGray
         //        descriptionText.becomeFirstResponder()
         descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
     }
     
+    func imageViewTapped(imgage: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        } else {
+            imagePicker.sourceType = .photoLibrary
+        }
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

@@ -10,54 +10,33 @@ import UIKit
 import Firebase
 
 class DetailViewController: UIViewController {
-    
-    
-    
     @IBOutlet var nameLabel: UILabel!
-    
     @IBOutlet var locationLabel: UILabel!
-    
     @IBOutlet var descriptionLabel: UILabel!
-    
     @IBOutlet var bridgeImage: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-//    var productsValue = [[String:String]]()
-    var passedValue = [[String:String]]()
+    var currentBridge : BridgeObject!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-        nameLabel.text = passedValue.description
-//        nameLabel.text = valueTopass = [String:String]
-//        locationLabel.text = productsValue.description
-//        descriptionLabel.text = productsValue.description
+        spinner.startAnimating()
+        FIRStorage.storage().reference().child("photos").child(currentBridge.image).data(withMaxSize: 10*1024*1024, completion: { (data, error) -> Void in
+            DispatchQueue.main.async {
+                if let downloadedData = data {
+                    self.spinner.stopAnimating()
+                    
+                    self.nameLabel.text = self.currentBridge.name
+                    self.descriptionLabel.text = self.currentBridge.description
+                    self.locationLabel.text = "\(self.currentBridge.latitude) - \(self.currentBridge.longitude)"
+                    self.bridgeImage.image = UIImage(data: downloadedData)!
+                    self.title = self.currentBridge.name
+                }
+            }
+        })
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBOutlet var bridgeDescription: UITextView!
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
