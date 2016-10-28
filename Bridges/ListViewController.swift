@@ -11,18 +11,10 @@ import Firebase
 import FirebaseStorage
 
 class ListViewController: UITableViewController {
-    var items: [BridgeObject] = []
- 
-    @IBAction func unwindToMenuWithSegueListViewWithSegue(segue: UIStoryboardSegue) {
-        print("Bridges: unwindToMenuWithSegueListViewWithSegue")
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowItem" {
             if let row = tableView.indexPathForSelectedRow?.row {
-                let item = items[row]
-                let detailViewController = segue.destination as! DetailViewController
-                detailViewController.currentBridge = item
+                (segue.destination as! DetailViewController).currentBridge = DataSource.sharedInstance.getBridge(index: row)
             }
         }
     }
@@ -34,7 +26,7 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as! BridgeObjectCellTableViewCell
         DispatchQueue.global(qos: .userInitiated).async {
-            let bridge = self.items[indexPath.row]
+            let bridge = DataSource.sharedInstance.getBridge(index: indexPath.row)
             FIRStorage.storage().reference().child("photos").child(bridge.image).data(withMaxSize: 20*1024*1024, completion: { (data, error) -> Void in
                 DispatchQueue.main.async {
                     if let downloadedData = data {
@@ -52,7 +44,7 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let bridge = items[indexPath.row]
+            let bridge = DataSource.sharedInstance.getBridge(index: indexPath.row)
             FIRStorage.storage().reference().child("photos").child(bridge.image).delete(completion: nil)
             bridge.ref?.removeValue()
         }
@@ -62,38 +54,26 @@ class ListViewController: UITableViewController {
         //1
         //        guard let cell = tableView.cellForRow(at: indexPath) else { return }
         //2
-        //        var bridge = items[indexPath.row]
+        //        var bridge = i t e m s[indexPath.row]
         //        performSegue(withIdentifier: "ShowItem", sender: self)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return DataSource.sharedInstance.countBridge()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FIRDatabase.database().reference().observe(.value, with: { currentFIRDataSnapshot in
-            //            print("Bridges: currentFIRDataSnapshot = \(currentFIRDataSnapshot)")
-            //            print("Bridges: currentFIRDataSnapshot.childrenCount = \(currentFIRDataSnapshot.childrenCount)")
-            for currentChildAnyObject in currentFIRDataSnapshot.children {
-                let currentChildFIRDataSnapshot = currentChildAnyObject as! FIRDataSnapshot
-                //                print("Bridges: currentChildFIRDataSnapshot = \(currentChildFIRDataSnapshot)")
-                //                print("Bridges: currentChildFIRDataSnapshot.childrenCount = \(currentChildFIRDataSnapshot.childrenCount)")
-                var newBridgeObject: [BridgeObject] = []
-                for currentChildChildAnyObject in currentChildFIRDataSnapshot.children {
-                    let currentChildChildFIRDataSnapshot = currentChildChildAnyObject as! FIRDataSnapshot
-                    let BridgeObjectCalculated = BridgeObject(snapshot: currentChildChildFIRDataSnapshot)
-                    newBridgeObject.append(BridgeObjectCalculated)
-                    //                    print("Bridges: currentChildChildFIRDataSnapshot = \(currentChildChildFIRDataSnapshot)")
-                    //                    print("Bridges: currentChildChildFIRDataSnapshot.childrenCount = \(currentChildChildFIRDataSnapshot.childrenCount)")
-                }
-                self.items = newBridgeObject
-                self.tableView.reloadData()
-            }
-        })
         tableView.rowHeight = 100
         tableView.allowsMultipleSelectionDuringEditing = false
+        tableView.reloadData()
     }
+
+//    nog te testen:
+    @IBAction func unwindListView(segue: UIStoryboardSegue) {
+        print("Bridges: unwindListView")
+    }
+    
     
     
     

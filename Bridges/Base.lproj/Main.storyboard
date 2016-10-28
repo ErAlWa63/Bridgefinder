@@ -308,11 +308,10 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="42Z-Tm-fQa" userLabel="FlexibleSpaceUIBarButtonItem"/>
                                     <barButtonItem systemItem="cancel" id="bzQ-cZ-Xun" userLabel="CancelUIBarButtonItem">
-                                        <inset key="imageInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                         <color key="tintColor" red="0.0082868303571428572" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="cancelBridge:" destination="nF8-re-zjM" id="yEW-Pe-GSO"/>
-                                            <segue destination="NKJ-18-KLq" kind="unwind" identifier="AddItemExit" unwindAction="unwindToMenuWithSegueListViewWithSegueWithSegue:" id="lHS-UZ-TU8"/>
+                                            <segue destination="NKJ-18-KLq" kind="unwind" identifier="cancelAddViewSegue" unwindAction="unwindListViewWithSegue:" id="xBu-h6-3TK"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Z7w-6Q-DSQ" userLabel="FlexibleSpaceUIBarButtonItem"/>
@@ -375,7 +374,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ctv-YF-CYp" id="mUG-7c-jKo">
-                                    <frame key="frameInset" width="342" height="149"/>
+                                    <frame key="frameInset" width="342" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ySa-rV-dKK">

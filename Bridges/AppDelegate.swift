@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        DataSource.sharedInstance.initFirebase()
+        DataSource.sharedInstance.loadBridges()
         
         // Changing the colour of the bar button items
         UINavigationBar.appearance().tintColor = UIColor.white

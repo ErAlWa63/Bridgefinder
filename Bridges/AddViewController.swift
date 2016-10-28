@@ -13,6 +13,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
 
     @IBAction func cancelBridge(_ sender: UIBarButtonItem) {
+//        self.performSegue(withIdentifier: "cancelAddViewSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,7 +39,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
                     let BridgeObjectRef = ref.child(text!)
                     print("Bridges: BridgeObjectRef = \(BridgeObjectRef)")
                     BridgeObjectRef.setValue(BridgeObjectCalculated.toAnyObject())
-                    self.performSegue(withIdentifier: "unwindToMenuWithSegueListViewWithSegue", sender: self)
+                    self.performSegue(withIdentifier: "cancelAddViewSegue", sender: self)
                     
                 }
             }

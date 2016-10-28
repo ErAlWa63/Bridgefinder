@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0301925D1DC131EF00B6EF25 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301925C1DC131EF00B6EF25 /* DataSource.swift */; };
 		0304DB261DC0D0BC00E50222 /* FirebaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304DB251DC0D0BC00E50222 /* FirebaseObject.swift */; };
+		0307D5B41DC37EBF00948933 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0307D5B31DC37EBF00948933 /* GoogleService-Info.plist */; };
 		4D6544898A89C63570AADA65 /* Pods_Bridges.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */; };
 		761069D71DB8D7BB009CBCB4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */; };
 		761069D91DB8D861009CBCB4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069D81DB8D861009CBCB4 /* MapViewController.swift */; };
@@ -17,12 +18,10 @@
 		761069DF1DB8D94D009CBCB4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069DE1DB8D94D009CBCB4 /* AddViewController.swift */; };
 		761069E31DB8F6FB009CBCB4 /* erasmusWelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */; };
 		764FBDBB1DC0A33400F27DFB /* BridgeClassSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FBDBA1DC0A33400F27DFB /* BridgeClassSegue.swift */; };
-		766C7E6E1DBF9AA7002F45D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 766C7E6D1DBF9AA7002F45D4 /* GoogleService-Info.plist */; };
 		766C7E951DBFF433002F45D4 /* MapUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C7E941DBFF433002F45D4 /* MapUtilities.swift */; };
 		766C7E971DBFF486002F45D4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 766C7E961DBFF486002F45D4 /* CoreLocation.framework */; };
 		76BD39861DBE46AA0046AAEE /* BridgeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39851DBE46AA0046AAEE /* BridgeObject.swift */; };
 		76BD39881DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */; };
-		76BD398A1DBE4A9A0046AAEE /* ListViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */; };
 		76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D6A8D61DB79C060000D319 /* AppDelegate.swift */; };
 		76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DA1DB79C060000D319 /* Main.storyboard */; };
 		76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DD1DB79C060000D319 /* Assets.xcassets */; };
@@ -33,6 +32,7 @@
 /* Begin PBXFileReference section */
 		0301925C1DC131EF00B6EF25 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		0304DB251DC0D0BC00E50222 /* FirebaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseObject.swift; sourceTree = "<group>"; };
+		0307D5B31DC37EBF00948933 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C788D4FCDB2BA5EDAC3BEF7 /* Pods-Bridges.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bridges.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bridges/Pods-Bridges.release.xcconfig"; sourceTree = "<group>"; };
 		57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bridges.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -42,12 +42,10 @@
 		761069DE1DB8D94D009CBCB4 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = erasmusWelcome.png; path = ../erasmusWelcome.png; sourceTree = "<group>"; };
 		764FBDBA1DC0A33400F27DFB /* BridgeClassSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeClassSegue.swift; sourceTree = "<group>"; };
-		766C7E6D1DBF9AA7002F45D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		766C7E941DBFF433002F45D4 /* MapUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUtilities.swift; sourceTree = "<group>"; };
 		766C7E961DBFF486002F45D4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		76BD39851DBE46AA0046AAEE /* BridgeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeObject.swift; sourceTree = "<group>"; };
 		76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeObjectCellTableViewCell.swift; sourceTree = "<group>"; };
-		76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerOld.swift; sourceTree = "<group>"; };
 		76D6A8D31DB79C060000D319 /* Bridges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bridges.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D6A8D61DB79C060000D319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D6A8DB1DB79C060000D319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,19 +73,11 @@
 		0304DB241DC0D00500E50222 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0301925C1DC131EF00B6EF25 /* DataSource.swift */,
 				76BD39851DBE46AA0046AAEE /* BridgeObject.swift */,
 				0304DB251DC0D0BC00E50222 /* FirebaseObject.swift */,
-				0301925C1DC131EF00B6EF25 /* DataSource.swift */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		033B68171DC24DFE00F07547 /* Old */ = {
-			isa = PBXGroup;
-			children = (
-				76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */,
-			);
-			name = Old;
 			sourceTree = "<group>";
 		};
 		4AD991A7E80109F04262D419 /* Pods */ = {
@@ -126,7 +116,7 @@
 		76BD39801DBE3BDF0046AAEE /* plist */ = {
 			isa = PBXGroup;
 			children = (
-				766C7E6D1DBF9AA7002F45D4 /* GoogleService-Info.plist */,
+				0307D5B31DC37EBF00948933 /* GoogleService-Info.plist */,
 				76D6A8E21DB79C060000D319 /* Info.plist */,
 			);
 			name = plist;
@@ -153,14 +143,13 @@
 		76D6A8D51DB79C060000D319 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
-				0304DB241DC0D00500E50222 /* Models */,
 				76BD39801DBE3BDF0046AAEE /* plist */,
 				76BD397F1DBE3BC00046AAEE /* Storyboards */,
 				76BD397E1DBE3B970046AAEE /* Controllers */,
+				0304DB241DC0D00500E50222 /* Models */,
 				76D6A8D61DB79C060000D319 /* AppDelegate.swift */,
 				76D6A8DD1DB79C060000D319 /* Assets.xcassets */,
 				761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */,
-				033B68171DC24DFE00F07547 /* Old */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -240,7 +229,7 @@
 			files = (
 				76D6A8E11DB79C060000D319 /* LaunchScreen.storyboard in Resources */,
 				761069E31DB8F6FB009CBCB4 /* erasmusWelcome.png in Resources */,
-				766C7E6E1DBF9AA7002F45D4 /* GoogleService-Info.plist in Resources */,
+				0307D5B41DC37EBF00948933 /* GoogleService-Info.plist in Resources */,
 				76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */,
 				76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */,
 			);
@@ -303,7 +292,6 @@
 			files = (
 				76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */,
 				761069D91DB8D861009CBCB4 /* MapViewController.swift in Sources */,
-				76BD398A1DBE4A9A0046AAEE /* ListViewControllerOld.swift in Sources */,
 				0301925D1DC131EF00B6EF25 /* DataSource.swift in Sources */,
 				766C7E951DBFF433002F45D4 /* MapUtilities.swift in Sources */,
 				761069DF1DB8D94D009CBCB4 /* AddViewController.swift in Sources */,
