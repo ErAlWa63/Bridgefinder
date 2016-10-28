@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         spinner.startAnimating()
-        FIRStorage.storage().reference().child("photos").child(currentBridge.image).data(withMaxSize: 20*1024*1024, completion: { (data, error) -> Void in
+        FIRStorage.storage().reference().child(currentBridge.image).data(withMaxSize: 20*1024*1024, completion: { (data, error) -> Void in
             DispatchQueue.main.async {
                 if let downloadedData = data {
                     self.spinner.stopAnimating()

@@ -21,7 +21,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     }
     @IBAction func saveBridge(_ sender: UIBarButtonItem) {
         let imageName = "\(NSUUID().uuidString).png"
-        let photoRef = FIRStorage.storage().reference().child("photos").child(imageName)
+        let photoRef = FIRStorage.storage().reference().child(imageName)
         print("Bridges: photoRef = \(photoRef)")
         let metadata = FIRStorageMetadata()
         metadata.contentType = "image/png"
@@ -34,13 +34,12 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
                     let latitude = Double(self.locationLatitude.text!)
                     let longitude = Double(self.locationLongitude.text!)
                     let BridgeObjectCalculated = BridgeObject(name: text!, description: description!, image: imageName, latitude: latitude!, longitude: longitude!)
-                    let ref = FIRDatabase.database().reference(withPath: "Bridges/")
+                    let ref = FIRDatabase.database().reference()
                     print("Bridges: ref = \(ref)")
                     let BridgeObjectRef = ref.child(text!)
                     print("Bridges: BridgeObjectRef = \(BridgeObjectRef)")
                     BridgeObjectRef.setValue(BridgeObjectCalculated.toAnyObject())
                     self.performSegue(withIdentifier: "cancelAddViewSegue", sender: self)
-                    
                 }
             }
         }
@@ -120,24 +119,19 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.image = image
+        imageView.image = image.resizedImageWithinRect(rectSize: CGSize(width: 100, height: 100))
         dismiss(animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
         return true
     }
     
     func textViewShouldReturn(textView: UITextView) -> Bool {
-        
         textView.resignFirstResponder()
         return true
-        
     }
-    
-    
 }
 extension UIImage {
     

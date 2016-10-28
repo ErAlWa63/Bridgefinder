@@ -27,7 +27,7 @@ class ListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as! BridgeObjectCellTableViewCell
         DispatchQueue.global(qos: .userInitiated).async {
             let bridge = DataSource.sharedInstance.getBridge(index: indexPath.row)
-            FIRStorage.storage().reference().child("photos").child(bridge.image).data(withMaxSize: 20*1024*1024, completion: { (data, error) -> Void in
+            FIRStorage.storage().reference().child(bridge.image).data(withMaxSize: 20*1024*1024, completion: { (data, error) -> Void in
                 DispatchQueue.main.async {
                     if let downloadedData = data {
                         cell.nameCell?.text = bridge.name
@@ -45,7 +45,7 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let bridge = DataSource.sharedInstance.getBridge(index: indexPath.row)
-            FIRStorage.storage().reference().child("photos").child(bridge.image).delete(completion: nil)
+            FIRStorage.storage().reference().child(bridge.image).delete(completion: nil)
             bridge.ref?.removeValue()
         }
     }
