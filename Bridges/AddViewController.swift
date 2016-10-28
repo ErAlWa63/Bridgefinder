@@ -119,7 +119,8 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.image = image.resizedImageWithinRect(rectSize: CGSize(width: 100, height: 100))
+        imageView.image = image.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
+        imageView.contentMode = .scaleAspectFit
         dismiss(animated: true, completion: nil)
     }
     
