@@ -35,7 +35,7 @@ class ListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as! BridgeObjectCellTableViewCell
         DispatchQueue.global(qos: .userInitiated).async {
             let bridge = self.items[indexPath.row]
-            FIRStorage.storage().reference().child("photos").child(bridge.image).data(withMaxSize: 10*1024*1024, completion: { (data, error) -> Void in
+            FIRStorage.storage().reference().child("photos").child(bridge.image).data(withMaxSize: 20*1024*1024, completion: { (data, error) -> Void in
                 DispatchQueue.main.async {
                     if let downloadedData = data {
                         cell.nameCell?.text = bridge.name
