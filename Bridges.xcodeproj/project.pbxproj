@@ -23,6 +23,7 @@
 		76BD39861DBE46AA0046AAEE /* BridgeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39851DBE46AA0046AAEE /* BridgeObject.swift */; };
 		76BD39881DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */; };
 		76BD398A1DBE4A9A0046AAEE /* ListViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */; };
+		76C5D4A71DC356D100617589 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C5D4A61DC356D100617589 /* KeyboardLayoutConstraint.swift */; };
 		76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D6A8D61DB79C060000D319 /* AppDelegate.swift */; };
 		76D6A8DC1DB79C060000D319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DA1DB79C060000D319 /* Main.storyboard */; };
 		76D6A8DE1DB79C060000D319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D6A8DD1DB79C060000D319 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		76BD39851DBE46AA0046AAEE /* BridgeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeObject.swift; sourceTree = "<group>"; };
 		76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeObjectCellTableViewCell.swift; sourceTree = "<group>"; };
 		76BD39891DBE4A9A0046AAEE /* ListViewControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerOld.swift; sourceTree = "<group>"; };
+		76C5D4A61DC356D100617589 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		76D6A8D31DB79C060000D319 /* Bridges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bridges.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D6A8D61DB79C060000D319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D6A8DB1DB79C060000D319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				761069D81DB8D861009CBCB4 /* MapViewController.swift */,
 				761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */,
 				766C7E941DBFF433002F45D4 /* MapUtilities.swift */,
+				76C5D4A61DC356D100617589 /* KeyboardLayoutConstraint.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				761069DD1DB8D909009CBCB4 /* DetailViewController.swift in Sources */,
 				76BD39881DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift in Sources */,
 				761069D71DB8D7BB009CBCB4 /* WelcomeViewController.swift in Sources */,
+				76C5D4A71DC356D100617589 /* KeyboardLayoutConstraint.swift in Sources */,
 				761069DB1DB8D8C5009CBCB4 /* ListViewController.swift in Sources */,
 				0304DB261DC0D0BC00E50222 /* FirebaseObject.swift in Sources */,
 			);

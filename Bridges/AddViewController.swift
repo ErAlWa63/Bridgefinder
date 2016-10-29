@@ -18,7 +18,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
     }
-    @IBAction func saveBridge(_ sender: UIBarButtonItem) {
+    @IBAction func saveBridge(_ sender: UIButton) {
         let imageName = "\(NSUUID().uuidString).png"
         let photoRef = FIRStorage.storage().reference().child("photos").child(imageName)
         print("Bridges: photoRef = \(photoRef)")
@@ -58,6 +58,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    
     
     @IBOutlet var cancelButton     : UIBarButtonItem!
     @IBOutlet var descriptionText  : UITextView!
