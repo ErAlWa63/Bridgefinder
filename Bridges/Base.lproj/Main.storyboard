@@ -211,7 +211,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Bridges" id="byR-tO-Qwx">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="Lwn-KT-EnX"/>
+                        <barButtonItem key="backBarButtonItem" id="Lwn-KT-EnX"/>
                         <barButtonItem key="leftBarButtonItem" image="arrowIcon20" id="hDt-8e-Syz">
                             <connections>
                                 <action selector="zoomToCurrentLocationWithSender:" destination="5Ud-D0-Tnp" id="RND-Dm-7lg"/>
@@ -399,7 +399,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1118" y="-306"/>
+            <point key="canvasLocation" x="1118" y="-312"/>
         </scene>
         <!--ListView-->
         <scene sceneID="0dw-dv-pYe">
@@ -477,10 +477,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Bridges" id="27g-2q-dna">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="OnO-wQ-UTt"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WKN-dj-wXs">
                             <connections>
-                                <segue destination="nF8-re-zjM" kind="show" id="6mB-xa-AKN"/>
+                                <segue destination="nF8-re-zjM" kind="show" id="0NT-cX-aDm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -541,6 +540,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="h3R-Ra-BRV"/>
-        <segue reference="6mB-xa-AKN"/>
+        <segue reference="0NT-cX-aDm"/>
     </inferredMetricsTieBreakers>
 </document>
