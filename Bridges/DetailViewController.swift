@@ -10,11 +10,16 @@ import UIKit
 import Firebase
 
 class DetailViewController: UIViewController {
+    var delegate: AddViewControllerDelegate! = nil
+
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var bridgeImage: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+//    delegate.didSelectBridgeObject(controller: self as UITableViewController, bridge: BridgeObjectCalculated!)
+
     
     var currentBridge : BridgeObject!
     

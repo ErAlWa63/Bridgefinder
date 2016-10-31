@@ -10,11 +10,27 @@ import UIKit
 import Firebase
 import FirebaseStorage
 
-class ListViewController: UITableViewController {
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+class ListViewController: UITableViewController, AddViewControllerDelegate, DetailViewControllerDelegate {
+    var bridge = BridgeObject(name: "A", description: "B", image: "leeg.png", latitude: 0.0, longitude: 0.0)
+    
+    func didSelectBridgeObject (controller: UITableViewController, bridge: BridgeObject) {
+        if controller.navigationController?.popViewController(animated: true) == nil {return}
+    }
+    func didDetailView( controller: UITableViewController, bridge: BridgeObject) {
+        if controller.navigationController?.popViewController(animated: true) == nil {return}
+    }
+
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bridge: BridgeObject? = nil
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowItem" {
             if let row = tableView.indexPathForSelectedRow?.row {
-                (segue.destination as! DetailViewController).currentBridge = DataSource.sharedInstance.getBridge(index: row)
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.currentBridge = DataSource.sharedInstance.getBridge(index: row)
+//                detailViewController.delegate
             }
         }
     }
@@ -50,26 +66,18 @@ class ListViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //1
-        //        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        //2
-        //        var bridge = i t e m s[indexPath.row]
-        //        performSegue(withIdentifier: "ShowItem", sender: self)
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataSource.sharedInstance.countBridge()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tableView.rowHeight = 100
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.reloadData()
-    }
-
-//    nog te testen:
+     }
+    
+    //    nog te testen:
     @IBAction func unwindListView(segue: UIStoryboardSegue) {
         print("Bridges: unwindListView")
     }
