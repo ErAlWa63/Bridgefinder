@@ -7,8 +7,34 @@
 //
 
 import UIKit
+import Firebase
 
 class DataSource {
-//    var items: [BridgeObject] = []
-
+    static let sharedInstance = DataSource()
+    private var bridges: [BridgeObject] = []
+    
+    func countBridge () -> Int {
+        return bridges.count
+    }
+    
+    func getBridge (index: Int) -> BridgeObject {
+        return bridges[index]
+    }
+    
+    func loadBridges () -> Void {
+        FIRDatabase.database().reference().observe(.value, with: { currentFIRDataSnapshot in
+            //            print("Bridges: currentFIRDataSnapshot = \(currentFIRDataSnapshot)")
+            //            print("Bridges: currentFIRDataSnapshot.childrenCount = \(currentFIRDataSnapshot.childrenCount)")
+                var newBridgeObject: [BridgeObject] = []
+                for currentChildAnyObject in currentFIRDataSnapshot.children {
+                    let currentChildFIRDataSnapshot = currentChildAnyObject as! FIRDataSnapshot
+                    let BridgeObjectCalculated = BridgeObject(snapshot: currentChildFIRDataSnapshot)
+                    newBridgeObject.append(BridgeObjectCalculated)
+                    //                    print("Bridges: currentChildFIRDataSnapshot = \(currentChildFIRDataSnapshot)")
+                    //                    print("Bridges: currentChildFIRDataSnapshot.childrenCount = \(currentChildFIRDataSnapshot.childrenCount)")
+                }
+                self.bridges = newBridgeObject
+        })
+        
+    }
 }

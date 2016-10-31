@@ -13,6 +13,18 @@ import Firebase
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowItem" {
+//            if let row = tableView.indexPathForSelectedRow?.row {
+//                let detailViewController = segue.destination as! DetailViewController
+//                detailViewController.currentBridge = DataSource.sharedInstance.getBridge(index: row)
+                //                detailViewController.delegate
+//            }
+        }
+    }
+    
+
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func zoomToCurrentLocation(sender: AnyObject) {

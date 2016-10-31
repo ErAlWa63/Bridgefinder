@@ -10,17 +10,19 @@ import UIKit
 import Firebase
 
 class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    var delegate: AddViewControllerDelegate! = nil
     
-
     @IBAction func cancelBridge(_ sender: UIBarButtonItem) {
+//        self.performSegue(withIdentifier: "cancelAddViewSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
     }
     @IBAction func saveBridge(_ sender: UIButton) {
+    @IBAction func saveBridge(_ sender: UIBarButtonItem) {
         let imageName = "\(NSUUID().uuidString).png"
-        let photoRef = FIRStorage.storage().reference().child("photos").child(imageName)
+        let photoRef = FIRStorage.storage().reference().child(imageName)
         print("Bridges: photoRef = \(photoRef)")
         let metadata = FIRStorageMetadata()
         metadata.contentType = "image/png"
@@ -33,13 +35,16 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
                     let latitude = Double(self.locationLatitude.text!)
                     let longitude = Double(self.locationLongitude.text!)
                     let BridgeObjectCalculated = BridgeObject(name: text!, description: description!, image: imageName, latitude: latitude!, longitude: longitude!)
-                    let ref = FIRDatabase.database().reference(withPath: "Bridges/")
+                    let ref = FIRDatabase.database().reference()
                     print("Bridges: ref = \(ref)")
                     let BridgeObjectRef = ref.child(text!)
                     print("Bridges: BridgeObjectRef = \(BridgeObjectRef)")
                     BridgeObjectRef.setValue(BridgeObjectCalculated.toAnyObject())
-                    self.performSegue(withIdentifier: "unwindToMenuWithSegueListViewWithSegue", sender: self)
-                    
+//                    delegate.didSelectBridgeObject(controller: self as UITableViewController, bridge: BridgeObjectCalculated!)
+//                    self.dismiss(animated: true, completion: nil)
+
+
+//                    self.performSegue(withIdentifier: "cancelAddViewSegue", sender: self)
                 }
             }
         }
@@ -120,52 +125,39 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.image = image
+        imageView.image = image.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
+        imageView.contentMode = .scaleAspectFit
         dismiss(animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
         return true
     }
     
     func textViewShouldReturn(textView: UITextView) -> Bool {
-        
         textView.resignFirstResponder()
         return true
-        
     }
-    
-    
 }
 extension UIImage {
-    
-    /// Returns a image that fills in newSize
     func resizedImage(newSize: CGSize) -> UIImage {
-        // Guard newSize is different
         guard self.size != newSize else { return self }
-        
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
         self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return newImage
     }
     
-    /// Returns a resized image that fits in rectSize, keeping it's aspect ratio
-    /// Note that the new image size is not rectSize, but within it.
     func resizedImageWithinRect(rectSize: CGSize) -> UIImage {
         let widthFactor = size.width / rectSize.width
         let heightFactor = size.height / rectSize.height
-        
         var resizeFactor = widthFactor
         if size.height > size.width {
             resizeFactor = heightFactor
         }
-        let newSize = CGSize(width: size.width/resizeFactor, height: size.height/resizeFactor)
-        let resized = resizedImage(newSize: newSize)
-        return resized
+        return resizedImage(newSize: CGSize(width: size.width/resizeFactor, height: size.height/resizeFactor))
     }
     
 }
