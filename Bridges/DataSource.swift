@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import Firebase
 
 class DataSource {
@@ -23,18 +24,24 @@ class DataSource {
     
     func loadBridges () -> Void {
         FIRDatabase.database().reference().observe(.value, with: { currentFIRDataSnapshot in
-            //            print("Bridges: currentFIRDataSnapshot = \(currentFIRDataSnapshot)")
-            //            print("Bridges: currentFIRDataSnapshot.childrenCount = \(currentFIRDataSnapshot.childrenCount)")
-                var newBridgeObject: [BridgeObject] = []
-                for currentChildAnyObject in currentFIRDataSnapshot.children {
-                    let currentChildFIRDataSnapshot = currentChildAnyObject as! FIRDataSnapshot
-                    let BridgeObjectCalculated = BridgeObject(snapshot: currentChildFIRDataSnapshot)
-                    newBridgeObject.append(BridgeObjectCalculated)
-                    //                    print("Bridges: currentChildFIRDataSnapshot = \(currentChildFIRDataSnapshot)")
-                    //                    print("Bridges: currentChildFIRDataSnapshot.childrenCount = \(currentChildFIRDataSnapshot.childrenCount)")
-                }
-                self.bridges = newBridgeObject
+            var newBridgeObject: [BridgeObject] = []
+            for currentChildAnyObject in currentFIRDataSnapshot.children {
+                let currentChildFIRDataSnapshot = currentChildAnyObject as! FIRDataSnapshot
+                let BridgeObjectCalculated = BridgeObject(snapshot: currentChildFIRDataSnapshot)
+                newBridgeObject.append(BridgeObjectCalculated)
+            }
+            self.bridges = newBridgeObject
         })
-        
     }
+    
+//    func getBridgeAnnotations () -> NSObject {
+//        var bridgeAnnotations = [BridgeAnnotation] ()
+//        for bridge in bridges {
+//            let currentBridgeAnnotation = BridgeAnnotation( coordinate: CLLocationCoordinate2DMake(bridge.latitude, bridge.longitude))
+//            currentBridgeAnnotation.title = bridge.name
+//            currentBridgeAnnotation.image = bridge.image
+//            bridgeAnnotations.append( currentBridgeAnnotation)
+//        }
+//        return bridgeAnnotations as NSObject
+//    }
 }

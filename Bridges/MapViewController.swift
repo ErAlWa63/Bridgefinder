@@ -11,7 +11,12 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        let region = MKCoordinateRegion(center: self.mapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        mapView.setRegion(region, animated: true)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowItem" {
@@ -22,9 +27,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 //            }
         }
     }
-    
-
-    
+//    https://www.google.nl/maps/place/Erasmusbrug/@51.909004,4.484934,17z/data=!3m1!4b1!4m5!3m4!1s0x47c43366a91d4f5b:0xf43b51dff4165c58!8m2!3d51.909004!4d4.4871227?hl=nl
     @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func zoomToCurrentLocation(sender: AnyObject) {
@@ -33,52 +36,59 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager!
     let regionRadius: CLLocationDistance = 1
-    
 
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear( animated)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        locationManager = CLLocationManager()
+        locationManager.stopUpdatingLocation()
+        locationManager.requestAlwaysAuthorization()
 
         if (CLLocationManager.locationServicesEnabled())
         {
-            locationManager = CLLocationManager()
+            locationManager.startUpdatingLocation()
+            locationManager.stopUpdatingLocation()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
-            locationManager.stopUpdatingLocation()
-            
+            mapView.showsUserLocation = true
+//            mapView.delegate = self
+        } else {
+            locationManager = nil
         }
         
-        
         mapView.mapType = MKMapType.standard
-        let locationOne = CLLocationCoordinate2D(latitude: 52.3725,longitude: 4.9182)
         
-        let span = MKCoordinateSpanMake(1.5, 1.5)
-        let regionOne = MKCoordinateRegion(center: locationOne, span: span)
-        mapView.setRegion(regionOne, animated: true)
         
-        let annotationOne = MKPointAnnotation()
-        annotationOne.coordinate = locationOne
-        annotationOne.title = "Erasmusbrug"
-        //        annotationOne.subtitle = "Thijs"
-        mapView.addAnnotation(annotationOne)
+//        let point = BridgeAnnotation(coordinate: <#T##CLLocationCoordinate2D#>)
+//        let locationOne = CLLocationCoordinate2D(latitude: 52.3725,longitude: 4.9182)
+//        
+//        let span = MKCoordinateSpanMake(1.5, 1.5)
+//        let regionOne = MKCoordinateRegion(center: locationOne, span: span)
+//        mapView.setRegion(regionOne, animated: true)
+//        
+//        let annotationOne = MKPointAnnotation()
+//        annotationOne.coordinate = locationOne
+//        annotationOne.title = "Erasmusbrug"
+//        //        annotationOne.subtitle = "Thijs"
+//        mapView.addAnnotation(annotationOne)
+//        
+//        let locationTwo = CLLocationCoordinate2D(latitude: 51.3482,longitude: 5.5471)
+//        let annotationTwo = MKPointAnnotation()
+//        annotationTwo.coordinate = locationTwo
+//        annotationTwo.title = "Tower Bridge"
+//        //        annotationTwo.subtitle = "Thijs"
+//        mapView.addAnnotation(annotationTwo)
+//        
+//        let locationThree = CLLocationCoordinate2D(latitude: 51.9315,longitude: 4.4660)
+//        let annotationThree = MKPointAnnotation()
+//        annotationThree.coordinate = locationThree
+//        annotationThree.title = "Willemsbrug"
+//        //        annotationThree.subtitle = "Thijs"
+//        mapView.addAnnotation(annotationThree)
         
-        let locationTwo = CLLocationCoordinate2D(latitude: 51.3482,longitude: 5.5471)
-        let annotationTwo = MKPointAnnotation()
-        annotationTwo.coordinate = locationTwo
-        annotationTwo.title = "Tower Bridge"
-        //        annotationTwo.subtitle = "Thijs"
-        mapView.addAnnotation(annotationTwo)
-        
-        let locationThree = CLLocationCoordinate2D(latitude: 51.9315,longitude: 4.4660)
-        let annotationThree = MKPointAnnotation()
-        annotationThree.coordinate = locationThree
-        annotationThree.title = "Willemsbrug"
-        //        annotationThree.subtitle = "Thijs"
-        mapView.addAnnotation(annotationThree)
+// http://sweettutos.com/2016/03/16/how-to-completely-customise-your-map-annotations-callout-views/
+//        mapView.addAnnotation(DataSource.sharedInstance.getBridgeAnnotations() as! MKAnnotation)
 
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
