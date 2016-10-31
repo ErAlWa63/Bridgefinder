@@ -80,14 +80,17 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         //        descriptionText.becomeFirstResponder()
         descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
         
-        backButton.title = "Back"
+        // Setting back button text to back - testing
         
-        // Disable save button when not all fields are filled
+//        self.backButton.title = "Back"
+
         
-//        if nameTextField.text!.isEmpty || descriptionText.text!.isEmpty || locationLatitude.text!.isEmpty || locationLongitude.text!.isEmpty {
+//         // Disable save button when not all fields are filled
+//        
+//        if nameTextField.text!.isEmpty, descriptionText.text!.isEmpty, locationLatitude.text!.isEmpty, locationLongitude.text!.isEmpty {
 //            saveButtonState.isEnabled = false
 //            
-//        }else {
+//        } else {
 //            
 //            saveButtonState.isEnabled = true
 //        }
