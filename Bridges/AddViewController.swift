@@ -12,8 +12,11 @@ import Firebase
 class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var delegate: AddViewControllerDelegate! = nil
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    
+    
     @IBAction func cancelBridge(_ sender: UIBarButtonItem) {
-//        self.performSegue(withIdentifier: "cancelAddViewSegue", sender: self)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,21 +53,12 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         }
         
     }
-//    func keyboardWasShown(notification: NSNotification) {
-//        let info = notification.userInfo!
-//
-//        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-//      self.bottomLayoutGuide.bottomAnchor.con
-//        UIView.animateWithDuration(0.1, animations: { () -> Void in
-//            self.bottomConstraint.constant = keyboardFrame.size.height + 20
-//        })
-//    }
 
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
-    
+    @IBOutlet var saveBridgeButton : UIButton!
     @IBOutlet var cancelButton     : UIBarButtonItem!
     @IBOutlet var descriptionText  : UITextView!
     @IBOutlet var imageView        : UIImageView!
@@ -72,6 +66,9 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet var locationLongitude: UITextField!
     @IBOutlet var nameTextField    : UITextField!
     
+    let saveButtonState = UIButton(type: UIButtonType.system) as UIButton
+    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
@@ -82,6 +79,20 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         descriptionText.textColor = UIColor.lightGray
         //        descriptionText.becomeFirstResponder()
         descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
+        
+        backButton.title = "Back"
+        
+        // Disable save button when not all fields are filled
+        
+//        if nameTextField.text!.isEmpty || descriptionText.text!.isEmpty || locationLatitude.text!.isEmpty || locationLongitude.text!.isEmpty {
+//            saveButtonState.isEnabled = false
+//            
+//        }else {
+//            
+//            saveButtonState.isEnabled = true
+//        }
+        
+        
     }
     
     func imageViewTapped(imgage: AnyObject) {
@@ -139,6 +150,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         textView.resignFirstResponder()
         return true
     }
+    
 }
 extension UIImage {
     func resizedImage(newSize: CGSize) -> UIImage {

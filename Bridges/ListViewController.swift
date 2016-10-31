@@ -11,6 +11,10 @@ import Firebase
 import FirebaseStorage
 
 class ListViewController: UITableViewController, AddViewControllerDelegate, DetailViewControllerDelegate {
+    
+
+    
+    
     var bridge = BridgeObject(name: "A", description: "B", image: "leeg.png", latitude: 0.0, longitude: 0.0)
     
     func didSelectBridgeObject (controller: UITableViewController, bridge: BridgeObject) {
@@ -75,6 +79,7 @@ class ListViewController: UITableViewController, AddViewControllerDelegate, Deta
         tableView.rowHeight = 100
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.reloadData()
+        
      }
     
     //    nog te testen:

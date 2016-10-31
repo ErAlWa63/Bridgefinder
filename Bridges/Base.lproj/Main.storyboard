@@ -211,7 +211,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Bridges" id="byR-tO-Qwx">
-                        <barButtonItem key="backBarButtonItem" id="Lwn-KT-EnX"/>
                         <barButtonItem key="leftBarButtonItem" image="arrowIcon20" id="hDt-8e-Syz">
                             <connections>
                                 <action selector="zoomToCurrentLocationWithSender:" destination="5Ud-D0-Tnp" id="RND-Dm-7lg"/>
@@ -289,7 +288,7 @@
                                                         <rect key="frame" x="161" y="4" width="206" height="36"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="nF8-re-zjM" id="h30-Ot-99V"/>
                                                         </connections>
@@ -310,7 +309,7 @@
                                                         <rect key="frame" x="161" y="4" width="206" height="36"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="nF8-re-zjM" id="1l1-u1-Hy2"/>
                                                         </connections>
@@ -339,6 +338,17 @@
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SYB-OT-P8r" userLabel="Stack Buttons">
                                         <rect key="frame" x="0.0" y="427" width="375" height="132"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKw-kc-hYU">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <bool key="isElement" value="NO"/>
+                                                </accessibility>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" red="0.1960784314" green="0.56862745100000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -346,20 +356,12 @@
                                 <rect key="frame" x="0.0" y="571" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="42Z-Tm-fQa" userLabel="FlexibleSpaceUIBarButtonItem"/>
-                                    <barButtonItem systemItem="cancel" id="bzQ-cZ-Xun" userLabel="CancelUIBarButtonItem">
-                                        <inset key="imageInsets" minX="20" minY="20" maxX="20" maxY="20"/>
-                                        <color key="tintColor" red="0.1588879228" green="0.53060561419999996" blue="0.91398924589999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="cancelBridge:" destination="nF8-re-zjM" id="yEW-Pe-GSO"/>
-                                            <segue destination="NKJ-18-KLq" kind="unwind" identifier="AddItemExit" unwindAction="unwindToMenuWithSegueListViewWithSegueWithSegue:" id="lHS-UZ-TU8"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Z7w-6Q-DSQ" userLabel="FlexibleSpaceUIBarButtonItem"/>
                                     <barButtonItem systemItem="save" id="OPn-MW-Xiq" userLabel="SaveUIBarButtonItem">
                                         <color key="tintColor" red="0.14941892030000001" green="0.57694840430000005" blue="0.99902075530000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <action selector="saveBridge:" destination="nF8-re-zjM" id="w6S-NP-8MS"/>
+                                            <action selector="saveBridge:" destination="nF8-re-zjM" id="BJh-wg-X3P"/>
+                                            <segue destination="NKJ-18-KLq" kind="unwind" unwindAction="unwindListViewWithSegue:" id="ZMf-qQ-jdU"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Oh6-Qg-5Sv" userLabel="FlexibleSpaceUIBarButtonItem"/>
@@ -381,9 +383,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Dg1-wS-7If"/>
                     <navigationItem key="navigationItem" title="Add a bridge" id="cvO-77-VMd">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="oFn-S4-Jpu"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="oFn-S4-Jpu"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eGd-2Q-hTU" userLabel="Save Button"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="oFn-S4-Jpu" id="WGI-Hv-Hvb"/>
                         <outlet property="descriptionText" destination="Cw9-0f-yot" id="7Ep-H0-fuw"/>
                         <outlet property="imageView" destination="Qfv-Py-o61" id="Lic-DZ-gE3"/>
                         <outlet property="locationLatitude" destination="SZz-qL-dcz" id="5Qi-GQ-PGm"/>
@@ -477,6 +481,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Bridges" id="27g-2q-dna">
+                        <barButtonItem key="leftBarButtonItem" id="HXb-dY-MJd"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WKN-dj-wXs">
                             <connections>
                                 <segue destination="nF8-re-zjM" kind="show" id="0NT-cX-aDm"/>
