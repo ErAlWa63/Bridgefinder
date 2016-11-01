@@ -25,10 +25,10 @@ class BridgeObject: NSObject, MKAnnotation {
     let title: String?
     let distance: Double?
     
-    init(name: String, description: String, image: String, latitude: Double, longitude: Double, key: String = "") {
+    init(name: String, descript: String, image: String, latitude: Double, longitude: Double, key: String = "") {
         self.key = key
         self.name = name
-        self.descript = description
+        self.descript = descript
         self.image = image
         self.latitude = longitude
         self.longitude = latitude
@@ -36,6 +36,8 @@ class BridgeObject: NSObject, MKAnnotation {
         self.title = name
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         self.distance = 0
+        
+
     }
     
     init(snapshot: FIRDataSnapshot) {
@@ -61,5 +63,5 @@ class BridgeObject: NSObject, MKAnnotation {
             "Longitude": longitude
         ]
     }
-    
+
 }

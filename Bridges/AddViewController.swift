@@ -10,44 +10,24 @@ import UIKit
 import Firebase
 
 class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    var delegate: AddViewControllerDelegate! = nil
-    
     @IBOutlet weak var backButton: UIBarButtonItem!
     
-    
-    @IBAction func cancelBridge(_ sender: UIBarButtonItem) {
-
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-    }
-    
     @IBAction func saveBridge(_ sender: UIBarButtonItem) {
-        let imageName = "\(NSUUID().uuidString).png"
-        let photoRef = FIRStorage.storage().reference().child(imageName)
-        print("Bridges: photoRef = \(photoRef)")
-        let metadata = FIRStorageMetadata()
-        metadata.contentType = "image/png"
-        let image = UIImagePNGRepresentation(imageView.image!)
         DispatchQueue.global(qos: .userInitiated).async {
-            photoRef.put(image!, metadata: metadata).observe(.success) { (snapshot) in
+            let imageName = "\(NSUUID().uuidString).png"
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/png"
+            let image = UIImagePNGRepresentation(self.imageView.image!)
+            FIRStorage.storage().reference().child(imageName).put(image!, metadata: metadata).observe(.success) { (snapshot) in
                 DispatchQueue.main.async {
                     let text = self.nameTextField.text
-                    let description = self.descriptionText.text
-                    let latitude = Double(self.locationLatitude.text!)
-                    let longitude = Double(self.locationLongitude.text!)
-                    let BridgeObjectCalculated = BridgeObject(name: text!, description: description!, image: imageName, latitude: latitude!, longitude: longitude!)
-                    let ref = FIRDatabase.database().reference()
-                    print("Bridges: ref = \(ref)")
-                    let BridgeObjectRef = ref.child(text!)
-                    print("Bridges: BridgeObjectRef = \(BridgeObjectRef)")
-                    BridgeObjectRef.setValue(BridgeObjectCalculated.toAnyObject())
-//                    delegate.didSelectBridgeObject(controller: self as UITableViewController, bridge: BridgeObjectCalculated!)
-//                    self.dismiss(animated: true, completion: nil)
-
-
-//                    self.performSegue(withIdentifier: "cancelAddViewSegue", sender: self)
+                    FIRDatabase.database().reference().child(text!).setValue(BridgeObject(
+                        name: text!,
+                        descript: self.descriptionText.text!,
+                        image: imageName,
+                        latitude: Double(self.locationLatitude.text!)!,
+                        longitude: Double(self.locationLongitude.text!)!
+                        ).toAnyObject())
                 }
             }
         }

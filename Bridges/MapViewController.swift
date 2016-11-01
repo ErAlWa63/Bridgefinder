@@ -37,6 +37,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var locationManager: CLLocationManager!
     let regionRadius: CLLocationDistance = 1
 
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear( animated)
 
@@ -50,13 +51,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             locationManager.stopUpdatingLocation()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            mapView.showsUserLocation = true
-//            mapView.delegate = self
         } else {
             locationManager = nil
         }
         
         mapView.mapType = MKMapType.standard
+        
+        for index in 0 ... (DataSource.sharedInstance.countBridge() - 1) {
+            mapView.addAnnotation(DataSource.sharedInstance.getBridge(index: index))
+        }
         
         
 //        let point = BridgeAnnotation(coordinate: <#T##CLLocationCoordinate2D#>)
@@ -90,6 +93,54 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        mapView.addAnnotation(DataSource.sharedInstance.getBridgeAnnotations() as! MKAnnotation)
 
     }
+    
+//    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+//        // If annotation is not of type RestaurantAnnotation (MKUserLocation types for instance), return nil
+//        if !(annotation is BridgeObject){
+//            return nil
+//        }
+//        
+//        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+//        
+//        if annotationView == nil{
+//            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
+//            annotationView?.canShowCallout = true
+//        }else{
+//            annotationView?.annotation = annotation
+//        }
+//        let bridgeAnnotation = annotation as! BridgeObject
+//
+//        FIRStorage.storage().reference().child(restaurantAnnotation.image).data(withMaxSize: 20*1024*1024, completion: { (data, error) -> Void in
+//            DispatchQueue.main.async {
+//                if let downloadedData = data {
+//                    cell.imageCell.image = UIImage(data: downloadedData)!
+//                    annotationView?.detailCalloutAccessoryView = UIImage(data: downloadedData)!
+//                    
+//                    // Left Accessory
+//                    let leftAccessory = UILabel(frame: CGRectMake(0,0,50,30))
+//                    leftAccessory.text = restaurantAnnotation.eta
+//                    leftAccessory.font = UIFont(name: "Verdana", size: 10)
+//                    annotationView?.leftCalloutAccessoryView = leftAccessory
+//                    
+//                    // Right accessory view
+//                    let image = UIImage(named: "bus.png")
+//                    let button = UIButton(type: .Custom)
+//                    button.frame = CGRectMake(0, 0, 30, 30)
+//                    button.setImage(image, forState: .Normal)
+//                    annotationView?.rightCalloutAccessoryView = button
+//                    return annotationView
+//
+//                }
+//            }
+//        })
+//
+//        
+//    }
+    
+//    private func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+//        let region = MKCoordinateRegion(center: self.mapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+//        mapView.setRegion(region, animated: true)
+//    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last! as CLLocation

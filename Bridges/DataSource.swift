@@ -6,13 +6,16 @@
 //  Copyright © 2016 TL. All rights reserved.
 //
 
-import UIKit
-import CoreLocation
 import Firebase
 
 class DataSource {
     static let sharedInstance = DataSource()
-    private var bridges: [BridgeObject] = []
+    private var bridges: [BridgeObject] = [] {
+        didSet {
+            
+        }
+    }
+    private var bridgesImages : Dictionary<String,ImageObject> = [:]
     
     func countBridge () -> Int {
         return bridges.count
@@ -22,26 +25,36 @@ class DataSource {
         return bridges[index]
     }
     
-    func loadBridges () -> Void {
+    func loadBridges () -> () {
         FIRDatabase.database().reference().observe(.value, with: { currentFIRDataSnapshot in
             var newBridgeObject: [BridgeObject] = []
             for currentChildAnyObject in currentFIRDataSnapshot.children {
-                let currentChildFIRDataSnapshot = currentChildAnyObject as! FIRDataSnapshot
-                let BridgeObjectCalculated = BridgeObject(snapshot: currentChildFIRDataSnapshot)
-                newBridgeObject.append(BridgeObjectCalculated)
+                let currentBridgeObject = BridgeObject(snapshot: currentChildAnyObject as! FIRDataSnapshot)
+                self.loadImageObject(name: currentBridgeObject.image)
+                newBridgeObject.append(currentBridgeObject)
             }
             self.bridges = newBridgeObject
         })
     }
     
-//    func getBridgeAnnotations () -> NSObject {
-//        var bridgeAnnotations = [BridgeAnnotation] ()
-//        for bridge in bridges {
-//            let currentBridgeAnnotation = BridgeAnnotation( coordinate: CLLocationCoordinate2DMake(bridge.latitude, bridge.longitude))
-//            currentBridgeAnnotation.title = bridge.name
-//            currentBridgeAnnotation.image = bridge.image
-//            bridgeAnnotations.append( currentBridgeAnnotation)
-//        }
-//        return bridgeAnnotations as NSObject
-//    }
+    func loadImageObject (name: String) -> () {
+        if bridgesImages[name] == nil {
+            DispatchQueue.global(qos: .userInitiated).async {
+                FIRStorage.storage().reference().child(name).data(withMaxSize: 20*1024*1024, completion: { (data, error) -> Void in
+                    if let downloadedData = data {
+                        self.bridgesImages[name] = ImageObject( photo: UIImage(data: downloadedData)!)
+                    }
+                })
+            }
+        }
+    }
+    
+    func getImageObject (name: String) -> ImageObject? {
+        if let bridgeImages = bridgesImages[name] {
+            return bridgeImages
+        } else {
+            return nil
+        }
+    }
+    
 }
