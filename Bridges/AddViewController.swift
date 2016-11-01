@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
-    @IBOutlet weak var backButton: UIBarButtonItem!
+
     
     @IBAction func saveBridgeButton(_ sender: UIBarButtonItem) {
         
@@ -34,57 +34,45 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         }
     }
 
-    
-    @IBAction func saveBridgeNavigation(_ sender: UIBarButtonItem) {
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            let imageName = "\(NSUUID().uuidString).png"
-            let metadata = FIRStorageMetadata()
-            metadata.contentType = "image/png"
-            let image = UIImagePNGRepresentation(self.presentingView.image!)
-            FIRStorage.storage().reference().child(imageName).put(image!, metadata: metadata).observe(.success) { (snapshot) in
-                DispatchQueue.main.async {
-                    let text = self.nameTextField.text
-                    FIRDatabase.database().reference().child(text!).setValue(BridgeObject(
-                        name: text!,
-                        descript: self.descriptionText.text!,
-                        image: imageName,
-                        latitude: Double(self.locationLatitude.text!)!,
-                        longitude: Double(self.locationLongitude.text!)!
-                        ).toAnyObject())
-                }
-            }
-        }
-    }
-    
 
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
     // Enabling save button when fields have text
-
+    
+    
+    
+    
     
     @IBAction func nameTextFieldCheck(_ sender: UITextField) {
-        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
                    saveButton.isEnabled = true
         }
     }
     
 
     @IBAction func latitudeCheck(_ sender: UITextField) {
-        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
             saveButton.isEnabled = true
         }
     }
 
     @IBAction func longitudeCheck(_ sender: UITextField) {
-        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
             saveButton.isEnabled = true
         }
     }
     
+//    @IBAction func descriptionCheck(_ sender: UITextView) {
+//        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && (presentingView.image != nil){
+//            saveButton.isEnabled = true
+//        }
+//        
+//    }
     
+
+
     
     @IBOutlet var descriptionText  : UITextView!
     @IBOutlet var imageView        : UIImageView!
@@ -110,6 +98,10 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         photoLibrary.addGestureRecognizer(tapLibraryRecognizer)
         
         
+        presentingView.isUserInteractionEnabled = true
+        
+        
+        
 
         descriptionText.text = "Description of the new bridge"
         descriptionText.textColor = UIColor.lightGray
@@ -120,7 +112,13 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
 
     }
     
-    func imageViewTapped(imgage: AnyObject) {
+    func imageCheck (image: AnyObject) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
+            saveButton.isEnabled = true
+        }
+    }
+    
+    func imageViewTapped(image: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -132,7 +130,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func photoLibraryTapped(imgage: AnyObject) {
+    func photoLibraryTapped(image: AnyObject) {
         let imagePickerLibrary = UIImagePickerController()
         imagePickerLibrary.allowsEditing = true
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
