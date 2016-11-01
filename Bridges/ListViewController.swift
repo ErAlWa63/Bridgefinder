@@ -15,7 +15,7 @@ class ListViewController: UITableViewController, AddViewControllerDelegate, Deta
 
     
     
-    var bridge = BridgeObject(name: "A", description: "B", image: "leeg.png", latitude: 0.0, longitude: 0.0)
+    var bridge = BridgeObject(name: "A", descript: "B", image: "leeg.png", latitude: 0.0, longitude: 0.0)
     
     func didSelectBridgeObject (controller: UITableViewController, bridge: BridgeObject) {
         if controller.navigationController?.popViewController(animated: true) == nil {return}
