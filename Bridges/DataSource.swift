@@ -25,6 +25,11 @@ class DataSource {
         return bridges[index]
     }
     
+    func removeBridge (bridge: BridgeObject) -> () {
+        FIRStorage.storage().reference().child(bridge.image).delete(completion: nil)
+        bridge.ref?.removeValue()
+    }
+    
     func loadBridges () -> () {
         FIRDatabase.database().reference().observe(.value, with: { currentFIRDataSnapshot in
             var newBridgeObject: [BridgeObject] = []

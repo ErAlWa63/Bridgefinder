@@ -12,7 +12,32 @@ import Firebase
 class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var backButton: UIBarButtonItem!
     
+    @IBAction func saveBridge2(_ sender: UIBarButtonItem) {
+        let erik = "test"
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let imageName = "\(NSUUID().uuidString).png"
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/png"
+            let image = UIImagePNGRepresentation(self.imageView.image!)
+            FIRStorage.storage().reference().child(imageName).put(image!, metadata: metadata).observe(.success) { (snapshot) in
+                DispatchQueue.main.async {
+                    let text = self.nameTextField.text
+                    FIRDatabase.database().reference().child(text!).setValue(BridgeObject(
+                        name: text!,
+                        descript: self.descriptionText.text!,
+                        image: imageName,
+                        latitude: Double(self.locationLatitude.text!)!,
+                        longitude: Double(self.locationLongitude.text!)!
+                        ).toAnyObject())
+                }
+            }
+        }
+        
+    }
     @IBAction func saveBridge(_ sender: UIBarButtonItem) {
+        let erik = "test"
+        
         DispatchQueue.global(qos: .userInitiated).async {
             let imageName = "\(NSUUID().uuidString).png"
             let metadata = FIRStorageMetadata()
