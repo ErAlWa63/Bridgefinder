@@ -153,7 +153,6 @@
                         <outlet property="descriptionLabel" destination="yhW-eJ-Cu4" id="mC0-AX-FSi"/>
                         <outlet property="locationLabel" destination="H2r-QS-mgb" id="9GI-5T-RiJ"/>
                         <outlet property="nameLabel" destination="ovO-2w-efZ" id="YM5-ND-BcX"/>
-                        <outlet property="spinner" destination="Fcb-Ji-9yi" id="ClI-5X-Dsv"/>
                         <segue destination="guu-8Q-Zel" kind="unwind" identifier="unwindtoMenuWithSequeListView" unwindAction="unwindToMenuWithSegue:" id="Fox-KT-P4T"/>
                     </connections>
                 </viewController>

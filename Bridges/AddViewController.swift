@@ -48,7 +48,6 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     let saveButtonState = UIButton(type: UIButtonType.system) as UIButton
     
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
@@ -132,27 +131,6 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     func textViewShouldReturn(textView: UITextView) -> Bool {
         textView.resignFirstResponder()
         return true
-    }
-    
-}
-extension UIImage {
-    func resizedImage(newSize: CGSize) -> UIImage {
-        guard self.size != newSize else { return self }
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
-        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
-    func resizedImageWithinRect(rectSize: CGSize) -> UIImage {
-        let widthFactor = size.width / rectSize.width
-        let heightFactor = size.height / rectSize.height
-        var resizeFactor = widthFactor
-        if size.height > size.width {
-            resizeFactor = heightFactor
-        }
-        return resizedImage(newSize: CGSize(width: size.width/resizeFactor, height: size.height/resizeFactor))
     }
     
 }
