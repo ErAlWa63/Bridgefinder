@@ -11,8 +11,6 @@
 		0307D5B41DC37EBF00948933 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0307D5B31DC37EBF00948933 /* GoogleService-Info.plist */; };
 		0308AF081DC88D3800A05F63 /* ImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308AF071DC88D3800A05F63 /* ImageObject.swift */; };
 		0308AF0A1DC8A4E000A05F63 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308AF091DC8A4E000A05F63 /* ExtensionUIImage.swift */; };
-		039595C21DC546200017BC7F /* AddViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039595C11DC546200017BC7F /* AddViewControllerDelegate.swift */; };
-		039595C41DC553250017BC7F /* DetailViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039595C31DC553250017BC7F /* DetailViewControllerDelegate.swift */; };
 		4D6544898A89C63570AADA65 /* Pods_Bridges.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */; };
 		761069D71DB8D7BB009CBCB4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */; };
 		761069D91DB8D861009CBCB4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069D81DB8D861009CBCB4 /* MapViewController.swift */; };
@@ -36,8 +34,6 @@
 		0307D5B31DC37EBF00948933 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0308AF071DC88D3800A05F63 /* ImageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageObject.swift; sourceTree = "<group>"; };
 		0308AF091DC8A4E000A05F63 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIImage.swift; sourceTree = "<group>"; };
-		039595C11DC546200017BC7F /* AddViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewControllerDelegate.swift; sourceTree = "<group>"; };
-		039595C31DC553250017BC7F /* DetailViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewControllerDelegate.swift; sourceTree = "<group>"; };
 		4C788D4FCDB2BA5EDAC3BEF7 /* Pods-Bridges.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bridges.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bridges/Pods-Bridges.release.xcconfig"; sourceTree = "<group>"; };
 		57C2A3F2AC8ACA8FDD716C63 /* Pods_Bridges.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bridges.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -88,8 +84,6 @@
 		039595C01DC545E20017BC7F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				039595C11DC546200017BC7F /* AddViewControllerDelegate.swift */,
-				039595C31DC553250017BC7F /* DetailViewControllerDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -313,11 +307,9 @@
 				761069DF1DB8D94D009CBCB4 /* AddViewController.swift in Sources */,
 				76BD39861DBE46AA0046AAEE /* BridgeObject.swift in Sources */,
 				761069DD1DB8D909009CBCB4 /* DetailViewController.swift in Sources */,
-				039595C41DC553250017BC7F /* DetailViewControllerDelegate.swift in Sources */,
 				76BD39881DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift in Sources */,
 				761069D71DB8D7BB009CBCB4 /* WelcomeViewController.swift in Sources */,
 				761069DB1DB8D8C5009CBCB4 /* ListViewController.swift in Sources */,
-				039595C21DC546200017BC7F /* AddViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
