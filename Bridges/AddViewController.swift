@@ -190,7 +190,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         return true
     }
     
-    func textViewShouldReturn(textView: UITextView) -> Bool {
+    private func textViewShouldReturn(textView: UITextView) -> Bool {
         textView.resignFirstResponder()
         return true
     }
