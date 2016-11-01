@@ -44,7 +44,7 @@ class ListViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.rowHeight = 100
+        tableView.rowHeight                            = 100
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.reloadData()
     }

@@ -13,17 +13,18 @@ import MapKit
 
 class BridgeObject: NSObject, MKAnnotation {
     
-    let name: String
-    let descript: String
-    let image: String
-    let latitude: Double
-    let longitude: Double
-    let ref: FIRDatabaseReference?
-    let key: String
+    let name       : String
+    let descript   : String
+    let image      : String
+    let latitude   : Double
+    let longitude  : Double
+    let ref        : FIRDatabaseReference?
+    let key        : String
 
-    let coordinate: CLLocationCoordinate2D
-    let title: String?
-    let distance: Double?
+    let coordinate : CLLocationCoordinate2D
+    let title      : String?
+    let distance   : Double?
+    let identifier : String
     
     init(name: String, descript: String, image: String, latitude: Double, longitude: Double, key: String = "") {
         self.key = key
@@ -36,8 +37,7 @@ class BridgeObject: NSObject, MKAnnotation {
         self.title = name
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         self.distance = 0
-        
-
+        self.identifier = "BridgePin"
     }
     
     init(snapshot: FIRDataSnapshot) {
@@ -52,6 +52,7 @@ class BridgeObject: NSObject, MKAnnotation {
         title = name
         coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         self.distance = 0
+        self.identifier = "BridgePin"
     }
     
     func toAnyObject() -> Any {
