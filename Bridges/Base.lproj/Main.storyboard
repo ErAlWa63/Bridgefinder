@@ -211,11 +211,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Bridges" id="byR-tO-Qwx">
-                        <barButtonItem key="leftBarButtonItem" image="arrowIcon20" id="hDt-8e-Syz">
-                            <connections>
-                                <action selector="zoomToCurrentLocationWithSender:" destination="5Ud-D0-Tnp" id="RND-Dm-7lg"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" image="arrowIcon20" id="Pc5-ad-dX5"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="b6P-i8-bat">
                             <connections>
                                 <segue destination="nF8-re-zjM" kind="show" id="Ha9-E4-JSH"/>
@@ -382,12 +378,10 @@
                         </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Dg1-wS-7If"/>
-                    <navigationItem key="navigationItem" title="Add a bridge" id="cvO-77-VMd">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="oFn-S4-Jpu"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eGd-2Q-hTU" userLabel="Save Button"/>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Add a bridge" id="cvO-77-VMd"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="backButton" destination="oFn-S4-Jpu" id="WGI-Hv-Hvb"/>
                         <outlet property="descriptionText" destination="Cw9-0f-yot" id="7Ep-H0-fuw"/>
                         <outlet property="imageView" destination="Qfv-Py-o61" id="Lic-DZ-gE3"/>
                         <outlet property="locationLatitude" destination="SZz-qL-dcz" id="5Qi-GQ-PGm"/>
@@ -481,7 +475,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Bridges" id="27g-2q-dna">
-                        <barButtonItem key="leftBarButtonItem" id="HXb-dY-MJd"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WKN-dj-wXs">
                             <connections>
                                 <segue destination="nF8-re-zjM" kind="show" id="0NT-cX-aDm"/>
