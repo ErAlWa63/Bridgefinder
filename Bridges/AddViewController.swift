@@ -42,6 +42,8 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet var cancelButton     : UIBarButtonItem!
     @IBOutlet var descriptionText  : UITextView!
     @IBOutlet var imageView        : UIImageView!
+    
+    @IBOutlet var photoLibrary     : UIImageView!
     @IBOutlet var locationLatitude : UITextField!
     @IBOutlet var locationLongitude: UITextField!
     @IBOutlet var nameTextField    : UITextField!
@@ -50,9 +52,16 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        let tapLibraryRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoLibraryTapped))
+        photoLibrary.isUserInteractionEnabled = true
+        photoLibrary.addGestureRecognizer(tapLibraryRecognizer)
+        
+        
 
         descriptionText.text = "Description of the new bridge"
         descriptionText.textColor = UIColor.lightGray
@@ -88,6 +97,18 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    func photoLibraryTapped(imgage: AnyObject) {
+        let imagePickerLibrary = UIImagePickerController()
+        imagePickerLibrary.allowsEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+        imagePickerLibrary.sourceType = .photoLibrary
+        } else {
+            imagePickerLibrary.sourceType = .savedPhotosAlbum
+        }
+        imagePickerLibrary.delegate = self
+        present(imagePickerLibrary, animated: true, completion: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -121,6 +142,15 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         imageView.image = image.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
         imageView.contentMode = .scaleAspectFit
         dismiss(animated: true, completion: nil)
+    
+    }
+    
+    func libraryPickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let imageLibrary = info[UIImagePickerControllerOriginalImage] as! UIImage
+        photoLibrary.image = imageLibrary.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
+        photoLibrary.contentMode = .scaleAspectFit
+        dismiss(animated: true, completion: nil)
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
