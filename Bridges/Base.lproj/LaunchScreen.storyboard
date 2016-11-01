@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_5" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,31 +13,31 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="partialCurl" id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="eRL-o9-TIs"/>
+                        <viewControllerLayoutGuide type="bottom" id="55c-Id-nQ5"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <view key="view" contentMode="scaleToFill" id="91r-mL-mKp">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bridges-logo-500" translatesAutoresizingMaskIntoConstraints="NO" id="4Rv-g0-u22">
-                                <rect key="frame" x="44" y="176" width="326" height="384"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bridges-logo-500" translatesAutoresizingMaskIntoConstraints="NO" id="Mh1-gW-xBp">
+                                <rect key="frame" x="64" y="262" width="640" height="500"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.24420768022537231" green="0.59349459409713745" blue="0.97317856550216675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.2442076802" green="0.59349459410000005" blue="0.97317856550000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="4Rv-g0-u22" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7yb-sX-Puh"/>
-                            <constraint firstItem="4Rv-g0-u22" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="24" id="B4b-c2-cqn"/>
-                            <constraint firstItem="4Rv-g0-u22" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="kSW-Fg-bPa"/>
-                            <constraint firstItem="4Rv-g0-u22" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="156" id="sVG-50-Bjz"/>
+                            <constraint firstItem="Mh1-gW-xBp" firstAttribute="leading" secondItem="91r-mL-mKp" secondAttribute="leadingMargin" constant="44" id="2CQ-vp-meY"/>
+                            <constraint firstItem="Mh1-gW-xBp" firstAttribute="centerX" secondItem="91r-mL-mKp" secondAttribute="centerX" id="BAZ-Kb-rlL"/>
+                            <constraint firstItem="Mh1-gW-xBp" firstAttribute="centerY" secondItem="91r-mL-mKp" secondAttribute="centerY" id="Ip4-bg-vCn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mh1-gW-xBp" secondAttribute="trailing" constant="44" id="mZh-R6-nim"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.34375" y="375"/>
         </scene>
     </scenes>
     <resources>

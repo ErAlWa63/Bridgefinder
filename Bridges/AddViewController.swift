@@ -73,6 +73,11 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
 
 
+    @IBOutlet var nameLabel: UILabel!
+    
+    @IBOutlet var latitudeLabel: UILabel!
+    
+    @IBOutlet var longitudeLabel: UILabel!
     
     @IBOutlet var descriptionText  : UITextView!
     @IBOutlet var imageView        : UIImageView!
@@ -100,15 +105,31 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         presentingView.isUserInteractionEnabled = true
         
-        
-        
-
         descriptionText.text = "Description of the new bridge"
         descriptionText.textColor = UIColor.lightGray
+        descriptionText.font = UIFont(name: "Futura", size: 14)
         //        descriptionText.becomeFirstResponder()
         descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
         
         saveButton.isEnabled = false
+        
+        
+        // Font type and size
+        
+        nameTextField.font = UIFont(name: "Futura", size: 14)
+        locationLatitude.font = UIFont(name: "Futura", size: 14)
+        locationLongitude.font = UIFont(name: "Futura", size: 14)
+        nameLabel.font = UIFont(name: "Futura", size: 14)
+        latitudeLabel.font = UIFont(name: "Futura", size: 14)
+        longitudeLabel.font = UIFont(name: "Futura", size: 14)
+        
+//        UINavigationBar.appearance().titleTextAttributes([NSFontAttributeName: UIFont.fontNames(forFamilyName: "Futura"), NSForegroundColorAttributeName:UIColor.white], for: UIControlState.normal)
+        
+//        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont.fontNames(forFamilyName: "Futura"), NSForegroundColorAttributeName:UIColor.white], for: UIControlState.normal)
+        
+        
+        
+        
 
     }
     

@@ -23,5 +23,11 @@ class DetailViewController: UIViewController {
         descriptionLabel.text = currentBridge.descript
         locationLabel.text    = "\(currentBridge.latitude) - \(currentBridge.longitude)"
         bridgeImage.image     = DataSource.sharedInstance.getImageObject(name: currentBridge.image)?.photo
+        
+        // Text settings
+        
+        nameLabel.font = UIFont(name: "Futura", size: 25)
+        descriptionLabel.font = UIFont(name: "Futura", size: 17)
+        locationLabel.font = UIFont(name: "Futura", size: 17)
     }
 }
