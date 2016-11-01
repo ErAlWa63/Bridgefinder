@@ -12,7 +12,7 @@ import FirebaseStorage
 
 class ListViewController: UITableViewController, AddViewControllerDelegate, DetailViewControllerDelegate {
     
-
+    
     
     
     var bridge = BridgeObject(name: "A", descript: "B", image: "leeg.png", latitude: 0.0, longitude: 0.0)
@@ -23,7 +23,7 @@ class ListViewController: UITableViewController, AddViewControllerDelegate, Deta
     func didDetailView( controller: UITableViewController, bridge: BridgeObject) {
         if controller.navigationController?.popViewController(animated: true) == nil {return}
     }
-
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bridge: BridgeObject? = nil
@@ -34,7 +34,7 @@ class ListViewController: UITableViewController, AddViewControllerDelegate, Deta
             if let row = tableView.indexPathForSelectedRow?.row {
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.currentBridge = DataSource.sharedInstance.getBridge(index: row)
-//                detailViewController.delegate
+                //                detailViewController.delegate
             }
         }
     }
@@ -44,21 +44,12 @@ class ListViewController: UITableViewController, AddViewControllerDelegate, Deta
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let bridge = DataSource.sharedInstance.getBridge(index: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as! BridgeObjectCellTableViewCell
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bridge = DataSource.sharedInstance.getBridge(index: indexPath.row)
-            FIRStorage.storage().reference().child(bridge.image).data(withMaxSize: 20*1024*1024, completion: { (data, error) -> Void in
-                DispatchQueue.main.async {
-                    if let downloadedData = data {
-                        cell.nameCell?.text = bridge.name
-                        cell.descriptionCell?.text = bridge.description
-                        cell.locationCell?.text = "\(bridge.latitude) - \(bridge.longitude)"
-                        cell.imageCell.image = UIImage(data: downloadedData)!
-                    }
-                }
-            })
-            
-        }
+        cell.nameCell?.text        = bridge.name
+        cell.descriptionCell?.text = bridge.descript
+        cell.locationCell?.text    = "\(bridge.latitude) - \(bridge.longitude)"
+        cell.imageCell.image       = DataSource.sharedInstance.getImageObject(name: bridge.image)?.pictogram
         return cell
     }
     
@@ -80,7 +71,7 @@ class ListViewController: UITableViewController, AddViewControllerDelegate, Deta
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.reloadData()
         
-     }
+    }
     
     //    nog te testen:
     @IBAction func unwindListView(segue: UIStoryboardSegue) {
