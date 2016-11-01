@@ -9,15 +9,16 @@
 import UIKit
 import Firebase
 
-class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
     @IBOutlet weak var backButton: UIBarButtonItem!
     
-    @IBAction func saveBridge2(_ sender: UIBarButtonItem) {
+    @IBAction func saveBridgeButton(_ sender: UIBarButtonItem) {
+        
         DispatchQueue.global(qos: .userInitiated).async {
             let imageName = "\(NSUUID().uuidString).png"
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/png"
-            let image = UIImagePNGRepresentation(self.imageView.image!)
+            let image = UIImagePNGRepresentation(self.presentingView.image!)
             FIRStorage.storage().reference().child(imageName).put(image!, metadata: metadata).observe(.success) { (snapshot) in
                 DispatchQueue.main.async {
                     let text = self.nameTextField.text
@@ -31,24 +32,71 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 }
             }
         }
-        
     }
+
+    
+    @IBAction func saveBridgeNavigation(_ sender: UIBarButtonItem) {
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let imageName = "\(NSUUID().uuidString).png"
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/png"
+            let image = UIImagePNGRepresentation(self.presentingView.image!)
+            FIRStorage.storage().reference().child(imageName).put(image!, metadata: metadata).observe(.success) { (snapshot) in
+                DispatchQueue.main.async {
+                    let text = self.nameTextField.text
+                    FIRDatabase.database().reference().child(text!).setValue(BridgeObject(
+                        name: text!,
+                        descript: self.descriptionText.text!,
+                        image: imageName,
+                        latitude: Double(self.locationLatitude.text!)!,
+                        longitude: Double(self.locationLongitude.text!)!
+                        ).toAnyObject())
+                }
+            }
+        }
+    }
+    
 
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
-    @IBOutlet var saveBridgeButton : UIButton!
-    @IBOutlet var cancelButton     : UIBarButtonItem!
+    // Enabling save button when fields have text
+
+    
+    @IBAction func nameTextFieldCheck(_ sender: UITextField) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText {
+                   saveButton.isEnabled = true
+        }
+    }
+    
+
+    @IBAction func latitudeCheck(_ sender: UITextField) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText {
+            saveButton.isEnabled = true
+        }
+    }
+
+    @IBAction func longitudeCheck(_ sender: UITextField) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText {
+            saveButton.isEnabled = true
+        }
+    }
+    
+    
+    
     @IBOutlet var descriptionText  : UITextView!
     @IBOutlet var imageView        : UIImageView!
     
+    @IBOutlet var saveButton       : UIBarButtonItem!
+    @IBOutlet var presentingView   : UIImageView!
     @IBOutlet var photoLibrary     : UIImageView!
     @IBOutlet var locationLatitude : UITextField!
     @IBOutlet var locationLongitude: UITextField!
     @IBOutlet var nameTextField    : UITextField!
     
-    let saveButtonState = UIButton(type: UIButtonType.system) as UIButton
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,22 +116,8 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         //        descriptionText.becomeFirstResponder()
         descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
         
-        // Setting back button text to back - testing
-        
-//        self.backButton.title = "Back"
+        saveButton.isEnabled = false
 
-        
-//         // Disable save button when not all fields are filled
-//        
-//        if nameTextField.text!.isEmpty, descriptionText.text!.isEmpty, locationLatitude.text!.isEmpty, locationLongitude.text!.isEmpty {
-//            saveButtonState.isEnabled = false
-//            
-//        } else {
-//            
-//            saveButtonState.isEnabled = true
-//        }
-        
-        
     }
     
     func imageViewTapped(imgage: AnyObject) {
@@ -114,7 +148,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         super.didReceiveMemoryWarning()
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let currentText:NSString = descriptionText.text as NSString
         let updatedText = currentText.replacingCharacters(in: range, with:text)
         if updatedText.isEmpty {
@@ -129,7 +163,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         return true
     }
     
-    func textViewDidChangeSelection(textView: UITextView) {
+    func textViewDidChangeSelection(_ textView: UITextView) {
         if self.view.window != nil {
             if descriptionText.textColor == UIColor.lightGray {
                 descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
@@ -139,7 +173,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.image = image.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
+        presentingView.image = image.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
         imageView.contentMode = .scaleAspectFit
         dismiss(animated: true, completion: nil)
     
@@ -147,7 +181,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     func libraryPickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let imageLibrary = info[UIImagePickerControllerOriginalImage] as! UIImage
-        photoLibrary.image = imageLibrary.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
+        presentingView.image = imageLibrary.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
         photoLibrary.contentMode = .scaleAspectFit
         dismiss(animated: true, completion: nil)
         
