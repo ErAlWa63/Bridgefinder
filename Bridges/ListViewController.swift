@@ -7,25 +7,13 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
 
 class ListViewController: UITableViewController {
     
-//    var bridge = BridgeObject(name: "A", descript: "B", image: "leeg.png", latitude: 0.0, longitude: 0.0)
-//    
-//    func didSelectBridgeObject (controller: UITableViewController, bridge: BridgeObject) {
-//        if controller.navigationController?.popViewController(animated: true) == nil {return}
-//    }
-//    func didDetailView( controller: UITableViewController, bridge: BridgeObject) {
-//        if controller.navigationController?.popViewController(animated: true) == nil {return}
-//    }
-//    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowItem" {
             if let row = tableView.indexPathForSelectedRow?.row {
                 (segue.destination as! DetailViewController).currentBridge = DataSource.sharedInstance.getBridge(index: row)
-//                detailViewController.delegate
             }
         }
     }
@@ -59,34 +47,6 @@ class ListViewController: UITableViewController {
         tableView.rowHeight = 100
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.reloadData()
-        
     }
-    
-    //    nog te testen:
-    @IBAction func unwindListView(segue: UIStoryboardSegue) {
-        print("Bridges: unwindListView")
-    }
-    
-    
-    
-    
-    // Segue Function
-    
-    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    //        // Get the new view controller using segue.destinationViewController.
-    //        // Pass the selected object to the new view controller.
-    //        print("Preparing")
-    //        if (segue.identifier == "showSearchResult")
-    //        {
-    //            if let destinationViewController = segue.destinationViewController as? DetailViewController {
-    //                destinationViewController.nam = self.moviePlot
-    //                destinationViewController.imdbRating = self.movieRating
-    //                destinationViewController.name = self.movieName
-    //                destinationViewController.imagePath = self.moviePicturePath
-    //
-    //            }
-    //        }
-    //
-    //    }
 }
 

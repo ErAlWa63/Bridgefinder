@@ -1,5 +1,5 @@
 //
-//  FirebaseObject.swift
+//  BridgeObject.swift
 //  Bridges
 //
 //  Created by Erik Waterham on 26/10/2016.
