@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import CoreLocation
 
 class DataSource {
     static let sharedInstance = DataSource()
@@ -16,6 +17,7 @@ class DataSource {
         }
     }
     private var bridgesImages : Dictionary<String,ImageObject> = [:]
+//    private var currentLocation : CLLocation()
     
     func countBridge () -> Int {
         return bridges.count
