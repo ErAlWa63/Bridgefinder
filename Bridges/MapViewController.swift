@@ -23,18 +23,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.zoomToUserLocation()
     }
     
-//    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-//        let region = MKCoordinateRegion(center: self.mapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-//        mapView.setRegion(region, animated: true)
-//    }
-//    
+    //    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+    //        let region = MKCoordinateRegion(center: self.mapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+    //        mapView.setRegion(region, animated: true)
+    //    }
+    //
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowItem" {
-            //            if let row = tableView.indexPathForSelectedRow?.row {
-            //                let detailViewController = segue.destination as! DetailViewController
-            //                detailViewController.currentBridge = DataSource.sharedInstance.getBridge(index: row)
-            //                detailViewController.delegate
-            //            }
+            (segue.destination as! DetailViewController).currentBridge = mapView.selectedAnnotations[0] as! BridgeObject
         }
     }
     
@@ -43,7 +39,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager = CLLocationManager()
         locationManager.requestAlwaysAuthorization()
         if (CLLocationManager.locationServicesEnabled()) {
-//            locationManager.startUpdatingLocation()
+            //            locationManager.startUpdatingLocation()
             locationManager.stopUpdatingLocation()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -64,27 +60,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             view = dequeuedView
         } else {
             view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
-            view.pinTintColor = UIColor.black
-//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapDetailViewController))
-//            tapGesture.allowedPressTypes = [NSNumber(value: UIPressType.select.rawValue)]
-//            view.leftCalloutAccessoryView?.addGestureRecognizer(tapGesture)
-//            view.image = UIImage(named: "launchscreenBridgesV7-300")
+            view.pinTintColor = UIColor.blue
             view.isEnabled = true
             let button = UIButton(type: .detailDisclosure)
             button.addTarget(self, action: #selector(tapDetailViewController), for: UIControlEvents.touchUpInside)
             view.rightCalloutAccessoryView = button
             view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -15, y: 5)
-//            view.rightCalloutAccessoryView = UIButton.withType(.detailDisclosure) as UIView
+            view.calloutOffset = CGPoint(x: -9, y: -2)
+            view.animatesDrop = true
+            view.a
         }
         view.leftCalloutAccessoryView = UIImageView(image: DataSource.sharedInstance.getImageObject(name: annotation.image)?.pictogram)
         return view
     }
     
     func tapDetailViewController () {
-        print("Bridges: tapDetailViewController")
+        performSegue(withIdentifier: "ShowItem", sender: self)
     }
-    
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinatRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
