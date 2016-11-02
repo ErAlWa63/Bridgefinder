@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
+class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
     
     @IBAction func saveBridgeButton(_ sender: UIBarButtonItem) {
@@ -73,7 +73,9 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
 //        
 //    }
     
+    @IBOutlet var mainScrollView: UIScrollView!
 
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
     @IBOutlet var nameLabel: UILabel!
     
@@ -96,6 +98,13 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameTextField.delegate = self
+        locationLatitude.delegate = self
+        locationLongitude.delegate = self
+        descriptionText.delegate = self
+        
+        
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
@@ -115,6 +124,8 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         saveButton.isEnabled = false
         
+//        mainScrollView.contentSize.height = 1000
+        
         
         // Font type and size
         
@@ -125,19 +136,12 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         latitudeLabel.font = UIFont(name: "Futura", size: 14)
         longitudeLabel.font = UIFont(name: "Futura", size: 14)
         
-//        nameTextField.clearsOnBeginEditing = true
-//        locationLatitude.clearsOnBeginEditing = true
-//        locationLongitude.clearsOnBeginEditing = true
-//        descriptionText.clearsOnInsertion = true
+        // Keyboard
         
-//        UINavigationBar.appearance().titleTextAttributes([NSFontAttributeName: UIFont.fontNames(forFamilyName: "Futura"), NSForegroundColorAttributeName:UIColor.white], for: UIControlState.normal)
+//        NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        
+//        NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-//        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont.fontNames(forFamilyName: "Futura"), NSForegroundColorAttributeName:UIColor.white], for: UIControlState.normal)
-        
-        
-        
-        
-
     }
     
     func imageCheck (image: AnyObject) {
@@ -213,8 +217,43 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//    func keyboardWillShow(notification:NSNotification) {
+//        adjustingHeight(show: true, notification: notification)
+//    }
+//    
+//    func keyboardWillHide(notification:NSNotification) {
+//        adjustingHeight(show: false, notification: notification)
+//    }
+//    
+//    func adjustingHeight(show:Bool, notification:NSNotification) {
+//        // 1
+//        var userInfo = notification.userInfo!
+//        // 2
+//        let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+//        // 3
+//        let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
+//        // 4
+////        let changeInHeight = (keyboardFrame.height + 40) * (show ? 1 : -1)
+//        //5
+//        let contentInsets = UIEdgeInsetsMake(self.view.frame.origin.x, self.view.frame.origin.y, keyboardFrame.height+100, 0)
+//        UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
+////            self.bottomConstraint.constant += changeInHeight
+//            self.mainScrollView.contentInset = contentInsets;
+//            self.mainScrollView.scrollIndicatorInsets = contentInsets;
+//        })
+//        
+//        
+//    }
+    
+
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    
+    private func textViewDidEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
         return true
     }
     
@@ -222,6 +261,12 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         textView.resignFirstResponder()
         return true
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
+    
     
 }
 
