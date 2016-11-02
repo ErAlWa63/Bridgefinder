@@ -276,7 +276,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Bridges" id="byR-tO-Qwx">
-                        <barButtonItem key="leftBarButtonItem" image="arrowIcon20" id="Pc5-ad-dX5"/>
+                        <barButtonItem key="leftBarButtonItem" image="arrowIcon20" id="Pc5-ad-dX5">
+                            <connections>
+                                <action selector="zoomToCurrentLocationWithSender:" destination="5Ud-D0-Tnp" id="S3Y-TE-duq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="b6P-i8-bat">
                             <connections>
                                 <segue destination="nF8-re-zjM" kind="show" id="Ha9-E4-JSH"/>
@@ -486,7 +490,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="ctv-YF-CYp" id="mUG-7c-jKo">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-rw-ugb">

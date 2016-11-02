@@ -17,6 +17,7 @@ protocol DataSourceDelegate{
 class DataSource {
     static let sharedInstance = DataSource()
     var delegate: DataSourceDelegate? = nil
+    private var locationManager: CLLocationManager!
     
     private var bridges: [BridgeObject] = [] {
         didSet {
@@ -28,7 +29,12 @@ class DataSource {
             delegate?.bridgesDidChange()
         }
     }
-//    private var currentLocation : CLLocation()
+    
+    private func configLocationManager () -> () {
+        locationManager = CLLocationManager()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
     
     func countBridge () -> Int {
         return bridges.count
@@ -44,6 +50,7 @@ class DataSource {
     }
     
     func loadBridges () -> () {
+        configLocationManager()
         FIRDatabase.database().reference().observe(.value, with: { currentFIRDataSnapshot in
             var newBridgeObject: [BridgeObject] = []
             for currentChildAnyObject in currentFIRDataSnapshot.children {

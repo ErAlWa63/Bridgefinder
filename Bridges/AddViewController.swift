@@ -10,10 +10,8 @@ import UIKit
 import Firebase
 
 class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
-
     
     @IBAction func saveBridgeButton(_ sender: UIBarButtonItem) {
-        
         DispatchQueue.global(qos: .userInitiated).async {
             let imageName = "\(NSUUID().uuidString).png"
             let metadata = FIRStorageMetadata()
@@ -32,27 +30,18 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 }
             }
         }
-        self.navigationController?.popViewController(animated: true)
-
+        _ = navigationController?.popViewController(animated: true)
     }
-
 
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
-    
-    // Enabling save button when fields have text
-    
-    
-    
-    
     
     @IBAction func nameTextFieldCheck(_ sender: UITextField) {
         if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
                    saveButton.isEnabled = true
         }
     }
-    
 
     @IBAction func latitudeCheck(_ sender: UITextField) {
         if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
