@@ -5,18 +5,29 @@
 //  Created by Erik Waterham on 26/10/2016.
 //  Copyright © 2016 TL. All rights reserved.
 //
+//  https://makeapppie.com/2016/08/01/using-observers-and-delegates-on-the-model/
 
 import Firebase
 import CoreLocation
 
+protocol DataSourceDelegate{
+    func bridgesDidChange()
+}
+
 class DataSource {
     static let sharedInstance = DataSource()
+    var delegate: DataSourceDelegate? = nil
+    
     private var bridges: [BridgeObject] = [] {
         didSet {
-            
+            delegate?.bridgesDidChange()
         }
     }
-    private var bridgesImages : Dictionary<String,ImageObject> = [:]
+    private var bridgesImages : Dictionary<String,ImageObject> = [:] {
+        didSet {
+            delegate?.bridgesDidChange()
+        }
+    }
 //    private var currentLocation : CLLocation()
     
     func countBridge () -> Int {
