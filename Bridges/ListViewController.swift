@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ListViewController: UITableViewController {
+class ListViewController: UITableViewController, DataSourceDelegate {
+    
+    func bridgesDidChange () {
+        tableView.reloadData()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowItem" {
@@ -44,6 +48,7 @@ class ListViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        DataSource.sharedInstance.delegate             = self
         tableView.rowHeight                            = 100
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.reloadData()
