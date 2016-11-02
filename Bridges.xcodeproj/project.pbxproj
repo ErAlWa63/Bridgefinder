@@ -18,6 +18,7 @@
 		761069DD1DB8D909009CBCB4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069DC1DB8D909009CBCB4 /* DetailViewController.swift */; };
 		761069DF1DB8D94D009CBCB4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761069DE1DB8D94D009CBCB4 /* AddViewController.swift */; };
 		761069E31DB8F6FB009CBCB4 /* erasmusWelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */; };
+		764499111DC9DFCE0064A058 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764499101DC9DFCE0064A058 /* KeyboardLayoutConstraint.swift */; };
 		766C7E951DBFF433002F45D4 /* MapUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C7E941DBFF433002F45D4 /* MapUtilities.swift */; };
 		766C7E971DBFF486002F45D4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 766C7E961DBFF486002F45D4 /* CoreLocation.framework */; };
 		76BD39861DBE46AA0046AAEE /* BridgeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD39851DBE46AA0046AAEE /* BridgeObject.swift */; };
@@ -42,6 +43,7 @@
 		761069DC1DB8D909009CBCB4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		761069DE1DB8D94D009CBCB4 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		761069E21DB8F6FB009CBCB4 /* erasmusWelcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = erasmusWelcome.png; path = ../erasmusWelcome.png; sourceTree = "<group>"; };
+		764499101DC9DFCE0064A058 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		766C7E941DBFF433002F45D4 /* MapUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUtilities.swift; sourceTree = "<group>"; };
 		766C7E961DBFF486002F45D4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		76BD39851DBE46AA0046AAEE /* BridgeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeObject.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		76BD397E1DBE3B970046AAEE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				764499101DC9DFCE0064A058 /* KeyboardLayoutConstraint.swift */,
 				76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */,
 				761069DE1DB8D94D009CBCB4 /* AddViewController.swift */,
 				761069DC1DB8D909009CBCB4 /* DetailViewController.swift */,
@@ -298,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764499111DC9DFCE0064A058 /* KeyboardLayoutConstraint.swift in Sources */,
 				0308AF081DC88D3800A05F63 /* ImageObject.swift in Sources */,
 				0308AF0A1DC8A4E000A05F63 /* ExtensionUIImage.swift in Sources */,
 				76D6A8D71DB79C060000D319 /* AppDelegate.swift in Sources */,

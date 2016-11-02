@@ -125,6 +125,11 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         latitudeLabel.font = UIFont(name: "Futura", size: 14)
         longitudeLabel.font = UIFont(name: "Futura", size: 14)
         
+//        nameTextField.clearsOnBeginEditing = true
+//        locationLatitude.clearsOnBeginEditing = true
+//        locationLongitude.clearsOnBeginEditing = true
+//        descriptionText.clearsOnInsertion = true
+        
 //        UINavigationBar.appearance().titleTextAttributes([NSFontAttributeName: UIFont.fontNames(forFamilyName: "Futura"), NSForegroundColorAttributeName:UIColor.white], for: UIControlState.normal)
         
 //        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont.fontNames(forFamilyName: "Futura"), NSForegroundColorAttributeName:UIColor.white], for: UIControlState.normal)
