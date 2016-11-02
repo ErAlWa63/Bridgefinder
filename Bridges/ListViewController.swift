@@ -32,7 +32,7 @@ class ListViewController: UITableViewController, DataSourceDelegate {
         cell.nameCell?.text        = bridge.name
         cell.descriptionCell?.text = bridge.descript
         cell.locationCell?.text    = "\(bridge.latitude) - \(bridge.longitude)"
-        cell.imageCell.image       = DataSource.sharedInstance.getImageObject(name: bridge.image)?.pictogram
+        cell.imageCell.image       = DataSource.sharedInstance.getImageObject(name: bridge.image)?.photo.resizedImageWithinRect(rectSize: CGSize(width: 150, height: 150))
         return cell
     }
     

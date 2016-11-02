@@ -14,7 +14,7 @@ class ImageObject {
     
     init( photo: UIImage) {
         self.photo     = photo
-        self.pictogram = photo.resizedImageWithinRect(rectSize: CGSize(width: 50, height: 40))
+        self.pictogram = photo.resizedImageWithinRect(rectSize: CGSize(width: 50, height: 50))
     }
 
 }
