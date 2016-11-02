@@ -28,6 +28,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    override func viewDidLoad() {
+        guard let coordinate = mapView.userLocation.location?.coordinate else { return }
+        mapView.setRegion(
+            MKCoordinateRegionMakeWithDistance(
+                coordinate,
+                DataSource.sharedInstance.getNearestDistanceBridge(),
+                DataSource.sharedInstance.getNearestDistanceBridge()),
+            animated: true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear( animated)
         mapView.mapType = MKMapType.standard

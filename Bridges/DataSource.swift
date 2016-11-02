@@ -18,6 +18,7 @@ class DataSource {
     static let sharedInstance = DataSource()
     var delegate: DataSourceDelegate? = nil
     private var locationManager: CLLocationManager!
+    private var nearestDistance: Double!
     
     private var bridges: [BridgeObject] = [] {
         didSet {
@@ -34,6 +35,11 @@ class DataSource {
         locationManager = CLLocationManager()
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //        locationManager.requestLocation()
+        if locationManager.location == nil {
+            print("Bridges: locationManager.location = nil")
+        }
+        print("Bridges: location loaded")
     }
     
     func countBridge () -> Int {
@@ -42,6 +48,10 @@ class DataSource {
     
     func getBridge (index: Int) -> BridgeObject {
         return bridges[index]
+    }
+    
+    func getNearestDistanceBridge () -> Double {
+        return nearestDistance
     }
     
     func removeBridge (bridge: BridgeObject) -> () {
@@ -55,6 +65,20 @@ class DataSource {
             var newBridgeObject: [BridgeObject] = []
             for currentChildAnyObject in currentFIRDataSnapshot.children {
                 let currentBridgeObject = BridgeObject(snapshot: currentChildAnyObject as! FIRDataSnapshot)
+                currentBridgeObject.distance =
+                    (self.locationManager.location?.distance(
+                        from: CLLocation(
+                            latitude: currentBridgeObject.latitude,
+                            longitude: currentBridgeObject.longitude)))! / 1000
+                currentBridgeObject.descript += String(format: "(%.2f km)", currentBridgeObject.distance!)
+                if self.nearestDistance == nil {
+                    self.nearestDistance = currentBridgeObject.distance
+                }
+                if let selfNearestDistance = self.nearestDistance {
+                    if selfNearestDistance > (currentBridgeObject.distance)! {
+                        self.nearestDistance = currentBridgeObject.distance
+                    }
+                }
                 self.loadImageObject(name: currentBridgeObject.image)
                 newBridgeObject.append(currentBridgeObject)
             }
