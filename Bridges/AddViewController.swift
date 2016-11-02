@@ -32,59 +32,60 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 }
             }
         }
-        
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
+
     }
 
-//    @IBAction func takePicture(_ sender: UIBarButtonItem) {
-//        
-//        let imagePicker = UIImagePickerController()
-//        imagePicker.allowsEditing = true
-//        
-//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-//            
-//            let title = "Do you want to use the camera or choose a picture from the library?"
-//            let ac = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
-//            let takePicture = UIAlertAction(title: "Take picture", style: .default, handler: nil)
-//            
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//            ac.addAction(cancelAction)
-//            
-//            imagePicker.sourceType = .camera
-//        } else {
-//            imagePicker.sourceType = .photoLibrary
-//        
-//        let titleCamera = "Camera"
-//        let titleLibrary = "Photo Library"
-//        
-//        let ac = UIAlertController(title: <#T##String?#>, message: <#T##String?#>, preferredStyle: <#T##UIAlertControllerStyle#>)
-        
-        
-        // If device has a camera, take picture; otherwise pick one from library
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
-        } else {
-            
-            imagePicker.sourceType = .photoLibrary
-        }
-        //        imagePicker.delegate = self
-        
-        // Place image picker on screen
-        present(imagePicker, animated: true, completion: nil)
-        
-    }
-    
+
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
+    // Enabling save button when fields have text
+    
+    
+    
+    
+    
+    @IBAction func nameTextFieldCheck(_ sender: UITextField) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
+                   saveButton.isEnabled = true
+        }
+    }
+    
 
-    @IBOutlet var nameLabel        : UILabel!
-    @IBOutlet var latitudeLabel    : UILabel!
-    @IBOutlet var longitudeLabel   : UILabel!
+    @IBAction func latitudeCheck(_ sender: UITextField) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
+            saveButton.isEnabled = true
+        }
+    }
+
+    @IBAction func longitudeCheck(_ sender: UITextField) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
+            saveButton.isEnabled = true
+        }
+    }
+    
+//    @IBAction func descriptionCheck(_ sender: UITextView) {
+//        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && (presentingView.image != nil){
+//            saveButton.isEnabled = true
+//        }
+//        
+//    }
+    
+    @IBOutlet var mainScrollView: UIScrollView!
+
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+
+    @IBOutlet var nameLabel: UILabel!
+    
+    @IBOutlet var latitudeLabel: UILabel!
+    
+    @IBOutlet var longitudeLabel: UILabel!
+    
     @IBOutlet var descriptionText  : UITextView!
     @IBOutlet var imageView        : UIImageView!
+    
     @IBOutlet var saveButton       : UIBarButtonItem!
     @IBOutlet var presentingView   : UIImageView!
     @IBOutlet var photoLibrary     : UIImageView!
@@ -92,6 +93,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet var locationLongitude: UITextField!
     @IBOutlet var nameTextField    : UITextField!
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,9 +119,13 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         descriptionText.text = "Description of the new bridge"
         descriptionText.textColor = UIColor.lightGray
         descriptionText.font = UIFont(name: "Futura", size: 14)
+        //        descriptionText.becomeFirstResponder()
         descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
         
         saveButton.isEnabled = false
+        
+//        mainScrollView.contentSize.height = 1000
+        
         
         // Font type and size
         
@@ -130,7 +136,18 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         latitudeLabel.font = UIFont(name: "Futura", size: 14)
         longitudeLabel.font = UIFont(name: "Futura", size: 14)
         
+        // Keyboard
         
+//        NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        
+//        NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+    }
+    
+    func imageCheck (image: AnyObject) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
+            saveButton.isEnabled = true
+        }
     }
     
     func imageViewTapped(image: AnyObject) {
@@ -200,19 +217,56 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
-            saveButton.isEnabled = true
-            
-        }
+//    func keyboardWillShow(notification:NSNotification) {
+//        adjustingHeight(show: true, notification: notification)
+//    }
+//    
+//    func keyboardWillHide(notification:NSNotification) {
+//        adjustingHeight(show: false, notification: notification)
+//    }
+//    
+//    func adjustingHeight(show:Bool, notification:NSNotification) {
+//        // 1
+//        var userInfo = notification.userInfo!
+//        // 2
+//        let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+//        // 3
+//        let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
+//        // 4
+////        let changeInHeight = (keyboardFrame.height + 40) * (show ? 1 : -1)
+//        //5
+//        let contentInsets = UIEdgeInsetsMake(self.view.frame.origin.x, self.view.frame.origin.y, keyboardFrame.height+100, 0)
+//        UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
+////            self.bottomConstraint.constant += changeInHeight
+//            self.mainScrollView.contentInset = contentInsets;
+//            self.mainScrollView.scrollIndicatorInsets = contentInsets;
+//        })
+//        
+//        
+//    }
+    
+
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
-            saveButton.isEnabled = true
-            
-        }
+    private func textViewDidEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
     }
+    
+    private func textViewShouldReturn(textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
+    
     
 }
 

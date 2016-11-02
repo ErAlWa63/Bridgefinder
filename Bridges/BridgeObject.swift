@@ -14,7 +14,7 @@ import MapKit
 class BridgeObject: NSObject, MKAnnotation {
     
     let name       : String
-    let descript   : String
+    var descript   : String
     let image      : String
     let latitude   : Double
     let longitude  : Double
@@ -23,7 +23,7 @@ class BridgeObject: NSObject, MKAnnotation {
 
     let coordinate : CLLocationCoordinate2D
     let title      : String?
-    let distance   : Double?
+    var distance   : Double?
     let identifier : String
     
     init(name: String, descript: String, image: String, latitude: Double, longitude: Double, key: String = "") {
