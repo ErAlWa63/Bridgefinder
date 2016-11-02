@@ -68,7 +68,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -9, y: -2)
             view.animatesDrop = true
-            view.a
         }
         view.leftCalloutAccessoryView = UIImageView(image: DataSource.sharedInstance.getImageObject(name: annotation.image)?.pictogram)
         return view
