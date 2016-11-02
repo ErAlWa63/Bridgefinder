@@ -11,14 +11,26 @@ import UIKit
 class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        welcomeViewLabel.text = "Welcome to bridges!"
-        welcomeTextLabel.text = "Bridges is an app to find interesting bridges in you direct neighbourhood."
-        explanationTextLabel.text = "Tap this screen to start"
-        welcomeImage.image = UIImage(named: "launchscreenBridgesV7-300.png")
+        
+        welcomeTextLabel.text = "find interesting bridges in your neighbourhood. Visit them, add missing bridges and add or change pictures..."
+        welcomeTextLabel.textAlignment = NSTextAlignment.center
+        welcomeTextLabel.font = UIFont(name: "Futura", size: 16)
+        
+        tapTextLabel.text = "Tap to start"
+        tapTextLabel.textAlignment = NSTextAlignment.center
+        tapTextLabel.font = UIFont(name: "Futura", size: 25)
+        
+//        welcomeImage.image = UIImage(named: "bridgesPictures.png")
+        
+        bridgeLogo.image = UIImage(named: "bridges-logo-one-wave.png")
+        
+        
     }
     
-    @IBOutlet var welcomeViewLabel: UILabel!
     @IBOutlet var welcomeTextLabel: UILabel!
-    @IBOutlet var explanationTextLabel: UILabel!
-    @IBOutlet var welcomeImage: UIImageView!
+
+    @IBOutlet var tapTextLabel: UILabel!
+//    @IBOutlet var welcomeImage: UIImageView!
+    
+    @IBOutlet var bridgeLogo: UIImageView!
 }
