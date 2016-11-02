@@ -102,14 +102,14 @@
 		76BD397E1DBE3B970046AAEE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				764499101DC9DFCE0064A058 /* KeyboardLayoutConstraint.swift */,
 				76BD39871DBE487F0046AAEE /* BridgeObjectCellTableViewCell.swift */,
 				761069DE1DB8D94D009CBCB4 /* AddViewController.swift */,
 				761069DC1DB8D909009CBCB4 /* DetailViewController.swift */,
 				761069DA1DB8D8C5009CBCB4 /* ListViewController.swift */,
+				764499101DC9DFCE0064A058 /* KeyboardLayoutConstraint.swift */,
+				766C7E941DBFF433002F45D4 /* MapUtilities.swift */,
 				761069D81DB8D861009CBCB4 /* MapViewController.swift */,
 				761069D61DB8D7BB009CBCB4 /* WelcomeViewController.swift */,
-				766C7E941DBFF433002F45D4 /* MapUtilities.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
