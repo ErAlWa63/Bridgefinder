@@ -32,6 +32,8 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 }
             }
         }
+        self.navigationController?.popViewController(animated: true)
+
     }
 
 
