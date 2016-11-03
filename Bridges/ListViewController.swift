@@ -33,6 +33,9 @@ class ListViewController: UITableViewController, DataSourceDelegate {
         cell.descriptionCell?.text = bridge.descript
         cell.locationCell?.text    = "\(bridge.latitude) - \(bridge.longitude)"
         cell.imageCell.image       = DataSource.sharedInstance.getImageObject(name: bridge.image)?.photo.resizedImageWithinRect(rectSize: CGSize(width: 150, height: 150))
+        cell.nameCell.font = UIFont(name: "Futura", size: 15)
+        cell.descriptionCell.font = UIFont(name: "Futura", size: 12)
+        cell.locationCell.font = UIFont(name: "Futura", size: 12)
         return cell
     }
     
@@ -45,6 +48,7 @@ class ListViewController: UITableViewController, DataSourceDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataSource.sharedInstance.countBridge()
     }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -53,5 +57,7 @@ class ListViewController: UITableViewController, DataSourceDelegate {
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.reloadData()
     }
+    
+
 }
 

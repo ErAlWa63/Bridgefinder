@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 
-class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UITextFieldDelegate, UIPopoverControllerDelegate {
+class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
+    // Save button
     
     @IBAction func saveBridgeButton(_ sender: UIBarButtonItem) {
         
@@ -37,13 +38,15 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     }
 
 
+    
+    
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
     
     
-
+    // Choose picture from camera or library and present it to the image view
     
     @IBAction func choosePicture(_ sender: UIGestureRecognizer) {
         
@@ -107,13 +110,17 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         locationLatitude.delegate = self
         locationLongitude.delegate = self
         descriptionText.delegate = self
-
+        
         presentingView.isUserInteractionEnabled = true
+        
+        // Placeholder textview
         
         descriptionText.text = "Description of the new bridge"
         descriptionText.textColor = UIColor.lightGray
         descriptionText.font = UIFont(name: "Futura", size: 14)
         descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
+        
+        // Disabling save button by default
         
         saveButton.isEnabled = false
         
@@ -130,6 +137,8 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
     }
     
+    // Imagepickercontroller
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         presentingView.image = image
@@ -141,6 +150,8 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // Placeholder for textview
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let currentText:NSString = descriptionText.text as NSString
@@ -157,25 +168,26 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         return true
     }
     
-//    func textViewDidChangeSelection(_ textView: UITextView) {
-//        if self.view.window != nil {
-//            if descriptionText.textColor == UIColor.lightGray {
-//                descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
-//            }
-//        }
-//    }
+    // Checks on textfields
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
             saveButton.isEnabled = true
     }
+        resignFirstResponder()
     }
     
-        func textFieldDidEndEditing(_ textField: UITextField) {
-            if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
-                saveButton.isEnabled = true
-        }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
+            saveButton.isEnabled = true
+    }
+        resignFirstResponder()
+    }
     
-        }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    
 }
 

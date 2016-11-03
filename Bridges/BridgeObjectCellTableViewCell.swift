@@ -13,4 +13,5 @@ class BridgeObjectCellTableViewCell: UITableViewCell {
     @IBOutlet var descriptionCell : UILabel!
     @IBOutlet var locationCell    : UILabel!
     @IBOutlet var imageCell       : UIImageView!
+    
 }

@@ -29,5 +29,6 @@ class DetailViewController: UIViewController {
         nameLabel.font = UIFont(name: "Futura", size: 25)
         descriptionLabel.font = UIFont(name: "Futura", size: 17)
         locationLabel.font = UIFont(name: "Futura", size: 17)
+        
     }
 }
