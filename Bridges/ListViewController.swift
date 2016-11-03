@@ -9,6 +9,8 @@
 import UIKit
 
 class ListViewController: UITableViewController, DataSourceListViewDelegate {
+    let d = D() // debugger functionality
+
     
     func bridgesDidChange () {
         tableView.reloadData()
@@ -41,7 +43,12 @@ class ListViewController: UITableViewController, DataSourceListViewDelegate {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            DataSource.sharedInstance.removeBridge(bridge: DataSource.sharedInstance.getBridge(index: indexPath.row))
+            d.c(s: "ListViewController - tableView - UITableViewCellEditingStyle - delete - start")
+            let bridge = DataSource.sharedInstance.getBridge(index: indexPath.row)
+            d.c(s: "ListViewController - tableView - UITableViewCellEditingStyle - delete - getBridge OK")
+            DataSource.sharedInstance.removeBridge(bridge: bridge)
+            d.c(s: "ListViewController - tableView - UITableViewCellEditingStyle - delete - removeBridge OK")
+//            DataSource.sharedInstance.removeBridge(bridge: DataSource.sharedInstance.getBridge(index: indexPath.row))
         }
     }
     
