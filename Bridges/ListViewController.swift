@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListViewController: UITableViewController, DataSourceDelegate {
+class ListViewController: UITableViewController, DataSourceListViewDelegate {
     
     func bridgesDidChange () {
         tableView.reloadData()
@@ -48,7 +48,7 @@ class ListViewController: UITableViewController, DataSourceDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DataSource.sharedInstance.delegate             = self
+        DataSource.sharedInstance.delegateListView     = self
         tableView.rowHeight                            = 100
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.reloadData()

@@ -8,18 +8,18 @@
 
 import UIKit
 
-class DebugEAW{
+class D {
     private var now: String {
         get {
             let dateFormate = DateFormatter()
-            dateFormate.dateFormat = "yyyyMMddHHmmss: "
+            dateFormate.dateFormat = "HHmmss.SSS"
             let date = Date()
             return dateFormate.string(from: date)
         }
     }
     
-    func EAWp (message: String) -> () {
-        print("\(self.now)\(message)")
+    func c (s: String) -> () {
+        print("Bridges (\(self.now)): \(s)")
     }
     
 //    func a (title: String, message: String) -> () {
