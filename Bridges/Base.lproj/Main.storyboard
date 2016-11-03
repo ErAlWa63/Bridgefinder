@@ -287,7 +287,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Bridges" id="byR-tO-Qwx">
-                        <barButtonItem key="leftBarButtonItem" image="arrowIcon20" id="Pc5-ad-dX5"/>
+                        <barButtonItem key="leftBarButtonItem" image="arrowIcon20" id="Pc5-ad-dX5">
+                            <connections>
+                                <action selector="zoomToCurrentLocationWithSender:" destination="5Ud-D0-Tnp" id="uKZ-bY-qWM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="b6P-i8-bat">
                             <connections>
                                 <segue destination="nF8-re-zjM" kind="show" id="Ha9-E4-JSH"/>
@@ -488,7 +492,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="ctv-YF-CYp" id="mUG-7c-jKo">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJO-zo-Yxf">
@@ -601,7 +605,7 @@
         <image name="cameraImagePickerBlue" width="414" height="203"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h3R-Ra-BRV"/>
         <segue reference="0NT-cX-aDm"/>
+        <segue reference="SPP-4x-NFW"/>
     </inferredMetricsTieBreakers>
 </document>

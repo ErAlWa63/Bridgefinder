@@ -82,13 +82,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		039595C01DC545E20017BC7F /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		4AD991A7E80109F04262D419 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,7 +148,6 @@
 				76BD397F1DBE3BC00046AAEE /* Storyboards */,
 				76BD397E1DBE3B970046AAEE /* Controllers */,
 				0304DB241DC0D00500E50222 /* Models */,
-				039595C01DC545E20017BC7F /* Protocols */,
 				76D6A8D61DB79C060000D319 /* AppDelegate.swift */,
 				76D6A8DD1DB79C060000D319 /* Assets.xcassets */,
 			);

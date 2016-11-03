@@ -16,13 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let d = D() // debugger functionality
+        d.c(s: "AppDelegate - application - didFinishLaunchingWithOptions - start")
+
         // Override point for customization after application launch.
         FIRApp.configure()
         DataSource.sharedInstance.loadBridges()
         
         // Changing the colour of the bar button items
         UINavigationBar.appearance().tintColor = UIColor.white
-        
+        d.c(s: "AppDelegate - application - didFinishLaunchingWithOptions - end")
+
         return true
     }
 
