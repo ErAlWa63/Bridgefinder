@@ -12,14 +12,29 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     let regionRadius: CLLocationDistance = 1
     
     @IBOutlet var mapView: MKMapView!
     
     @IBAction func zoomToCurrentLocation(sender: AnyObject) {
         guard let coordinate = mapView.userLocation.location?.coordinate else { return }
-        mapView.setRegion( MKCoordinateRegionMakeWithDistance( coordinate, 1000, 1000), animated: true)
+        let minimumRadius = (DataSource.sharedInstance.getNearestDistanceBridge() * 10 + 5000)
+        mapView.setRegion(
+            MKCoordinateRegionMakeWithDistance(
+                coordinate,
+                minimumRadius,
+                minimumRadius),
+            animated: true)
+    }
+    
+    private func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        let location = locations.last as! CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: (DataSource.sharedInstance.getNearestDistanceBridge() * 10), longitudeDelta: (DataSource.sharedInstance.getNearestDistanceBridge()) * 10))
+        
+        mapView.setRegion(region, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -28,14 +43,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    override func viewDidLoad() {
-        guard let coordinate = mapView.userLocation.location?.coordinate else { return }
-        mapView.setRegion(
-            MKCoordinateRegionMakeWithDistance(
-                coordinate,
-                DataSource.sharedInstance.getNearestDistanceBridge(),
-                DataSource.sharedInstance.getNearestDistanceBridge()),
-            animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+//        guard let coordinate = mapView.userLocation.location?.coordinate else { return }
+        let eawP = DebugEAW()
+        eawP.EAWp(message: "MapViewController - viewWillAppear")
+        var region = mapView.region;
+        region.center.latitude = 39.833333;
+        region.center.longitude = -98.58333;
+        region.span.latitudeDelta = 60;
+        region.span.longitudeDelta = 60;
+        mapView.setRegion(region, animated: true)
+//        [mapView setRegion:region animated:YES];
+//        guard let coordinate = mapView.userLocation.location?.coordinate else { return }
+//        mapView.setRegion(
+//            MKCoordinateRegion(
+//                center: CLLocationCoordinate2D( latitude: coordinate.latitude, longitude: coordinate.longitude),
+//                span: MKCoordinateSpan( latitudeDelta: DataSource.sharedInstance.getNearestDistanceBridge(), longitudeDelta: DataSource.sharedInstance.getNearestDistanceBridge())),
+//            animated: true)
+        //        mapView.setRegion(
+        //            MKCoordinateRegionMakeWithDistance(
+        //                coordinate,
+        //                DataSource.sharedInstance.getNearestDistanceBridge(),
+        //                DataSource.sharedInstance.getNearestDistanceBridge()),
+        //            animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
