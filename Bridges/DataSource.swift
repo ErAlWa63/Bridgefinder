@@ -65,12 +65,12 @@ class DataSource {
             var newBridgeObject: [BridgeObject] = []
             for currentChildAnyObject in currentFIRDataSnapshot.children {
                 let currentBridgeObject = BridgeObject(snapshot: currentChildAnyObject as! FIRDataSnapshot)
-                currentBridgeObject.distance =
-                    (self.locationManager.location?.distance(
-                        from: CLLocation(
-                            latitude: currentBridgeObject.latitude,
-                            longitude: currentBridgeObject.longitude)))! / 1000
-                currentBridgeObject.descript += String(format: "(%.2f km)", currentBridgeObject.distance!)
+                currentBridgeObject.distance = 0
+//                    (self.locationManager.location?.distance(
+//                        from: CLLocation(
+//                            latitude: currentBridgeObject.latitude,
+//                            longitude: currentBridgeObject.longitude)))! / 1000
+                currentBridgeObject.descript += String(format: "(%.3f km)", currentBridgeObject.distance!)
                 if self.nearestDistance == nil {
                     self.nearestDistance = currentBridgeObject.distance
                 }
