@@ -71,11 +71,10 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 
             } else {
                 
-                //print("Camera not available")
             }
             
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { UIAlertAction in
-                //print("Cancel Pressed")
+
             }
             
             alert.addAction(galleryAction)
@@ -158,13 +157,13 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         return true
     }
     
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        if self.view.window != nil {
-            if descriptionText.textColor == UIColor.lightGray {
-                descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
-            }
-        }
-    }
+//    func textViewDidChangeSelection(_ textView: UITextView) {
+//        if self.view.window != nil {
+//            if descriptionText.textColor == UIColor.lightGray {
+//                descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
+//            }
+//        }
+//    }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
