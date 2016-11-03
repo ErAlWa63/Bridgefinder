@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
+class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UITextFieldDelegate, UIPopoverControllerDelegate {
 
     
     @IBAction func saveBridgeButton(_ sender: UIBarButtonItem) {
@@ -41,54 +41,60 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         view.endEditing(true)
     }
     
-    // Enabling save button when fields have text
     
     
+
     
-    
-    
-    @IBAction func nameTextFieldCheck(_ sender: UITextField) {
-        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
-                   saveButton.isEnabled = true
+    @IBAction func choosePicture(_ sender: UIGestureRecognizer) {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        
+        let alert = UIAlertController(title: "Do you want to take a picture or choose on from the photolibrary?", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            
+            let galleryAction = UIAlertAction(title: "Photolibrary", style: UIAlertActionStyle.default) { UIAlertAction in
+                imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                self.present(imagePicker, animated: true, completion: nil)
+                
+            }
+            
+            if UIImagePickerController .isSourceTypeAvailable(.camera){
+                let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default) { UIAlertAction in
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                    self.present(imagePicker, animated: true, completion: nil)
+                    
+                }
+                alert.addAction(cameraAction)
+                
+            } else {
+                
+                //print("Camera not available")
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { UIAlertAction in
+                //print("Cancel Pressed")
+            }
+            
+            alert.addAction(galleryAction)
+            alert.addAction(cancelAction)
+            
+            self.present(alert, animated: true, completion: nil)
         }
+        
     }
     
 
-    @IBAction func latitudeCheck(_ sender: UITextField) {
-        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
-            saveButton.isEnabled = true
-        }
-    }
+    
 
-    @IBAction func longitudeCheck(_ sender: UITextField) {
-        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
-            saveButton.isEnabled = true
-        }
-    }
-    
-//    @IBAction func descriptionCheck(_ sender: UITextView) {
-//        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && (presentingView.image != nil){
-//            saveButton.isEnabled = true
-//        }
-//        
-//    }
-    
-    @IBOutlet var mainScrollView: UIScrollView!
-
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-
-    @IBOutlet var nameLabel: UILabel!
-    
-    @IBOutlet var latitudeLabel: UILabel!
-    
-    @IBOutlet var longitudeLabel: UILabel!
-    
+    @IBOutlet var nameLabel        : UILabel!
+    @IBOutlet var latitudeLabel    : UILabel!
+    @IBOutlet var longitudeLabel   : UILabel!
     @IBOutlet var descriptionText  : UITextView!
-    @IBOutlet var imageView        : UIImageView!
-    
     @IBOutlet var saveButton       : UIBarButtonItem!
     @IBOutlet var presentingView   : UIImageView!
-    @IBOutlet var photoLibrary     : UIImageView!
     @IBOutlet var locationLatitude : UITextField!
     @IBOutlet var locationLongitude: UITextField!
     @IBOutlet var nameTextField    : UITextField!
@@ -102,29 +108,15 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         locationLatitude.delegate = self
         locationLongitude.delegate = self
         descriptionText.delegate = self
-        
-        
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGestureRecognizer)
-        
-        let tapLibraryRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoLibraryTapped))
-        photoLibrary.isUserInteractionEnabled = true
-        photoLibrary.addGestureRecognizer(tapLibraryRecognizer)
-        
-        
+
         presentingView.isUserInteractionEnabled = true
         
         descriptionText.text = "Description of the new bridge"
         descriptionText.textColor = UIColor.lightGray
         descriptionText.font = UIFont(name: "Futura", size: 14)
-        //        descriptionText.becomeFirstResponder()
         descriptionText.textRange(from: descriptionText.beginningOfDocument, to: descriptionText.beginningOfDocument)
         
         saveButton.isEnabled = false
-        
-//        mainScrollView.contentSize.height = 1000
         
         
         // Font type and size
@@ -136,43 +128,16 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         latitudeLabel.font = UIFont(name: "Futura", size: 14)
         longitudeLabel.font = UIFont(name: "Futura", size: 14)
         
-        // Keyboard
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        
-//        NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
     
-    func imageCheck (image: AnyObject) {
-        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
-            saveButton.isEnabled = true
-        }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        presentingView.image = image
+        dismiss(animated: true, completion: nil)
+        
     }
-    
-    func imageViewTapped(image: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = true
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
-        } else {
-            imagePicker.sourceType = .photoLibrary
-        }
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func photoLibraryTapped(image: AnyObject) {
-        let imagePickerLibrary = UIImagePickerController()
-        imagePickerLibrary.allowsEditing = true
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-        imagePickerLibrary.sourceType = .photoLibrary
-        } else {
-            imagePickerLibrary.sourceType = .savedPhotosAlbum
-        }
-        imagePickerLibrary.delegate = self
-        present(imagePickerLibrary, animated: true, completion: nil)
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -201,72 +166,17 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        presentingView.image = image.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
-        imageView.contentMode = .scaleAspectFit
-        dismiss(animated: true, completion: nil)
-    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
+            saveButton.isEnabled = true
+    }
     }
     
-    func libraryPickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let imageLibrary = info[UIImagePickerControllerOriginalImage] as! UIImage
-        presentingView.image = imageLibrary.resizedImageWithinRect(rectSize: CGSize(width: 300, height: 200))
-        photoLibrary.contentMode = .scaleAspectFit
-        dismiss(animated: true, completion: nil)
-        
-    }
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            if nameTextField.hasText && locationLatitude.hasText && locationLongitude.hasText && descriptionText.hasText && presentingView.image != nil {
+                saveButton.isEnabled = true
+        }
     
-//    func keyboardWillShow(notification:NSNotification) {
-//        adjustingHeight(show: true, notification: notification)
-//    }
-//    
-//    func keyboardWillHide(notification:NSNotification) {
-//        adjustingHeight(show: false, notification: notification)
-//    }
-//    
-//    func adjustingHeight(show:Bool, notification:NSNotification) {
-//        // 1
-//        var userInfo = notification.userInfo!
-//        // 2
-//        let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-//        // 3
-//        let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-//        // 4
-////        let changeInHeight = (keyboardFrame.height + 40) * (show ? 1 : -1)
-//        //5
-//        let contentInsets = UIEdgeInsetsMake(self.view.frame.origin.x, self.view.frame.origin.y, keyboardFrame.height+100, 0)
-//        UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
-////            self.bottomConstraint.constant += changeInHeight
-//            self.mainScrollView.contentInset = contentInsets;
-//            self.mainScrollView.scrollIndicatorInsets = contentInsets;
-//        })
-//        
-//        
-//    }
-    
-
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    private func textViewDidEndEditing(_ textView: UITextView) -> Bool {
-        textView.resignFirstResponder()
-        return true
-    }
-    
-    private func textViewShouldReturn(textView: UITextView) -> Bool {
-        textView.resignFirstResponder()
-        return true
-    }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//    }
-    
-    
+        }
 }
 
