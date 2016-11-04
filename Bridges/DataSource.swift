@@ -61,6 +61,9 @@ class DataSource: NSObject, CLLocationManagerDelegate {
                     }
                 }
             }
+//            let bridges = self.bridges
+//            let sortedBridges = bridges.sorted(by: { $0.distance! > $1.distance! })
+//            self.bridges = sortedBridges
             delegateListView?.bridgesDidChange()
         }
     }
