@@ -49,7 +49,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
         mapView.mapType = MKMapType.standard
         let bridgeLocation = CLLocationCoordinate2D(latitude: currentBridge.latitude,longitude: currentBridge.longitude)
-        
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let regionOne = MKCoordinateRegion(center: bridgeLocation, span: span)
         mapView.setRegion(regionOne, animated: true)
@@ -58,6 +57,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         bridgeAnnotation.coordinate = bridgeLocation
         bridgeAnnotation.title = currentBridge.name
         mapView.addAnnotation(bridgeAnnotation)
+
         
         
         // Text settings

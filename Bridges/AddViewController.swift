@@ -166,6 +166,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         return true
     }
     
+
     // Checks on textfields
     
     func textViewDidEndEditing(_ textView: UITextView) {
