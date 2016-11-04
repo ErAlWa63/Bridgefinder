@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import MapKit
 
-class ListViewController: UITableViewController, DataSourceListViewDelegate, CLLocationManagerDelegate {
+class ListViewController: UITableViewController, DataSourceListViewDelegate {
+    let d = D() // debugger functionality
+
     
     func bridgesDidChange () {
         tableView.reloadData()
@@ -31,50 +32,28 @@ class ListViewController: UITableViewController, DataSourceListViewDelegate, CLL
         let bridge                 = DataSource.sharedInstance.getBridge(index: indexPath.row)
         let cell                   = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as! BridgeObjectCellTableViewCell
         cell.nameCell?.text        = bridge.name
-//        cell.distanceCell?.text     = bridge.distance
-//        cell.descriptionCell?.text = bridge.descript
-//        cell.locationCell?.text    = "\(bridge.latitude) - \(bridge.longitude)"
+        cell.descriptionCell?.text = bridge.descript
+        cell.locationCell?.text    = "\(bridge.latitude) - \(bridge.longitude)"
         cell.imageCell.image       = DataSource.sharedInstance.getImageObject(name: bridge.image)?.photo.resizedImageWithinRect(rectSize: CGSize(width: 150, height: 150))
         cell.nameCell.font = UIFont(name: "Futura", size: 15)
-//        cell.descriptionCell.font = UIFont(name: "Futura", size: 12)
-//        cell.locationCell.font = UIFont(name: "Futura", size: 12)
-        
-        // Testing distance in tableviewcell - not finished yet
-        
-//        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//            
-//            let location = locations.last! as CLLocation
-//            
-//            let bridgeLocation = CLLocation(latitude: bridge.latitude,longitude: bridge.longitude)
-//            
-//            let distanceInMeters = location.distance(from: bridgeLocation)
-//            
-//            let distanceInKilometers = distanceInMeters / 1000
-//            cell.distanceCell?.text = String(format: "%.2f KM", distanceInKilometers)
-//            
-//            _ = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        }
-        
-        
-        
+        cell.descriptionCell.font = UIFont(name: "Futura", size: 12)
+        cell.locationCell.font = UIFont(name: "Futura", size: 12)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            DataSource.sharedInstance.removeBridge(bridge: DataSource.sharedInstance.getBridge(index: indexPath.row))
+            d.c(s: "ListViewController - tableView - UITableViewCellEditingStyle - delete - start")
+            let bridge = DataSource.sharedInstance.getBridge(index: indexPath.row)
+            d.c(s: "ListViewController - tableView - UITableViewCellEditingStyle - delete - getBridge OK")
+            DataSource.sharedInstance.removeBridge(bridge: bridge)
+            d.c(s: "ListViewController - tableView - UITableViewCellEditingStyle - delete - removeBridge OK")
+//            DataSource.sharedInstance.removeBridge(bridge: DataSource.sharedInstance.getBridge(index: indexPath.row))
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataSource.sharedInstance.countBridge()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
     }
 
     
@@ -85,6 +64,7 @@ class ListViewController: UITableViewController, DataSourceListViewDelegate, CLL
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.reloadData()
     }
+    
 
 }
 

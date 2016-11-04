@@ -83,8 +83,12 @@ class DataSource: NSObject, CLLocationManagerDelegate {
     }
     
     func removeBridge (bridge: BridgeObject) -> () {
+        d.c(s: "DataSource - removeBridge - start")
         FIRStorage.storage().reference().child(bridge.image).delete(completion: nil)
+        d.c(s: "DataSource - removeBridge - storage")
         bridge.ref?.removeValue()
+        d.c(s: "DataSource - removeBridge - database")
+
     }
     
     func loadBridges () -> () {
