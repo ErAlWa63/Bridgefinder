@@ -31,8 +31,8 @@ class BridgeObject: NSObject, MKAnnotation {
         self.name = name
         self.descript = descript
         self.image = image
-        self.latitude = longitude
-        self.longitude = latitude
+        self.latitude = latitude
+        self.longitude = longitude
         self.ref = nil
         self.title = name
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)

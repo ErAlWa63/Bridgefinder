@@ -23,8 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         DataSource.sharedInstance.loadBridges()
         
-        // Changing the colour of the bar button items
-        UINavigationBar.appearance().tintColor = UIColor.white
         d.c(s: "AppDelegate - application - didFinishLaunchingWithOptions - end")
 
         return true

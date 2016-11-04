@@ -18,21 +18,19 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var nameLabel       : UILabel!
     @IBOutlet var locationLabel   : UILabel!
-//    @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var bridgeImage     : UIImageView!
     
     var currentBridge             : BridgeObject!
     var locationManager           : CLLocationManager!
     let regionRadius              : CLLocationDistance = 100
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title                 = currentBridge.name
-//        nameLabel.text        = currentBridge.name
-//        descriptionLabel.text = currentBridge.descript
         descriptionTextView.text = currentBridge.descript
+        descriptionTextView.flashScrollIndicators()
+        descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         bridgeImage.image     = DataSource.sharedInstance.getImageObject(name: currentBridge.image)?.photo
         
         if (CLLocationManager.locationServicesEnabled())
@@ -44,12 +42,11 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             locationManager.startUpdatingLocation()
         }
         
-
+        
         mapView.delegate = self
         
         mapView.mapType = MKMapType.standard
         let bridgeLocation = CLLocationCoordinate2D(latitude: currentBridge.latitude,longitude: currentBridge.longitude)
-        
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let regionOne = MKCoordinateRegion(center: bridgeLocation, span: span)
         mapView.setRegion(regionOne, animated: true)
@@ -58,14 +55,18 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         bridgeAnnotation.coordinate = bridgeLocation
         bridgeAnnotation.title = currentBridge.name
         mapView.addAnnotation(bridgeAnnotation)
+
         
         
         // Text settings
         
-//        nameLabel.font = UIFont(name: "Futura", size: 25)
-//        descriptionLabel.font = UIFont(name: "Futura", size: 17)
         distanceLabel.font = UIFont(name: "Futura", size: 26)
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
