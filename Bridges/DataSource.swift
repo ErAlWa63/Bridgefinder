@@ -21,49 +21,62 @@ protocol DataSourceMapViewDelegate {
 class DataSource: NSObject, CLLocationManagerDelegate {
     let d = D() // debugger functionality
     
-    static let sharedInstance = DataSource()
-    var delegateListView: DataSourceListViewDelegate? = nil
-    var delegateMapView: DataSourceMapViewDelegate? = nil
-    private var locationManager: CLLocationManager!
-    private var nearestDistance: Double!
+    static let  sharedInstance = DataSource()
+    var         delegateListView: DataSourceListViewDelegate? = nil
+    var         delegateMapView:  DataSourceMapViewDelegate? = nil
+    private var locationManager:  CLLocationManager? = nil
+    private var nearestDistance:  Double? = nil
+    private var bridgesReady  = false
+    private var locationReady = false
     
     private var bridges: [BridgeObject] = [] {
         didSet {
+            bridgesReady = true
             delegateListView?.bridgesDidChange()
+            delegateMapView?.locationDidChange()
+            calculateDistances()
         }
     }
     private var bridgesImages : Dictionary<String,ImageObject> = [:] {
         didSet {
             delegateListView?.bridgesDidChange()
+            delegateMapView?.locationDidChange()
+        }
+    }
+    
+    private func calculateDistances () -> () {
+        if self.bridgesReady && self.locationReady {
+            for bridge in self.bridges {
+                if self.bridgesReady {
+                    bridge.distance = (self.locationManager?.location?.distance(
+                        from: CLLocation(
+                            latitude: bridge.latitude,
+                            longitude: bridge.longitude)))! / 1000
+                    bridge.descript += String(format: "(%.3f km)", bridge.distance!)
+                    if self.nearestDistance == nil {
+                        self.nearestDistance = bridge.distance
+                    }
+                    if let selfNearestDistance = self.nearestDistance {
+                        if selfNearestDistance > (bridge.distance)! {
+                            self.nearestDistance = bridge.distance
+                        }
+                    }
+                }
+            }
+            delegateListView?.bridgesDidChange()
         }
     }
     
     private func configLocationManager () -> () {
-        d.c(s: "DataSource - configLocationManager - start")
-        
-        locationManager = CLLocationManager()
-        locationManager.requestAlwaysAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 500
-//        locationManager.allowsBackgroundLocationUpdates = true
-        d.c(s: "DataSource - configLocationManager - step 1")
-        
-        locationManager.startUpdatingLocation()
-        d.c(s: "DataSource - configLocationManager - step 2")
-        
-//        locationManager.requestLocation()
-        d.c(s: "DataSource - configLocationManager - step 3")
-        
-//        locationManager.stopUpdatingLocation()
-        d.c(s: "DataSource - configLocationManager - step 4")
-        
-        if locationManager.location == nil {
-            d.c(s: "DataSource - configLocationManager - locationManager.location == nil")
-        } else {
-            d.c(s: "DataSource - configLocationManager - locationManager.location = \(locationManager.location)")
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            locationManager = CLLocationManager()
+            locationManager?.requestWhenInUseAuthorization()
         }
-        d.c(s: "DataSource - configLocationManager - end")
-        
+        locationManager?.delegate = self
+        locationManager?.requestAlwaysAuthorization()
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.distanceFilter = 500
+        locationManager?.startUpdatingLocation()
     }
     
     func countBridge () -> Int {
@@ -74,11 +87,11 @@ class DataSource: NSObject, CLLocationManagerDelegate {
         return bridges[index]
     }
     
-    func getLocation () -> CLLocation {
-        return locationManager.location!
+    func getLocation () -> CLLocation? {
+        return locationManager?.location
     }
     
-    func getNearestDistanceBridge () -> Double {
+    func getNearestDistanceBridge () -> Double? {
         return nearestDistance
     }
     
@@ -88,29 +101,16 @@ class DataSource: NSObject, CLLocationManagerDelegate {
         d.c(s: "DataSource - removeBridge - storage")
         bridge.ref?.removeValue()
         d.c(s: "DataSource - removeBridge - database")
-
+        
     }
     
     func loadBridges () -> () {
         configLocationManager()
         FIRDatabase.database().reference().observe(.value, with: { currentFIRDataSnapshot in
+            self.bridgesReady = true
             var newBridgeObject: [BridgeObject] = []
             for currentChildAnyObject in currentFIRDataSnapshot.children {
                 let currentBridgeObject = BridgeObject(snapshot: currentChildAnyObject as! FIRDataSnapshot)
-                currentBridgeObject.distance = 0
-                //                    (self.locationManager.location?.distance(
-                //                        from: CLLocation(
-                //                            latitude: currentBridgeObject.latitude,
-                //                            longitude: currentBridgeObject.longitude)))! / 1000
-                currentBridgeObject.descript += String(format: "(%.3f km)", currentBridgeObject.distance!)
-                if self.nearestDistance == nil {
-                    self.nearestDistance = currentBridgeObject.distance
-                }
-                if let selfNearestDistance = self.nearestDistance {
-                    if selfNearestDistance > (currentBridgeObject.distance)! {
-                        self.nearestDistance = currentBridgeObject.distance
-                    }
-                }
                 self.loadImageObject(name: currentBridgeObject.image)
                 newBridgeObject.append(currentBridgeObject)
             }
@@ -131,7 +131,7 @@ class DataSource: NSObject, CLLocationManagerDelegate {
     }
     
     func loadCurrentLocalization () -> () {
-                locationManager.requestLocation()
+        locationManager?.requestLocation()
     }
     
     func getImageObject (name: String) -> ImageObject? {
@@ -143,13 +143,12 @@ class DataSource: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        d.c(s: "DataSource - locationManager - locations = \(locations)")
-
-        if let location = locations.last {
-            d.c(s: "DataSource - locationManager - Found user's location: \(location)")
-            locationManager.stopUpdatingLocation()
+        if locations.last != nil {
+            locationManager?.stopUpdatingLocation()
+            locationReady = true
+            delegateListView?.bridgesDidChange()
             delegateMapView?.locationDidChange()
-
+            calculateDistances()
         }
     }
 }
