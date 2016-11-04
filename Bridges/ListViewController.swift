@@ -32,10 +32,10 @@ class ListViewController: UITableViewController, DataSourceListViewDelegate {
         let bridge                 = DataSource.sharedInstance.getBridge(index: indexPath.row)
         let cell                   = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as! BridgeObjectCellTableViewCell
         cell.nameCell?.text        = bridge.name
-//        cell.descriptionCell?.text = bridge.descript
-//        cell.locationCell?.text    = "\(bridge.latitude) - \(bridge.longitude)"
+        cell.distanceCell?.text = String(format: "%.f KM", bridge.distance!)
         cell.imageCell.image       = DataSource.sharedInstance.getImageObject(name: bridge.image)?.photo.resizedImageWithinRect(rectSize: CGSize(width: 150, height: 150))
         cell.nameCell.font = UIFont(name: "Futura", size: 20)
+        cell.distanceCell.font = UIFont(name: "Futura", size: 18)
 //        cell.descriptionCell.font = UIFont(name: "Futura", size: 12)
 //        cell.locationCell.font = UIFont(name: "Futura", size: 12)
         return cell
