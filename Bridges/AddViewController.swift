@@ -54,7 +54,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
-        let alert = UIAlertController(title: "Do you want to take a picture or choose on from the photolibrary?", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alert = UIAlertController(title: "Do you want to take a picture or choose one from the photolibrary?", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             
@@ -88,9 +88,6 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
     }
     
-
-    
-
     @IBOutlet var nameLabel        : UILabel!
     @IBOutlet var latitudeLabel    : UILabel!
     @IBOutlet var longitudeLabel   : UILabel!
