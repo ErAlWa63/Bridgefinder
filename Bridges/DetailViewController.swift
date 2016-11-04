@@ -24,13 +24,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var locationManager           : CLLocationManager!
     let regionRadius              : CLLocationDistance = 100
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title                 = currentBridge.name
         descriptionTextView.text = currentBridge.descript
         descriptionTextView.flashScrollIndicators()
+        descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         bridgeImage.image     = DataSource.sharedInstance.getImageObject(name: currentBridge.image)?.photo
         
         if (CLLocationManager.locationServicesEnabled())
@@ -62,6 +62,11 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
         distanceLabel.font = UIFont(name: "Futura", size: 26)
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
