@@ -18,7 +18,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var nameLabel       : UILabel!
     @IBOutlet var locationLabel   : UILabel!
-//    @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var bridgeImage     : UIImageView!
     
     var currentBridge             : BridgeObject!
@@ -30,9 +29,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         super.viewDidLoad()
         
         title                 = currentBridge.name
-//        nameLabel.text        = currentBridge.name
-//        descriptionLabel.text = currentBridge.descript
         descriptionTextView.text = currentBridge.descript
+        descriptionTextView.flashScrollIndicators()
         bridgeImage.image     = DataSource.sharedInstance.getImageObject(name: currentBridge.image)?.photo
         
         if (CLLocationManager.locationServicesEnabled())
@@ -44,7 +42,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             locationManager.startUpdatingLocation()
         }
         
-
+        
         mapView.delegate = self
         
         mapView.mapType = MKMapType.standard
@@ -62,8 +60,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
         // Text settings
         
-//        nameLabel.font = UIFont(name: "Futura", size: 25)
-//        descriptionLabel.font = UIFont(name: "Futura", size: 17)
         distanceLabel.font = UIFont(name: "Futura", size: 26)
         
     }

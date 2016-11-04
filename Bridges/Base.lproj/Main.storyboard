@@ -386,15 +386,6 @@
                                                     <constraint firstItem="YT9-oW-mAT" firstAttribute="leading" secondItem="xSm-f6-48k" secondAttribute="leading" id="d7h-o8-jxN"/>
                                                     <constraint firstAttribute="trailing" secondItem="YT9-oW-mAT" secondAttribute="trailing" id="dcK-r4-i20"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="flash"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -556,7 +547,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="ctv-YF-CYp" id="mUG-7c-jKo">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJO-zo-Yxf">
@@ -620,7 +611,7 @@
             <objects>
                 <navigationController title="NavigationList" id="TjQ-H5-dF8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="ListIcon" id="39c-kk-DAD"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dJR-N5-SKJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dJR-N5-SKJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -643,7 +634,7 @@
                 <navigationController title="NavigationMap" automaticallyAdjustsScrollViewInsets="NO" id="LLY-Yx-IJT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="MapIcon" id="8lA-dN-Y3y"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zBN-8a-1FC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zBN-8a-1FC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.14941892030000001" green="0.57694840430000005" blue="0.99902075530000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
