@@ -31,15 +31,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, DataSourceMapViewD
             animated: true)
     }
     
-    //    private func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-    //        let location = locations.last as! CLLocation
-    //
-    //        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-    //        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: (DataSource.sharedInstance.getNearestDistanceBridge() * 10), longitudeDelta: (DataSource.sharedInstance.getNearestDistanceBridge()) * 10))
-    //
-    //        mapView.setRegion(region, animated: true)
-    //    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowItem" {
             (segue.destination as! DetailViewController).currentBridge = mapView.selectedAnnotations[0] as! BridgeObject
@@ -49,63 +40,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, DataSourceMapViewD
     override func viewWillAppear(_ animated: Bool) {
         mapView.showsUserLocation = true
         
-        //        guard let coordinate = mapView.userLocation.location?.coordinate else { return }
-        d.c(s: "MapViewController - viewWillAppear")
-        //        var region = mapView.region;
-        //        region.center.latitude = 39.833333;
-        //        region.center.longitude = -98.58333;
-        //        region.span.latitudeDelta = 60;
-        //        region.span.longitudeDelta = 60;
-        //        mapView.setRegion(region, animated: true)
-        //        [mapView setRegion:region animated:YES];
-        //        DataSource.sharedInstance.loadCurrentLocalization()
-        
         let coordinate = DataSource.sharedInstance.getLocation()
-        //            mapView.userLocation.location?.coordinate {
-        //        MKCoordinateRegionMake(<#T##centerCoordinate: CLLocationCoordinate2D##CLLocationCoordinate2D#>, <#T##span: MKCoordinateSpan##MKCoordinateSpan#>)
         mapView.setRegion(
             MKCoordinateRegionMake(
                 (coordinate?.coordinate) ?? CLLocationCoordinate2D(latitude: 52.372367, longitude: 4.9175986),
                 MKCoordinateSpan(
-                    latitudeDelta: ((DataSource.sharedInstance.getNearestDistanceBridge()) ?? 50.0) + 0.1,
-                    longitudeDelta: ((DataSource.sharedInstance.getNearestDistanceBridge()) ?? 50.0) + 0.1
+                    latitudeDelta: ((DataSource.sharedInstance.getNearestDistanceBridge()) ?? 10.0) + 0.5,
+                    longitudeDelta: ((DataSource.sharedInstance.getNearestDistanceBridge()) ?? 10.0) + 0.5
                 )
             ),
             animated: true
         )
-        //        d.c(s: "MapViewController - viewWillAppear - coordinate = mapView.userLocation.location?.coordinate != nil")
-        
-        
-        
-        //        if mapView.userLocation.location == nil {
-        //            d.c(s: "MapViewController - viewWillAppear - coordinate = mapView.userLocation.location == nil")
-        //        } else {
-        //            d.c(s: "MapViewController - viewWillAppear - coordinate = mapView.userLocation.location != nil")
-        //        }
-        //        if let coordinate = mapView.userLocation.location?.coordinate {
-        //            mapView.setRegion(
-        //                MKCoordinateRegion(
-        //                    center: CLLocationCoordinate2D( latitude: coordinate.latitude, longitude: coordinate.longitude),
-        //                    span: MKCoordinateSpan( latitudeDelta: DataSource.sharedInstance.getNearestDistanceBridge() + 50, longitudeDelta: DataSource.sharedInstance.getNearestDistanceBridge() + 50)),
-        //                animated: true)
-        //            d.c(s: "MapViewController - viewWillAppear - coordinate = mapView.userLocation.location?.coordinate != nil")
-        //        } else {
-        //            d.c(s: "MapViewController - viewWillAppear - coordinate = mapView.userLocation.location?.coordinate == nil")
-        //            return
-        //        }
-        
-        //        guard let coordinate = mapView.userLocation.location?.coordinate else { return }
-        //        mapView.setRegion(
-        //            MKCoordinateRegion(
-        //                center: CLLocationCoordinate2D( latitude: coordinate.latitude, longitude: coordinate.longitude),
-        //                span: MKCoordinateSpan( latitudeDelta: DataSource.sharedInstance.getNearestDistanceBridge() + 50, longitudeDelta: DataSource.sharedInstance.getNearestDistanceBridge() + 50)),
-        //            animated: true)
-        //        mapView.setRegion(
-        //            MKCoordinateRegionMakeWithDistance(
-        //                coordinate,
-        //                DataSource.sharedInstance.getNearestDistanceBridge(),
-        //                DataSource.sharedInstance.getNearestDistanceBridge()),
-        //            animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,7 +68,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, DataSourceMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        mapView.showsUserLocation = true
+        mapView.showsUserLocation = true
         let annotationsToRemove = mapView.annotations.filter { $0 !== mapView.userLocation }
         mapView.removeAnnotations( annotationsToRemove )
     }
@@ -159,20 +104,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, DataSourceMapViewD
             MKCoordinateRegionMake(
                 (coordinate?.coordinate) ?? CLLocationCoordinate2D(latitude: 52.372367, longitude: 4.9175986),
                 MKCoordinateSpan(
-                    latitudeDelta: (DataSource.sharedInstance.getNearestDistanceBridge() ?? 50.0 ) + 50.0,
-                    longitudeDelta: (DataSource.sharedInstance.getNearestDistanceBridge() ?? 50.0 ) + 50.0
+                    latitudeDelta: (DataSource.sharedInstance.getNearestDistanceBridge() ?? 10.0 ) + 0.1,
+                    longitudeDelta: (DataSource.sharedInstance.getNearestDistanceBridge() ?? 10.0 ) + 0.1
                 )
             ),
             animated: true
         )
-        d.c(s: "MapViewController - viewWillAppear - coordinate = mapView.userLocation.location?.coordinate != nil")
-        //        } else {
-        //            d.c(s: "MapViewController - viewWillAppear - coordinate = mapView.userLocation.location?.coordinate == nil")
-        //            return
-        //        }
-        
     }
-    
-    
 }
 

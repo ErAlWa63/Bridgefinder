@@ -52,12 +52,10 @@ class DataSource: NSObject, CLLocationManagerDelegate {
                         from: CLLocation(
                             latitude: bridge.latitude,
                             longitude: bridge.longitude)))! / 1000
-                    bridge.descript += String(format: "(%.3f km)", bridge.distance!)
                     if self.nearestDistance == nil {
                         self.nearestDistance = bridge.distance
-                    }
-                    if let selfNearestDistance = self.nearestDistance {
-                        if selfNearestDistance > (bridge.distance)! {
+                    } else {
+                        if self.nearestDistance! > (bridge.distance)! {
                             self.nearestDistance = bridge.distance
                         }
                     }
